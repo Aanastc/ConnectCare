@@ -1,28 +1,45 @@
-import "./Home.css"
-import Logo from "../../assets/icons/Logo.svg"
+import Logo from '../../assets/icons/Logo.svg'
 
 export function Home() {
-    return (
-        <main>
-            <header>
-                <div className="p-6">
-                    <div>
-                        <img src={Logo} alt="Logo" />
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="">Home</a>
-                        </li>
-                        <li>
-                            <a href="">Sobre</a>
-                        </li>
-                        <li>
-                            <a href="">Serviços</a>
-                        </li>
-                    </ul>
-                </div>
-            </header>
-        </main>
-
-    )
+  return (
+    <main>
+      <header className="container max-w-[1170px] m-auto py-5 flex justify-between items-center">
+        <div className="flex gap-8">
+          <img src={Logo} alt="Logo" />
+          <ul className="flex gap-2 items-center">
+            <li>
+              <a href="" className="font-bold py-2 px-4 hover:text-purple-600">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="" className="font-bold py-2 px-4 hover:text-purple-600">
+                Sobre
+              </a>
+            </li>
+            <li>
+              <a href="" className="font-bold py-2 px-4 hover:text-purple-600">
+                Serviços
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="flex gap-2">
+          <div>
+            <input
+              type="text"
+              className="bg-gray-100 p-2 text-gray-500 mr-2"
+              placeholder="Buscar"
+            />
+          </div>
+          <button className="font-bold text-purple-600 py-2 px-4 hover:text-purple-800 hover:bg-gray-100 rounded-full">
+            Registrar
+          </button>
+          <button className="font-bold bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-800">
+            Entrar
+          </button>
+        </div>
+      </header>
+    </main>
+  )
 }
