@@ -4,7 +4,7 @@ import ImgHome from '../../assets/imgs/img-home.png'
 export function Home() {
     return (
         <main>
-            <header className="container max-w-[1170px] m-auto py-5 flex justify-between items-center">
+            <header className="container max-w-[1170px] m-auto py-5 flex justify-between items-center sticky top-0">
                 <div className="flex gap-8">
                     <img src={Logo} alt="Logo" />
                     <ul className="flex gap-2 items-center">
@@ -41,9 +41,9 @@ export function Home() {
                     </button>
                 </div>
             </header>
-            <section className='container max-w-[1170px] m-auto py-5 flex justify-between items-center'>
-                <div className='flex justify-around'>
-                    <div className=''>
+            <section className='max-w-[1170px] m-auto py-5 flex justify-between items-center'>
+                <div className='grid grid-cols-2 gap-5'>
+                    <div>
                         <h1 className='text-4xl font-bold mb-4'>Cuidamos de vidas conectando pacientes e profissionais da saúde.</h1>
                         <p className='text-xl'>
                             Percebemos, cada vez mais, que o consenso sobre a necessidade de qualificação apresenta tendências no sentido de aprovar a manutenção do sistema de formação de quadros que corresponde às necessidades.
@@ -53,7 +53,7 @@ export function Home() {
                             <img src="" alt="" />
                         </div>
                     </div>
-                    <div className=''>
+                    <div>
                         <img src={ImgHome} alt="Imagem-Home" />
                     </div>
                 </div>
