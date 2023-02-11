@@ -61,9 +61,13 @@ export function Home() {
                 necessidades.
               </p>
             </div>
-            <div className="text-center py-2">
-              <img src="" alt="Dowload-Android" />
-              <img src="" alt="Dowload-IOS" />
+            <div className="text-center py-2 flex">
+              <a href="https://play.google.com/store/games?hl=pt_BR&gl=US">
+                <img src="https://play.google.com/intl/pt-BR/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Dowload-Android" />
+              </a>
+              <a href="https://www.apple.com/br/app-store/">
+                <img src="https://logodownload.org/wp-content/uploads/2017/05/disponivel-na-app-store-botao-1.png" alt="Dowload-IOS" />
+              </a>
             </div>
           </div>
           <div className="flex justify-center	">
@@ -73,7 +77,7 @@ export function Home() {
       </section>
       <footer>
         <div className="px-5 bg-violet-700 grid grid-cols-3">
-          <div clasName="">
+          <div className="text-white">
             <ul>
               <li>
                 <a href="#" className="font-bold text-xl">
@@ -94,7 +98,7 @@ export function Home() {
               </li>
             </ul>
           </div>
-          <div>
+          <div className="text-white">
             <ul>
               <li>
                 <a href="#" className="font-bold text-xl">
@@ -115,19 +119,28 @@ export function Home() {
               </li>
             </ul>
           </div>
-          <div>
+          <div className="text-white">
             <div className="text-right">
               <p className="mb-2">Central de Atendimento: (70) 7070-7070</p>
               <p className="mb-0">Av. Jorgin Do Grau, 1111 - Edson Queiroz</p>
-              <p> CEP 33678-950 - Fortaleza-CE Brasil</p>
+              <p className="mb-4"> CEP 33678-950 - Fortaleza-CE Brasil</p>
             </div>
-            <div>
+            <div className="flex justify-end">
               <a className="text-white">
-                <WhatsappLogo size={16} />
+                <WhatsappLogo
+                  size={24}
+                  href="https://www.whatsapp.com/?lang=pt_br"
+                />
               </a>
-              <a></a>
-              <a></a>
-              <a></a>
+              <a className="text-white" href="https://pt-br.facebook.com/">
+                <FacebookLogo size={24} />
+              </a>
+              <a className="text-white" href="https://twitter.com/">
+                <TwitterLogo size={24} />
+              </a>
+              <a className="text-white" href="https://www.instagram.com/">
+                <InstagramLogo size={24} />
+              </a>
             </div>
           </div>
         </div>
