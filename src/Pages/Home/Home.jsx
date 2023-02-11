@@ -51,7 +51,7 @@ export function Home() {
         <div className="grid grid-cols-2 gap-36">
           <div className="flex flex-col justify-center gap-6">
             <div>
-              <h1 className="text-5xl font-bold leading-snug mb-4">
+              <h1 className="text-5xl font-bold leading-snug">
                 Cuidamos de vidas conectando pacientes e profissionais da saúde.
               </h1>
               <p className="leading-snug">
@@ -61,12 +61,20 @@ export function Home() {
                 necessidades.
               </p>
             </div>
-            <div className="text-center py-2 flex">
+            <div className="text-center py-2 flex gap-4">
               <a href="https://play.google.com/store/games?hl=pt_BR&gl=US">
-                <img src="https://play.google.com/intl/pt-BR/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Dowload-Android" />
+                <img
+                  width={180}
+                  src="https://logodownload.org/wp-content/uploads/2017/04/disponivel-google-play-badge-1.png"
+                  alt="Dowload-Android"
+                />
               </a>
               <a href="https://www.apple.com/br/app-store/">
-                <img src="https://logodownload.org/wp-content/uploads/2017/05/disponivel-na-app-store-botao-1.png" alt="Dowload-IOS" />
+                <img
+                  width={180}
+                  src="https://logodownload.org/wp-content/uploads/2017/05/disponivel-na-app-store-botao-1.png"
+                  alt="Dowload-IOS"
+                />
               </a>
             </div>
           </div>
