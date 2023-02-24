@@ -8,7 +8,7 @@ import {
 export function Footer() {
   return (
     <footer>
-      <div className="px-5 py-2 bg-violet-700 grid grid-cols-3">
+      <div className="p-5 bg-violet-700 grid grid-cols-3 w-full">
         <div className="text-white">
           <ul>
             <li>
@@ -68,7 +68,7 @@ export function Footer() {
           </ul>
         </div>
         <div className="text-white">
-          <div className="text-right">
+          <div className="text-right font-thin">
             <p className="mb-2 text-sm">
               Central de Atendimento: (70) 7070-7070
             </p>

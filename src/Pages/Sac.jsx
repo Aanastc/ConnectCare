@@ -1,16 +1,16 @@
-import { Header } from '../Components/Header'
-import { Footer } from '../Components/Footer'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Header } from '../Components/Header';
+import { Footer } from '../Components/Footer';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export function Sac() {
-  const [isPaciente, setIsPaciente] = useState(true)
+  const [isPaciente, setIsPaciente] = useState(true);
 
   return (
     <main>
       <Header />
       <div className="container flex flex-col items-center">
-        <h1 className="font-bold text-4xl mb-6">Oi! Como podemos ajudar?</h1>
+        <h1 className="font-bold text-4xl mb-6 mt-2">Oi! Como podemos ajudar?</h1>
         <div className="mb-4">
           <input
             type="text"
@@ -37,14 +37,13 @@ export function Sac() {
             <h2 className="font-extrabold text-lg">Principais</h2>
             {isPaciente ? (
               <div className="flex flex-row gap-6">
-                {/* colocar os "..."  depois  */}
-                <a href="" className="basis-1/3 gap-2">
+                <a href="" className="h-24 basis-1/3 gap-2">
                   <span className="underline font-semibold">
                     Tenho que pagar algum valor a mais ao profissional do que
                     foi acordado no aplicativo?
                   </span>
                   <br />
-                  <span className="font-light">
+                  <span className="font-light h-24 overflow-hidden text-ellipsis ">
                     Não. Nada deve ser pago e nem cobrado fora do acordado.
                     Qualquer cobrança adicional virá através do aplicativo,
                     nunca através do profissional.
@@ -113,11 +112,11 @@ export function Sac() {
               </div>
             )}
           </div>
-          <div className="m-4 flex gap-2 items-end justify-end">
-            <p className="font-thin text-sm">Não encontrou sua dúvida? </p>
+          <div className="m-6 flex gap-2 items-end justify-end">
+            <p className="font-thin text-sm">Não encontrou sua dúvida?</p>
             <Link
               to="/FaleConosco"
-              className="font-bold bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-800"
+              className="text-sm font-semibold bg-purple-600 text-white p-1 rounded-lg hover:bg-purple-800"
             >
               Fale Conosco
             </Link>

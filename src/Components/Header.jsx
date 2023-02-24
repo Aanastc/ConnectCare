@@ -8,7 +8,7 @@ export function Header() {
   const baseNavLinkClass = 'font-bold py-2 px-4 hover:text-purple-600'
 
   return (
-    <header className="container max-w-[1170px] m-auto py-5 flex justify-between items-center sticky top-0 bg-white">
+    <header className="container max-w-[1170px] m-auto py-5 flex justify-between items-center sticky top-0 bg-white mb-4">
       <div className="flex gap-8">
         <img src={Logo} alt="Logo" />
         <ul className="flex gap-2 items-center">
