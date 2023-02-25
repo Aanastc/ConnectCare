@@ -7,7 +7,7 @@ export function FaleConosco() {
     <main>
       <Header />
       <section className="max-w-[1170px] m-auto py-5 flex justify-between items-center">
-        <div className="grid grid-cols-2 gap-36">
+        <div className="grid grid-cols-2 gap-24">
           <div className="flex justify-center	">
             <img
               src={ImgFaleConosco}
@@ -15,7 +15,7 @@ export function FaleConosco() {
               className="items-center"
             />
           </div>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
             <div className="justify-center items-center">
               <h2 className="font-bold text-3xl mb-2">Fale Conosco</h2>
             </div>
