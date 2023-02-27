@@ -7,8 +7,8 @@ import {
 
 export function Footer() {
   return (
-    <footer className='w-full'>
-      <div className="p-5 bg-violet-700 grid grid-cols-3 w-full">
+    <footer className=''>
+      <div className="p-5 bg-violet-700 grid grid-cols-3 w-full bottom-0">
         <div className="text-white">
           <ul>
             <li>

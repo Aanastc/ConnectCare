@@ -2,6 +2,7 @@ import { Header } from '../Components/Header';
 import { Footer } from '../Components/Footer';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { MagnifyingGlass } from 'phosphor-react'
 
 export function Sac() {
   const [isPaciente, setIsPaciente] = useState(true);
@@ -11,13 +12,14 @@ export function Sac() {
       <Header />
       <div className="container flex flex-col items-center">
         <h1 className="font-bold text-4xl mb-6 mt-2">Oi! Como podemos ajudar?</h1>
-        <div className="mb-4">
-          <input
-            type="text"
-            className="bg-gray-100 p-2 text-gray-500 mr-2 rounded-lg drop-shadow-lg"
-            placeholder="Buscar"
-          />
-        </div>
+        <form className='w-2/3 flex justify-center items-center'>
+          <div class="relative">
+            <span class="absolute p-2 insert-y-0">
+              <MagnifyingGlass size={22} color="#a9a7a7" alt="Search Icon" />
+            </span>
+            <input type="search" class="bg-gray-100 text-gray-500 rounded-lg drop-shadow-lg w-full px-8 py-1 focus:outline-none" placeholder="Buscar" />
+          </div>
+        </form>
         <div className="w-[960px]">
           <div className="flex border-b-2 border-b-purple-600 gap-4 mb-2">
             <button
