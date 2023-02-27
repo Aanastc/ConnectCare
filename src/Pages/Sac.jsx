@@ -15,7 +15,7 @@ export function Sac() {
         <form className='w-2/3 flex justify-center items-center'>
           <div class="relative">
             <span class="absolute p-2 insert-y-0">
-              <MagnifyingGlass size={22} color="#a9a7a7" alt="Search Icon" />
+              <MagnifyingGlass size={22} color="#98A6A5" alt="Search Icon" />
             </span>
             <input type="search" class="bg-gray-100 text-gray-500 rounded-lg drop-shadow-lg w-full px-8 py-1 focus:outline-none" placeholder="Buscar" />
           </div>
