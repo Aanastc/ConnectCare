@@ -14,7 +14,7 @@ export function Header({ fixed }) {
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-white mb-3">
         <div className="container px-4 mx-auto lg:mx-28 flex flex-wrap items-center justify-between">
-          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block">
+          <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block">
             <img src={Logo} alt="Logo" className='mb-4'/>
             <button
               className="text-bg-purple-600 cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
@@ -31,7 +31,7 @@ export function Header({ fixed }) {
             }
             id="example-navbar-danger"
           >
-            <ul className="flex flex-col lg:flex-row list-none lg:items-center gap-2">
+            <ul className="flex flex-col items-center lg:flex-row list-none lg:items-center gap-2">
               <li className="nav-item">
                 <NavLink
                   to="/"
