@@ -9,8 +9,8 @@ import {
 export function Footer() {
   return (
     <>
-      <footer className="relative">
-        <div className="p-5 bg-violet-700 grid grid-cols-3">
+      <footer className="relative w-full bg-violet-700">
+        <div className="p-5 max-w-[1120px] m-auto grid grid-cols-3">
           <div className="text-white sm:flex-col">
             <ul>
               <li>

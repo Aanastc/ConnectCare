@@ -6,7 +6,7 @@ export function Home() {
   return (
     <main>
       <Header />
-      <section className="max-w-[1170px] m-auto py-5 flex justify-between items-center">
+      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center">
         <div className="grid grid-cols-2 gap-36">
           <div className="flex flex-col justify-center gap-6">
             <div>
@@ -37,7 +37,7 @@ export function Home() {
               </a>
             </div>
           </div>
-          <div className="flex justify-center	">
+          <div className="flex justify-center">
             <img src={ImgHome} alt="Imagem-Home" />
           </div>
         </div>

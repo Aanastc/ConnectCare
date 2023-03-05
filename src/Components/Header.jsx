@@ -12,10 +12,10 @@ export function Header({ fixed }) {
 
   return (
     <>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-white mb-3">
-        <div className="container px-4 mx-auto lg:mx-28 flex flex-wrap items-center justify-between">
+      <nav className="sticky top-0 max-w-[1120px] m-auto flex flex-wrap items-center justify-between px-2 py-3 bg-white mb-3">
+        <div className="container mx-auto lg:mx-26 flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block">
-            <img src={Logo} alt="Logo" className='mb-4'/>
+            <img src={Logo} alt="Logo" className="mb-4" />
             <button
               className="text-bg-purple-600 cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
