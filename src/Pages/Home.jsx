@@ -1,11 +1,21 @@
 import ImgHome from '../assets/imgs/img-home.png'
+import ImgSobre from '../assets/imgs/img-sobre.png'
 import fotoPerfil from '../assets/imgs/fotoPerfil.png'
 import fotoPerfil2 from '../assets/imgs/fotoPerfil2.png'
-import { Star } from 'phosphor-react'
+import ImgFaleConosco from '../assets/imgs/img-faleConosco.png'
+import foto1 from '../assets/icons/1.svg'
+import foto2 from '../assets/icons/2.svg'
+import foto3 from '../assets/icons/3.svg'
+import foto4 from '../assets/icons/4.svg'
 import { Header } from '../Components/Header'
 import { Footer } from '../Components/Footer'
+import { Star, MagnifyingGlass } from 'phosphor-react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export function Home() {
+  const [isPaciente, setIsPaciente] = useState(true)
+
   return (
     <main>
       <Header />
@@ -42,6 +52,86 @@ export function Home() {
           </div>
           <div className="flex justify-center">
             <img src={ImgHome} alt="Imagem-Home" />
+          </div>
+        </div>
+      </section>
+      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center">
+        <div>
+          <h3 className="text-3xl font-bold mb-4">Nossos Serviços</h3>
+          <div className="flex gap-8">
+            <div className="rounded-xl bg-purple-200 flex flex-col items-center max-w-xs">
+              <div className="max-h-48">
+                <img src={foto1} />
+              </div>
+              <div className="px-5 py-3">
+                <h4 className="text-lg font-semibold">Procedimentos Basicos</h4>
+                <p className="text-sm font-normal text-gray-700">
+                  Por meio desse serviço, nosso profissionais ocupariam o cargo
+                  de acompanhante em caso de internação ou exames e
+                  até mesmo consulta.
+                </p>
+              </div>
+            </div>
+            <div className="rounded-xl bg-purple-200 flex flex-col items-center max-w-xs">
+              <div className="max-h-48">
+                <img src={foto4} />
+              </div>
+              <div className="px-5 py-3">
+                <h4 className="text-lg font-semibold">Cuidador</h4>
+                <p className="text-sm font-normal text-gray-700">
+                  Por meio desse serviço, nosso profissionais ocupariam o cargo
+                  de acompanhante em caso de internação ou exames e
+                  até mesmo consulta.
+                </p>
+              </div>
+            </div>
+            <div className="rounded-xl bg-purple-200 flex flex-col items-center max-w-xs">
+              <div className="max-h-48">
+                <img src={foto2} className="h-44" />
+              </div>
+              <div className="px-5 py-3">
+                <h4 className="text-lg font-semibold">Procedimentos Basicos</h4>
+                <p className="text-sm font-normal text-gray-700">
+                  Por meio desse serviço, nosso profissionais ocupariam o cargo
+                  de acompanhante em caso de internação ou exames e
+                  até mesmo consulta.
+                </p>
+              </div>
+            </div>
+            <div className="rounded-xl bg-purple-200 flex flex-col items-center max-w-xs">
+              <div className="max-h-48">
+                <img src={foto3} className="h-44" />
+              </div>
+              <div className="px-5 py-3">
+                <h4 className="text-lg font-semibold">Outros</h4>
+                <p className="text-sm font-normal text-gray-700">
+                  Por meio desse serviço, nosso profissionais ocupariam o cargo
+                  de acompanhante em caso de internação ou exames e
+                  até mesmo consulta.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center">
+        <div className="grid grid-cols-2 gap-36">
+          <div className="flex justify-center">
+            <img src={ImgSobre} alt="Imagem-Home" />
+          </div>
+          <div className="flex flex-col justify-center gap-6">
+            <h2 className="font-bold text-3xl">Quem Somos</h2>
+            <p>
+              O incentivo ao avanço tecnológico, assim como a consolidação das
+              estruturas garante a contribuição de um grupo importante na
+              determinação dos paradigmas corporativos. Todavia, a contínua
+              expansão de nossa atividade é uma das consequências do
+              investimento em reciclagem técnica. Por conseguinte, o
+              acompanhamento das preferências de consumo representa uma abertura
+              para a melhoria de todos os recursos funcionais envolvidos.
+              Evidentemente, o comprometimento entre as equipes talvez venha a
+              ressaltar a relatividade do remanejamento dos quadros funcionais.
+            </p>
           </div>
         </div>
       </section>
@@ -147,7 +237,174 @@ export function Home() {
           </div>
         </div>
       </section>
-
+      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center">
+        <div className="container flex flex-col items-center">
+          <h1 className="font-bold text-4xl mb-6 mt-2">
+            Oi! Como podemos ajudar?
+          </h1>
+          <form className="w-2/3 flex justify-center items-center mb-4">
+            <div class="relative">
+              <span class="absolute p-2 insert-y-0">
+                <MagnifyingGlass size={22} color="#98A6A5" alt="Search Icon" />
+              </span>
+              <input
+                type="search"
+                class="bg-gray-100 text-gray-500 rounded-lg drop-shadow-lg w-full px-8 py-1 focus:outline-none"
+                placeholder="Buscar"
+              />
+            </div>
+          </form>
+          <div className="w-[960px]">
+            <div className="flex border-b-2 border-b-purple-600 gap-4 mb-2">
+              <button
+                onClick={() => setIsPaciente(true)}
+                className={`font-bold ${isPaciente && 'text-purple-600'}`}
+              >
+                Paciente
+              </button>
+              <button
+                onClick={() => setIsPaciente(false)}
+                className={`font-bold ${!isPaciente && 'text-purple-600'}`}
+              >
+                Profissional
+              </button>
+            </div>
+            <div className="container mb-4 w-[960px]">
+              <h2 className="font-extrabold text-lg mb-1">Principais</h2>
+              {isPaciente ? (
+                <div className="flex flex-row gap-6">
+                  <div className="text-left basis-1/3 gap-2 w-80">
+                    <a className="underline font-semibold" href="#">
+                      Tenho que pagar algum valor a mais ao profissional do que
+                      foi acordado no aplicativo?
+                    </a>
+                    <p className="font-light max-h-32 truncate">
+                      Não. Nada deve ser pago e nem cobrado fora do acordado.
+                      Qualquer cobrança adicional virá através do aplicativo,
+                      nunca através do profissional.
+                    </p>
+                  </div>
+                  <div className="text-left basis-1/3 gap-2 w-80">
+                    <a className="underline font-semibold" href="#">
+                      Como faço pra ver as referências do profissional?
+                    </a>
+                    <p className="font-light max-h-32 truncate">
+                      No perfil do profissional, na aba “Referências”.
+                    </p>
+                  </div>
+                  <div className="text-left basis-1/3 gap-2 w-80">
+                    <a className="underline font-semibold" href="#">
+                      Olá. Uma dúvida: como posso cancelar esse serviço?
+                    </a>
+                    <p className="font-light max-h-32 truncate">
+                      Conforme o contrato assinado entre as partes. Existem
+                      contratos com períodos definidos e contratos com
+                      cancelamento unilateral e que pode ser feito a qualquer
+                      momento com aviso prévio.
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex flex-row gap-3">
+                  <div className="text-left basis-1/3 gap-2 w-80">
+                    <a className="underline font-semibold" href="#">
+                      O que posso fazer caso não queira mais continuar o
+                      atendimento?
+                    </a>
+                    <p className="font-light max-h-32 truncate">
+                      Você pode tentar entrar em um acordo com o paciente, feito
+                      isso, abriremos a possibilidade de enviar um outro
+                      profissional. Caso não entrem em acordo, sugerimos que as
+                      partes sigam o que tem no contrato.
+                    </p>
+                  </div>
+                  <div className="text-left basis-1/3 gap-2 w-80">
+                    <a className="underline font-semibold" href="#">
+                      Quanto tempo levará para ficar pronto o relatório da minha
+                      checagem de currículo?
+                    </a>
+                    <p className="font-light max-h-32 truncate">
+                      Você só precisa subir todos os certificados para comprovar
+                      a veracidade do currículo. Uma vez aprovadas, vamos
+                      prosseguir com a sua checagem, pode levar cerca de 10 dias
+                      úteis.
+                    </p>
+                  </div>
+                  <div className="text-left basis-1/3 gap-2 w-80">
+                    <a className="underline font-semibold" href="#">
+                      Como faço para receber o meu pagamento?
+                    </a>
+                    <p className="font-light max-h-32 truncate">
+                      O pagamento é feito através de acordo com o cliente,
+                      podendo ser, pix ou dinheiro. A Connect Care se
+                      responsabiliza pelo contrato entre as partes.
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center">
+        <div className="grid grid-cols-2 gap-24">
+          <div className="flex justify-center">
+            <img
+              src={ImgFaleConosco}
+              alt="Imagem de uma personagem indicando a seção ao lado"
+              className="items-center"
+            />
+          </div>
+          <div className="flex flex-col gap-4">
+            <div className="justify-center items-center">
+              <p className="mb-2 text-base font-semibold">
+                Não encontrou sua dúvida?
+              </p>
+              <h2 className="font-bold text-2xl mb-2">Fale Conosco</h2>
+            </div>
+            <div>
+              <form>
+                <div className="mb-4">
+                  <label className="text-gray-700 text-sm font-bold mb-2">
+                    Nome
+                  </label>
+                  <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="text"
+                    placeholder="Escreva seu nome aqui"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="text-gray-700 text-sm font-bold mb-2">
+                    Email
+                  </label>
+                  <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="email"
+                    placeholder="lala123@gmail.com"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="text-gray-700 text-sm font-bold mb-2">
+                    Mensagem
+                  </label>
+                  <textarea
+                    id="message"
+                    rows="4"
+                    class="p-2.5 w-full text-sm shadow border rounded focus:outline-none focus:shadow-outline"
+                    placeholder="Escreva sua Mensagem"
+                  />
+                </div>
+              </form>
+            </div>
+            <div className="flex gap-2 items-end justify-end">
+              <a className="text-lg font-semibold bg-purple-600 text-white px-4 py-1 rounded-lg hover:bg-purple-800">
+                Enviar
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
       <Footer />
     </main>
   )

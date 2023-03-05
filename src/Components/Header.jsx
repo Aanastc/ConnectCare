@@ -12,7 +12,7 @@ export function Header({ fixed }) {
 
   return (
     <>
-      <nav className="sticky top-0 max-w-[1120px] m-auto flex flex-wrap items-center justify-between px-2 py-3 bg-white mb-3">
+      <nav className="sticky top-0 max-w-[1120px] m-auto flex flex-wrap items-center justify-between px-2 py-3 bg-white mb-3 z-50">
         <div className="container mx-auto lg:mx-26 flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block">
             <img src={Logo} alt="Logo" className="mb-4" />
