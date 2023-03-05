@@ -229,7 +229,7 @@ export function Home() {
               <div class="mb-6 p-0">
                 <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
                   "Tive dificuldade na hora do pagamento e fui muito bem
-                  atendida pelo atendentes. Além da excelencia do cuidado da
+                  atendida pelo atendente. Além da excelencia do cuidado da
                   enfermeira com meu pai."
                 </p>
               </div>
