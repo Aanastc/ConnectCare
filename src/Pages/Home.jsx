@@ -122,15 +122,17 @@ export function Home() {
           <div className="flex flex-col justify-center gap-6">
             <h2 className="font-bold text-3xl">Quem Somos</h2>
             <p>
-              O incentivo ao avanço tecnológico, assim como a consolidação das
-              estruturas garante a contribuição de um grupo importante na
-              determinação dos paradigmas corporativos. Todavia, a contínua
-              expansão de nossa atividade é uma das consequências do
-              investimento em reciclagem técnica. Por conseguinte, o
-              acompanhamento das preferências de consumo representa uma abertura
-              para a melhoria de todos os recursos funcionais envolvidos.
-              Evidentemente, o comprometimento entre as equipes talvez venha a
-              ressaltar a relatividade do remanejamento dos quadros funcionais.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+              ipsum maiores consequuntur ullam possimus explicabo similique
+              optio quam. Debitis iusto totam praesentium veritatis nemo dolorum
+              laudantium modi mollitia architecto soluta. Lorem, ipsum dolor sit
+              amet consectetur adipisicing elit. Vitae velit excepturi
+              cupiditate molestiae quos aliquid labore incidunt, reprehenderit
+              maiores sequi, nam dolor voluptates. Laudantium illum quod
+              possimus minus corrupti ducimus?Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Ratione recusandae ducimus maxime
+              perferendis, sapiente minus modi neque sed non libero possimus
+              quisquam facilis explicabo nisi, praesentium ad, esse a at?
             </p>
           </div>
         </div>
@@ -237,7 +239,7 @@ export function Home() {
           </div>
         </div>
       </section>
-      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center">
+      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center mb-4">
         <div className="container flex flex-col items-center">
           <h1 className="font-bold text-4xl mb-6 mt-2">
             Oi! Como podemos ajudar?
@@ -269,34 +271,34 @@ export function Home() {
                 Profissional
               </button>
             </div>
-            <div className="container mb-4 w-[960px]">
+            <div className="container mb-4 max-w-[960px]">
               <h2 className="font-extrabold text-lg mb-1">Principais</h2>
               {isPaciente ? (
-                <div className="flex flex-row gap-6">
-                  <div className="text-left basis-1/3 gap-2 w-80">
+                <div className="flex gap-6">
+                  <div className="text-left flex flex-col max-w-xs">
                     <a className="underline font-semibold" href="#">
                       Tenho que pagar algum valor a mais ao profissional do que
                       foi acordado no aplicativo?
                     </a>
-                    <p className="font-light max-h-32 truncate">
+                    <p className="font-light max-h-16 line-clamp-1">
                       Não. Nada deve ser pago e nem cobrado fora do acordado.
                       Qualquer cobrança adicional virá através do aplicativo,
                       nunca através do profissional.
                     </p>
                   </div>
-                  <div className="text-left basis-1/3 gap-2 w-80">
+                  <div className="text-left flex flex-col max-w-xs">
                     <a className="underline font-semibold" href="#">
                       Como faço pra ver as referências do profissional?
                     </a>
-                    <p className="font-light max-h-32 truncate">
+                    <p className="font-light max-h-16 line-clamp-2">
                       No perfil do profissional, na aba “Referências”.
                     </p>
                   </div>
-                  <div className="text-left basis-1/3 gap-2 w-80">
+                  <div className="text-left flex flex-col max-w-xs">
                     <a className="underline font-semibold" href="#">
                       Olá. Uma dúvida: como posso cancelar esse serviço?
                     </a>
-                    <p className="font-light max-h-32 truncate">
+                    <p className="font-light max-h-16 line-clamp-2">
                       Conforme o contrato assinado entre as partes. Existem
                       contratos com períodos definidos e contratos com
                       cancelamento unilateral e que pode ser feito a qualquer
@@ -306,35 +308,35 @@ export function Home() {
                 </div>
               ) : (
                 <div className="flex flex-row gap-3">
-                  <div className="text-left basis-1/3 gap-2 w-80">
+                  <div className="text-left flex flex-col max-w-xs">
                     <a className="underline font-semibold" href="#">
                       O que posso fazer caso não queira mais continuar o
                       atendimento?
                     </a>
-                    <p className="font-light max-h-32 truncate">
+                    <p className="font-light max-h-16 line-clamp-2">
                       Você pode tentar entrar em um acordo com o paciente, feito
                       isso, abriremos a possibilidade de enviar um outro
                       profissional. Caso não entrem em acordo, sugerimos que as
                       partes sigam o que tem no contrato.
                     </p>
                   </div>
-                  <div className="text-left basis-1/3 gap-2 w-80">
+                  <div className="text-left flex flex-col max-w-xs">
                     <a className="underline font-semibold" href="#">
                       Quanto tempo levará para ficar pronto o relatório da minha
                       checagem de currículo?
                     </a>
-                    <p className="font-light max-h-32 truncate">
+                    <p className="font-light max-h-16 line-clamp-2">
                       Você só precisa subir todos os certificados para comprovar
                       a veracidade do currículo. Uma vez aprovadas, vamos
                       prosseguir com a sua checagem, pode levar cerca de 10 dias
                       úteis.
                     </p>
                   </div>
-                  <div className="text-left basis-1/3 gap-2 w-80">
+                  <div className="text-left flex flex-col max-w-xs">
                     <a className="underline font-semibold" href="#">
                       Como faço para receber o meu pagamento?
                     </a>
-                    <p className="font-light max-h-32 truncate">
+                    <p className="font-light max-h-16 line-clamp-2">
                       O pagamento é feito através de acordo com o cliente,
                       podendo ser, pix ou dinheiro. A Connect Care se
                       responsabiliza pelo contrato entre as partes.
