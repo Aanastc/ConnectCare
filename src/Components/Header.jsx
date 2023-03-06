@@ -32,7 +32,7 @@ export function Header({ fixed }) {
             id="example-navbar-danger"
           >
             <ul className="flex flex-col items-center lg:flex-row list-none lg:items-center gap-2">
-              <li className="nav-item">
+              <li className="nav-item" data-to-scrollspy-id="first">
                 <NavLink
                   to="/"
                   className={({ isActive }) =>

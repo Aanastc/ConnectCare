@@ -7,11 +7,12 @@ import foto1 from '../assets/icons/1.svg'
 import foto2 from '../assets/icons/2.svg'
 import foto3 from '../assets/icons/3.svg'
 import foto4 from '../assets/icons/4.svg'
+
 import { Header } from '../Components/Header'
 import { Footer } from '../Components/Footer'
+
 import { Star, MagnifyingGlass } from 'phosphor-react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 export function Home() {
   const [isPaciente, setIsPaciente] = useState(true)
