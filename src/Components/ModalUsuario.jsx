@@ -1,6 +1,7 @@
 import React from 'react'
 import { CaretLeft, FacebookLogo, GoogleLogo } from 'phosphor-react'
 import { Modal } from './Modal'
+import { NavLink } from 'react-router-dom'
 
 export function ModalUsuario() {
   const [showRegistrar, setShowRegistrar] = React.useState(false)
@@ -76,7 +77,12 @@ export function ModalUsuario() {
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
-      <Modal />
+      <NavLink
+        className="font-bold bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-800"
+        to="/login"
+      >
+        Entrar
+      </NavLink>
     </div>
   )
 }
