@@ -20,7 +20,7 @@ export function Home() {
   return (
     <main>
       <Header />
-      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center">
+      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center" id="section-1">
         <div className="grid grid-cols-2 gap-36">
           <div className="flex flex-col justify-center gap-6">
             <div>
@@ -56,7 +56,7 @@ export function Home() {
           </div>
         </div>
       </section>
-      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center">
+      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center" id="section-2">
         <div>
           <h3 className="text-3xl font-bold mb-4">Nossos Serviços</h3>
           <div className="flex gap-8">
@@ -91,11 +91,9 @@ export function Home() {
                 <img src={foto2} className="h-44" />
               </div>
               <div className="px-5 py-3">
-                <h4 className="text-lg font-semibold">Procedimentos Basicos</h4>
+                <h4 className="text-lg font-semibold">Procedimentos Básicos</h4>
                 <p className="text-sm font-normal text-gray-700">
-                  Por meio desse serviço, nosso profissionais ocupariam o cargo
-                  de acompanhante em caso de internação ou exames e
-                  até mesmo consulta.
+                  Oferecemos serviços de curativos de todos os tipos, aplicação de medicamentos, entre outros serviços básicos relacionados ao cuidado e bem estar do paciente.
                 </p>
               </div>
             </div>
@@ -106,16 +104,14 @@ export function Home() {
               <div className="px-5 py-3">
                 <h4 className="text-lg font-semibold">Outros</h4>
                 <p className="text-sm font-normal text-gray-700">
-                  Por meio desse serviço, nosso profissionais ocupariam o cargo
-                  de acompanhante em caso de internação ou exames e
-                  até mesmo consulta.
+                  Temos profissionais das áreas de geriatras, fisioterapia, doula entre outras diversas especialidades que podem lhe proporcionar serviços extras, tudo através do nosso aplicativo. Clique na opção “Outros” no menu principal e veja o que podemos lhe oferecer!
                 </p>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center">
+      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center" id="section-3">
         <div className="grid grid-cols-2 gap-36">
           <div className="flex justify-center">
             <img src={ImgSobre} alt="Imagem-Home" />
@@ -240,7 +236,7 @@ export function Home() {
           </div>
         </div>
       </section>
-      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center mb-4">
+      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center mb-4" id="section-4">
         <div className="container flex flex-col items-center">
           <h1 className="font-bold text-4xl mb-6 mt-2">
             Oi! Como podemos ajudar?
