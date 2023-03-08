@@ -77,16 +77,16 @@ export function Header() {
                 </NavLink>
               </li>
             </Scrollspy>
-            <div className='flex justify-end gap-3'>
+            <div className="flex justify-end gap-3">
               <NavLink
                 className="font-bold bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-800"
-                to="/login"
+                to="/sign-in"
               >
                 Entrar
               </NavLink>
               <NavLink
                 className="font-bold text-purple-600 py-2 px-4 hover:text-purple-800 hover:bg-gray-100 rounded-full"
-                to="/Cadastro"
+                to="/sign-up"
               >
                 Registrar
               </NavLink>

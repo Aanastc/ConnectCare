@@ -2,8 +2,7 @@ import { FacebookLogo, GoogleLogo } from 'phosphor-react'
 
 import Logo from '../assets/icons/Logo.svg'
 
-export function Login() {
-
+export function SignIn() {
   return (
     <main className="flex flex-col h-full min-h-screen bg-purple-500">
       <div className="mt-8 ml-8">
