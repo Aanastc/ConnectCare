@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 
-import { ModalUsuario } from './Components/ModalUsuario'
 import { Home } from './Pages/Home'
+import { Cadastro } from './Pages/Cadastro'
 
 import './index.css'
 import { Login } from './Pages/Login'
@@ -11,8 +11,8 @@ export function App() {
     <Routes>
       <Route exact path="/">
         <Route path="/" element={<Home />} />
-        <Route path="Usuario" element={<ModalUsuario />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/Cadastro" element={<Cadastro/>}></Route>
       </Route>
       <Route path="*" element={<div>Página não encontrada</div>} />
     </Routes>

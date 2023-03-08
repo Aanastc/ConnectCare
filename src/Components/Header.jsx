@@ -3,17 +3,13 @@ import { NavLink } from 'react-router-dom'
 import { List } from 'phosphor-react'
 import Scrollspy from 'react-scrollspy'
 
-import Logo from '../assets/icons/Logo.svg'
-
-import { ModalUsuario } from '../Components/ModalUsuario'
-
+import Logo from '../assets/icons/LogoRoxa.svg'
 
 export function Header() {
   const [navbarOpen, setNavbarOpen] = React.useState(false)
 
   const baseNavLinkClassActive = 'font-bold py-2 px-4 text-purple-600'
   const baseNavLinkClass = 'font-bold py-2 px-4 hover:text-purple-600'
-
 
   return (
     <>
@@ -36,10 +32,13 @@ export function Header() {
             }
             id="example-navbar-danger"
           >
-            <Scrollspy items={['section-1', 'section-2', 'section-3', 'section-4']} className="flex flex-col items-center lg:flex-row list-none lg:items-center gap-2">
+            <Scrollspy
+              items={['section-1', 'section-2', 'section-3', 'section-4']}
+              className="flex flex-col items-center lg:flex-row list-none lg:items-center gap-2"
+            >
               <li className="nav-item">
                 <NavLink
-                  to=''
+                  to=""
                   className={({ isActive }) =>
                     isActive ? baseNavLinkClassActive : baseNavLinkClass
                   }
@@ -49,7 +48,7 @@ export function Header() {
               </li>
               <li className="nav-item">
                 <NavLink
-                  to=''
+                  to=""
                   className={({ isActive }) =>
                     isActive ? baseNavLinkClassActive : baseNavLinkClass
                   }
@@ -59,7 +58,7 @@ export function Header() {
               </li>
               <li className="nav-item">
                 <NavLink
-                  to=''
+                  to=""
                   className={({ isActive }) =>
                     isActive ? baseNavLinkClassActive : baseNavLinkClass
                   }
@@ -69,7 +68,7 @@ export function Header() {
               </li>
               <li className="nav-item">
                 <NavLink
-                  to=''
+                  to=""
                   className={({ isActive }) =>
                     isActive ? baseNavLinkClassActive : baseNavLinkClass
                   }
@@ -78,7 +77,20 @@ export function Header() {
                 </NavLink>
               </li>
             </Scrollspy>
-            <ModalUsuario />
+            <div className='flex justify-end gap-3'>
+              <NavLink
+                className="font-bold bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-800"
+                to="/login"
+              >
+                Entrar
+              </NavLink>
+              <NavLink
+                className="font-bold text-purple-600 py-2 px-4 hover:text-purple-800 hover:bg-gray-100 rounded-full"
+                to="/Cadastro"
+              >
+                Registrar
+              </NavLink>
+            </div>
           </div>
         </div>
       </nav>
