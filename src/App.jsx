@@ -6,6 +6,7 @@ import { SignUp } from './Pages/SignUp/SignUp'
 import { Role } from './Pages/SignUp/components/Role'
 import { UserEmail } from './Pages/SignUp/components/UserEmail'
 import { PersonalDetails } from './Pages/SignUp/components/PersonalDetails'
+import { Adress } from './Pages/SignUp/components/Adress'
 import { Auth } from './Layouts/Auth'
 
 import './index.css'
@@ -21,6 +22,7 @@ export function App() {
             <Route path="" element={<Role />} />
             <Route path="email" element={<UserEmail />} />
             <Route path="info" element={<PersonalDetails />} />
+            <Route path="adress" element={< Adress />} />
           </Route>
         </Route>
       </Route>

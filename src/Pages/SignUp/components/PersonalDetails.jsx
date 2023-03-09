@@ -8,6 +8,10 @@ export function PersonalDetails() {
   const navigate = useNavigate()
 
   async function handleCreateUser(formData) {
+    if (formData.role === 'caregiver') {
+      navigate('/auth/sign-up/adress')
+    }
+
     const { data, error } = await supabase.auth.signUp({
       email: formData.email,
       password: formData.password,

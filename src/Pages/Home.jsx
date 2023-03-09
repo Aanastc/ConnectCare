@@ -20,7 +20,10 @@ export function Home() {
   return (
     <main>
       <Header />
-      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center" id="section-1">
+      <section
+        className="max-w-[1120px] m-auto py-5 flex justify-between items-center"
+        id="section-1"
+      >
         <div className="grid grid-cols-2 gap-36">
           <div className="flex flex-col justify-center gap-6">
             <div>
@@ -56,16 +59,21 @@ export function Home() {
           </div>
         </div>
       </section>
-      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center" id="section-2">
+      <section
+        className="max-w-[1120px] m-auto py-5 flex justify-between items-center"
+        id="section-2"
+      >
         <div>
           <h3 className="text-3xl font-bold mb-4">Nossos Serviços</h3>
           <div className="flex gap-8">
-            <div className="rounded-xl bg-purple-200 flex flex-col items-center max-w-xs">
+            <div className="rounded-xl bg-purple-200 flex flex-col items-center w-50">
               <div className="max-h-48">
-                <img src={foto1} />
+                <img src={foto1} className="h-44" />
               </div>
               <div className="px-5 py-3">
-                <h4 className="text-lg font-semibold">Procedimentos Basicos</h4>
+                <h4 className="text-lg font-semibold">
+                  Acompanhamento hospitalar
+                </h4>
                 <p className="text-sm font-normal text-gray-700">
                   Por meio desse serviço, nosso profissionais ocupariam o cargo
                   de acompanhante em caso de internação ou exames e
@@ -73,45 +81,58 @@ export function Home() {
                 </p>
               </div>
             </div>
-            <div className="rounded-xl bg-purple-200 flex flex-col items-center max-w-xs">
+            <div className="rounded-xl bg-purple-200 flex flex-col items-center w-50">
               <div className="max-h-48">
-                <img src={foto4} />
+                <img src={foto4} className="h-44" />
               </div>
               <div className="px-5 py-3">
                 <h4 className="text-lg font-semibold">Cuidador</h4>
                 <p className="text-sm font-normal text-gray-700">
-                  Por meio desse serviço, nosso profissionais ocupariam o cargo
-                  de acompanhante em caso de internação ou exames e
-                  até mesmo consulta.
+                  Com o serviço de cuidador disponível na plataforma, os
+                  pacientes podem ter acesso a uma gama de cuidados, incluindo
+                  ajuda com a higiene pessoal, alimentação, mobilidade e
+                  monitoramento de sinais vitais, entre outros. Por sua vez, os
+                  profissionais de saúde têm a oportunidade de prestar um
+                  atendimento mais personalizado e eficaz, melhorando a
+                  qualidade do cuidado oferecido aos pacientes.
                 </p>
               </div>
             </div>
-            <div className="rounded-xl bg-purple-200 flex flex-col items-center max-w-xs">
+            <div className="rounded-xl bg-purple-200 flex flex-col items-center w-50">
               <div className="max-h-48">
                 <img src={foto2} className="h-44" />
               </div>
               <div className="px-5 py-3">
                 <h4 className="text-lg font-semibold">Procedimentos Básicos</h4>
                 <p className="text-sm font-normal text-gray-700">
-                  Oferecemos serviços de curativos de todos os tipos, aplicação de medicamentos, entre outros serviços básicos relacionados ao cuidado e bem estar do paciente.
+                  Oferecemos serviços de curativos de todos os tipos, aplicação
+                  de medicamentos, entre outros serviços básicos relacionados ao
+                  cuidado e bem estar do paciente.
                 </p>
               </div>
             </div>
-            <div className="rounded-xl bg-purple-200 flex flex-col items-center max-w-xs">
+            <div className="rounded-xl bg-purple-200 flex flex-col items-center w-50">
               <div className="max-h-48">
                 <img src={foto3} className="h-44" />
               </div>
               <div className="px-5 py-3">
                 <h4 className="text-lg font-semibold">Outros</h4>
                 <p className="text-sm font-normal text-gray-700">
-                  Temos profissionais das áreas de geriatras, fisioterapia, doula entre outras diversas especialidades que podem lhe proporcionar serviços extras, tudo através do nosso aplicativo. Clique na opção “Outros” no menu principal e veja o que podemos lhe oferecer!
+                  Temos profissionais das áreas de geriatras, fisioterapia,
+                  doula entre outras diversas especialidades que podem lhe
+                  proporcionar serviços extras, tudo através do nosso
+                  aplicativo. Clique na opção “Outros” no menu principal e veja
+                  o que podemos lhe oferecer!
                 </p>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center" id="section-3">
+      <section
+        className="max-w-[1120px] m-auto py-5 flex justify-between items-center"
+        id="section-3"
+      >
         <div className="grid grid-cols-2 gap-36">
           <div className="flex justify-center">
             <img src={ImgSobre} alt="Imagem-Home" />
@@ -236,7 +257,10 @@ export function Home() {
           </div>
         </div>
       </section>
-      <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center mb-4" id="section-4">
+      <section
+        className="max-w-[1120px] m-auto py-5 flex justify-between items-center mb-4"
+        id="section-4"
+      >
         <div className="container flex flex-col items-center">
           <h1 className="font-bold text-4xl mb-6 mt-2">
             Oi! Como podemos ajudar?
