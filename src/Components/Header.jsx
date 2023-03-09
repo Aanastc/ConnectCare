@@ -80,13 +80,13 @@ export function Header() {
             <div className="flex justify-end gap-3">
               <NavLink
                 className="font-bold bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-800"
-                to="/sign-in"
+                to="/auth/sign-in"
               >
                 Entrar
               </NavLink>
               <NavLink
                 className="font-bold text-purple-600 py-2 px-4 hover:text-purple-800 hover:bg-gray-100 rounded-full"
-                to="/sign-up"
+                to="/auth/sign-up"
               >
                 Registrar
               </NavLink>
