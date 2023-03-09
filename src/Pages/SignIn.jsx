@@ -70,7 +70,6 @@ export function SignIn() {
             <button
               className="bg-purple-600 text-white font-bold px-6 py-3 rounded-lg ease-linear transition-all duration-150 hover:bg-purple-800"
               type="submit"
-              // onClick={() => setShowEntrar(false)}
             >
               Entrar
             </button>

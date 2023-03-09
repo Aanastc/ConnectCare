@@ -1,4 +1,3 @@
-import { FacebookLogo, GoogleLogo } from 'phosphor-react'
 import { NavLink, Outlet } from 'react-router-dom'
 
 import Logo from '../assets/icons/Logo.svg'

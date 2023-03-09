@@ -60,14 +60,14 @@ export function Home() {
         </div>
       </section>
       <section
-        className="max-w-[1120px] m-auto py-5 flex justify-between items-center"
+        className="max-w-[1120px] m-auto py-5 flex justify-between items-center mb-4"
         id="section-2"
       >
         <div>
           <h3 className="text-3xl font-bold mb-4">Nossos Serviços</h3>
           <div className="flex gap-8">
-            <div className="rounded-xl bg-purple-200 flex flex-col items-center w-50">
-              <div className="max-h-48">
+            <div className="rounded-xl bg-purple-200 flex flex-col items-center w-full max-w-[26rem]">
+              <div className="max-h-44">
                 <img src={foto1} className="h-44" />
               </div>
               <div className="px-5 py-3">
@@ -81,8 +81,8 @@ export function Home() {
                 </p>
               </div>
             </div>
-            <div className="rounded-xl bg-purple-200 flex flex-col items-center w-50">
-              <div className="max-h-48">
+            <div className="rounded-xl bg-purple-200 flex flex-col items-center w-full max-w-[26rem]">
+              <div className="max-h-44">
                 <img src={foto4} className="h-44" />
               </div>
               <div className="px-5 py-3">
@@ -91,15 +91,12 @@ export function Home() {
                   Com o serviço de cuidador disponível na plataforma, os
                   pacientes podem ter acesso a uma gama de cuidados, incluindo
                   ajuda com a higiene pessoal, alimentação, mobilidade e
-                  monitoramento de sinais vitais, entre outros. Por sua vez, os
-                  profissionais de saúde têm a oportunidade de prestar um
-                  atendimento mais personalizado e eficaz, melhorando a
-                  qualidade do cuidado oferecido aos pacientes.
+                  monitoramento de sinais vitais e medicamentos, entre outros.
                 </p>
               </div>
             </div>
-            <div className="rounded-xl bg-purple-200 flex flex-col items-center w-50">
-              <div className="max-h-48">
+            <div className="rounded-xl bg-purple-200 flex flex-col items-center w-full max-w-[26rem]">
+              <div className="max-h-44">
                 <img src={foto2} className="h-44" />
               </div>
               <div className="px-5 py-3">
@@ -111,8 +108,8 @@ export function Home() {
                 </p>
               </div>
             </div>
-            <div className="rounded-xl bg-purple-200 flex flex-col items-center w-50">
-              <div className="max-h-48">
+            <div className="rounded-xl bg-purple-200 flex flex-col items-center w-full max-w-[26rem]">
+              <div className="max-h-44">
                 <img src={foto3} className="h-44" />
               </div>
               <div className="px-5 py-3">
@@ -133,24 +130,40 @@ export function Home() {
         className="max-w-[1120px] m-auto py-5 flex justify-between items-center"
         id="section-3"
       >
-        <div className="grid grid-cols-2 gap-36">
+        <div className="grid grid-cols-2 gap-30">
           <div className="flex justify-center">
             <img src={ImgSobre} alt="Imagem-Home" />
           </div>
           <div className="flex flex-col justify-center gap-6">
             <h2 className="font-bold text-3xl">Quem Somos</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
-              ipsum maiores consequuntur ullam possimus explicabo similique
-              optio quam. Debitis iusto totam praesentium veritatis nemo dolorum
-              laudantium modi mollitia architecto soluta. Lorem, ipsum dolor sit
-              amet consectetur adipisicing elit. Vitae velit excepturi
-              cupiditate molestiae quos aliquid labore incidunt, reprehenderit
-              maiores sequi, nam dolor voluptates. Laudantium illum quod
-              possimus minus corrupti ducimus?Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Ratione recusandae ducimus maxime
-              perferendis, sapiente minus modi neque sed non libero possimus
-              quisquam facilis explicabo nisi, praesentium ad, esse a at?
+              Somos a Conecct Care, uma plataforma de conexão de profissionais
+              da saúde com seus pacientes em todo o mundo. Nós fornecemos uma
+              aplicação intuitiva e fácil de usar, permitindo que pacientes
+              encontrem cuidadores qualificados e experientes, que possam
+              fornecer cuidados de alta qualidade e personalizados. Acreditamos
+              que todos merecem ter acesso a cuidados de saúde de qualidade,
+              independentemente de onde vivam ou quaisquer outras limitações.
+              Desenvolvemos a nossa plataforma para tornar a procura e a
+              contratação de profissionais de saúde o mais fácil possível.
+              Através da nossa plataforma, pacientes e familiares podem
+              pesquisar e escolher enfermeiros e cuidadores qualificados, com
+              base em suas necessidades específicas e preferências.
+            </p>
+            <p>
+              Os profissionais de saúde cadastrados em nossa plataforma são
+              qualificados e têm experiência em uma ampla variedade de áreas de
+              cuidados de saúde, desde cuidados pessoais básicos até cuidados
+              especializados e complexos. Além disso, a nossa plataforma é
+              projetada para fornecer um serviço transparente e seguro. Todos os
+              profissionais de saúde são cuidadosamente selecionados e
+              verificados para garantir que tenham as qualificações necessárias
+              e atendam aos nossos rigorosos padrões de segurança. Na Connect
+              Care, estamos comprometidos em fornecer uma experiência
+              excepcional aos nossos clientes e profissionais. Acreditamos que
+              cada paciente merece receber cuidados de saúde de alta qualidade,
+              e estamos orgulhosos de ajudar a tornar isso uma realidade para
+              milhões de pessoas em todo o mundo.
             </p>
           </div>
         </div>
