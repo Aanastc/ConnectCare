@@ -20,7 +20,7 @@ export function PersonalDetails() {
           name: formData.name,
           birthdate: new Date(
             `${formData.year}/${formData.month}/${formData.day}`
-          ),
+          ).toISOString(),
           gender: formData.gender,
           role: formData.role
         }
@@ -32,7 +32,7 @@ export function PersonalDetails() {
     }
 
     console.log(data)
-    // navigate('/home')
+    navigate('/app')
   }
 
   return (
