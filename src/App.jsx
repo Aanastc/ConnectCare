@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 
 import { Home } from './Pages/Home'
-import { AppHome } from './Pages/AppHome'
+import { HeaderApp } from './Pages/Perfis/Componetes/HeaderApp'
 import { SignIn } from './Pages/SignIn'
 import { SignUp } from './Pages/SignUp/SignUp'
 import { Role } from './Pages/SignUp/components/Role'
@@ -26,7 +26,7 @@ export function App() {
             <Route path="autenticacao" element={<Verifique />} />
           </Route>
         </Route>
-        <Route path="/app" element={<AppHome />} />
+        <Route path="/app" element={<HeaderApp />} />
       </Route>
       <Route path="*" element={<div>Página não encontrada</div>} />
     </Routes>

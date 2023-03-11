@@ -4,7 +4,7 @@ export function Verifique() {
   return (
     <div className="p-6 rounded-xl shadow-lg bg-white max-w-md w-full flex flex-col items-center">
       <h2 className="text-xl font-semibold text-center mb-8">
-        Antes de continurmos, por favor verifique seu email!
+        Antes de continuarmos, por favor verifique seu email!
       </h2>
       <a
         href="https://outlook.live.com/"

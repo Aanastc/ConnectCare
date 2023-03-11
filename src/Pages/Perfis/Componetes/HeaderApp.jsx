@@ -1,20 +1,20 @@
 import { Fragment } from 'react'
 import { Bell, CaretDown } from 'phosphor-react'
-import { supabase } from '../services/supabase'
+import { supabase } from '../../../services/supabase'
 import { Menu, Transition } from '@headlessui/react'
 
-import fotoPerfil from '../assets/imgs/fotoPerfil.png'
+import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export function AppHome() {
+export function HeaderApp() {
   supabase.auth.getUser().then(res => console.log(res))
 
   return (
     <nav className="sticky top-0 max-w-[1120px] m-auto flex flex-wrap items-center justify-end px-2 py-3 bg-white mb-3 z-50 gap-4">
-      <Bell size={32} color="#9063CD" />
+      <Bell size={28} color="#9063CD" />
       <div className="flex flex-row items-center gap-4">
         <img
           src={fotoPerfil}
