@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { List } from 'phosphor-react'
-import Scrollspy from 'react-scrollspy'
 
 import Logo from '../assets/icons/LogoRoxa.svg'
 
@@ -33,69 +32,62 @@ export function Header() {
             }
             id="example-navbar-danger"
           >
-            <div id="scrollspy1">
-              <ul
-                data-te-nav-list-ref
-                className="flex flex-col items-center lg:flex-row list-none lg:items-center gap-2"
-              >
-                <li className="nav-item">
-                  <NavLink
-                    data-te-nav-link-ref
-                    data-te-nav-link-active
-                    to=""
-                    className={({ isActive }) =>
-                      isActive ? baseNavLinkClassActive : baseNavLinkClass
-                    }
-                  >
-                    Home
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    to=""
-                    className={({ isActive }) =>
-                      isActive ? baseNavLinkClassActive : baseNavLinkClass
-                    }
-                  >
-                    Sobre
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    to=""
-                    className={({ isActive }) =>
-                      isActive ? baseNavLinkClassActive : baseNavLinkClass
-                    }
-                  >
-                    Serviços
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    to=""
-                    className={({ isActive }) =>
-                      isActive ? baseNavLinkClassActive : baseNavLinkClass
-                    }
-                  >
-                    SAC
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
-            <div className="flex justify-end gap-3">
-              <NavLink
-                className="font-bold bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-800"
-                to="/auth/sign-in"
-              >
-                Entrar
-              </NavLink>
-              <NavLink
-                className="font-bold text-purple-600 py-2 px-4 hover:text-purple-800 hover:bg-gray-100 rounded-full"
-                to="/auth/sign-up"
-              >
-                Registrar
-              </NavLink>
-            </div>
+            <ul className="flex flex-col items-center lg:flex-row list-none lg:items-center gap-2">
+              <li className="nav-item">
+                <a
+                  data-to-scrollspy-id="section-1"
+                  className={({ isActive }) =>
+                    isActive ? baseNavLinkClassActive : baseNavLinkClass
+                  }
+                >
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  data-to-scrollspy-id="section-2"
+                  className={({ isActive }) =>
+                    isActive ? baseNavLinkClassActive : baseNavLinkClass
+                  }
+                >
+                  Sobre
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  data-to-scrollspy-id="section-3"
+                  className={({ isActive }) =>
+                    isActive ? baseNavLinkClassActive : baseNavLinkClass
+                  }
+                >
+                  Serviços
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  data-to-scrollspy-id="section-4"
+                  className={({ isActive }) =>
+                    isActive ? baseNavLinkClassActive : baseNavLinkClass
+                  }
+                >
+                  SAC
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="flex justify-end gap-3">
+            <NavLink
+              className="font-bold bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-800"
+              to="/auth/sign-in"
+            >
+              Entrar
+            </NavLink>
+            <NavLink
+              className="font-bold text-purple-600 py-2 px-4 hover:text-purple-800 hover:bg-gray-100 rounded-full"
+              to="/auth/sign-up"
+            >
+              Registrar
+            </NavLink>
           </div>
         </div>
       </nav>

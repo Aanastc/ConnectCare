@@ -8,24 +8,109 @@ import foto2 from '../assets/icons/2.svg'
 import foto3 from '../assets/icons/3.svg'
 import foto4 from '../assets/icons/4.svg'
 
-import { Header } from '../Components/Header'
+// import { Header } from '../Components/Header'
 import { Footer } from '../Components/Footer'
 
 import { Star, MagnifyingGlass } from 'phosphor-react'
-// import ScrollSpy from "react-ui-scrollspy";
+import ScrollSpy from 'react-ui-scrollspy'
 import { useState } from 'react'
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { List } from 'phosphor-react'
+
+import Logo from '../assets/icons/LogoRoxa.svg'
 
 export function Home() {
   const [isPaciente, setIsPaciente] = useState(true)
+  const [navbarOpen, setNavbarOpen] = React.useState(false)
 
+  const baseNavLinkClassActive = 'font-bold py-2 px-4 text-purple-600'
+  const baseNavLinkClass = 'font-bold py-2 px-4 hover:text-purple-600'
   return (
     <main>
-      <Header />
-      <div
-        data-te-spy="scroll"
-        data-te-target="#scrollspy1"
-        data-te-offset="200"
-      >
+      <>
+        <nav className="sticky top-0 max-w-[1120px] m-auto flex flex-wrap items-center justify-between px-2 py-3 bg-white mb-3 z-50">
+          <div className="container mx-auto lg:mx-26 flex flex-wrap items-center justify-between">
+            <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block">
+              <img src={Logo} alt="Logo" className="mb-4" />
+              <button
+                className="text-bg-purple-600 cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+                type="button"
+                onClick={() => setNavbarOpen(!navbarOpen)}
+              >
+                <List size={32} weight="light" />
+              </button>
+            </div>
+
+            <div
+              className={
+                'lg:flex justify-between flex-grow items-center ' +
+                (navbarOpen ? ' flex' : ' hidden')
+              }
+              id="example-navbar-danger"
+            >
+              <ul className="flex flex-col items-center lg:flex-row list-none lg:items-center gap-2">
+                <li className="nav-item">
+                  <a
+                    data-to-scrollspy-id="section-1"
+                    className={({ isActive }) =>
+                      isActive ? baseNavLinkClassActive : baseNavLinkClass
+                    }
+                  >
+                    Home
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    data-to-scrollspy-id="section-2"
+                    className={({ isActive }) =>
+                      isActive ? baseNavLinkClassActive : baseNavLinkClass
+                    }
+                  >
+                    Sobre
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    data-to-scrollspy-id="section-3"
+                    className={({ isActive }) =>
+                      isActive ? baseNavLinkClassActive : baseNavLinkClass
+                    }
+                  >
+                    Serviços
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    data-to-scrollspy-id="section-4"
+                    className={({ isActive }) =>
+                      isActive ? baseNavLinkClassActive : baseNavLinkClass
+                    }
+                  >
+                    SAC
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="flex justify-end gap-3">
+              <NavLink
+                className="font-bold bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-800"
+                to="/auth/sign-in"
+              >
+                Entrar
+              </NavLink>
+              <NavLink
+                className="font-bold text-purple-600 py-2 px-4 hover:text-purple-800 hover:bg-gray-100 rounded-full"
+                to="/auth/sign-up"
+              >
+                Registrar
+              </NavLink>
+            </div>
+          </div>
+        </nav>
+      </>
+      {/* <Header /> */}
+      <ScrollSpy>
         <section
           className="max-w-[1120px] m-auto py-5 flex justify-between items-center"
           id="section-1"
@@ -460,7 +545,7 @@ export function Home() {
             </div>
           </div>
         </section>
-      </div>
+      </ScrollSpy>
       <Footer />
     </main>
   )
