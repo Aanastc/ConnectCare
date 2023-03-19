@@ -11,22 +11,25 @@ import { Verifique } from './Pages/SignUp/components/Verifique'
 import { Auth } from './Layouts/Auth'
 
 import './index.css'
+import { UserProvider } from './contexts/UserCtx'
 
 export function App() {
   return (
     <Routes>
       <Route exact path="/">
         <Route path="/" element={<Home />} />
-        <Route path="/auth" element={<Auth />}>
-          <Route path="sign-in" element={<SignIn />} />
-          <Route path="sign-up" element={<SignUp />}>
-            <Route path="" element={<Role />} />
-            <Route path="email" element={<UserEmail />} />
-            <Route path="info" element={<PersonalDetails />} />
-            <Route path="autenticacao" element={<Verifique />} />
+        <UserProvider>
+          <Route path="/auth" element={<Auth />}>
+            <Route path="sign-in" element={<SignIn />} />
+            <Route path="sign-up" element={<SignUp />}>
+              <Route path="" element={<Role />} />
+              <Route path="email" element={<UserEmail />} />
+              <Route path="info" element={<PersonalDetails />} />
+              <Route path="autenticacao" element={<Verifique />} />
+            </Route>
           </Route>
-        </Route>
-        <Route path="/app" element={<HeaderApp />} />
+          <Route path="/app" element={<HeaderApp />} />
+        </UserProvider>
       </Route>
       <Route path="*" element={<div>Página não encontrada</div>} />
     </Routes>

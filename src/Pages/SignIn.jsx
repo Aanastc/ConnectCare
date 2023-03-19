@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import { FacebookLogo, GoogleLogo } from 'phosphor-react'
 import { supabase } from '../services/supabase'
+import { UserContext } from '../contexts/UserCtx'
 
 export function SignIn() {
   const [formData, setFormData] = useState({
@@ -39,12 +40,13 @@ export function SignIn() {
       })
       return
     }
-    const resposta = await supabase.get('users', {
-      params: { email: formData.email }
-    })
-    const usuario = resposta.data[0]
 
-    if (!usuario || formData.password !== usuario.password) {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: formData.email,
+      password: formData.password
+    })
+
+    if (error) {
       setStatus({
         type: 'error',
         mensagem: 'Erro: Email ou senha estão incorretos!'
@@ -52,11 +54,9 @@ export function SignIn() {
       return
     }
 
-    const user = await supabase.get(`users/${usuario.id}`)
-
-    localStorage.setItem('user', JSON.stringify(user.data))
-    setUser(user.data)
-    navigate('/')
+    localStorage.setItem('user', JSON.stringify(data))
+    setUser(data)
+    navigate('/app')
   }
 
   return (
