@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+.active-scroll-spy {
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  color: #9333ea;
+}

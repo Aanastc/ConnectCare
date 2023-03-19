@@ -24,8 +24,6 @@ export function Home() {
   const [isPaciente, setIsPaciente] = useState(true)
   const [navbarOpen, setNavbarOpen] = React.useState(false)
 
-  const baseNavLinkClassActive = 'font-bold py-2 px-4 text-purple-600'
-  const baseNavLinkClass = 'font-bold py-2 px-4 hover:text-purple-600'
   return (
     <main>
       <>
@@ -53,9 +51,8 @@ export function Home() {
                 <li className="nav-item">
                   <a
                     data-to-scrollspy-id="section-1"
-                    className={({ isActive }) =>
-                      isActive ? baseNavLinkClassActive : baseNavLinkClass
-                    }
+                    href="#section-1"
+                    className="font-bold py-2 px-4 hover:text-purple-600"
                   >
                     Home
                   </a>
@@ -63,9 +60,8 @@ export function Home() {
                 <li className="nav-item">
                   <a
                     data-to-scrollspy-id="section-2"
-                    className={({ isActive }) =>
-                      isActive ? baseNavLinkClassActive : baseNavLinkClass
-                    }
+                    href="#section-2"
+                    className="font-bold py-2 px-4 hover:text-purple-600"
                   >
                     Sobre
                   </a>
@@ -73,9 +69,8 @@ export function Home() {
                 <li className="nav-item">
                   <a
                     data-to-scrollspy-id="section-3"
-                    className={({ isActive }) =>
-                      isActive ? baseNavLinkClassActive : baseNavLinkClass
-                    }
+                    href="#section-3"
+                    className="font-bold py-2 px-4 hover:text-purple-600"
                   >
                     Serviços
                   </a>
@@ -83,9 +78,8 @@ export function Home() {
                 <li className="nav-item">
                   <a
                     data-to-scrollspy-id="section-4"
-                    className={({ isActive }) =>
-                      isActive ? baseNavLinkClassActive : baseNavLinkClass
-                    }
+                    href="#section-4"
+                    className="font-bold py-2 px-4 hover:text-purple-600"
                   >
                     SAC
                   </a>
@@ -154,7 +148,7 @@ export function Home() {
 
         <section
           className="max-w-[1120px] m-auto py-5 flex justify-between items-center mb-4"
-          id="section-2"
+          id="section-3"
         >
           <div>
             <h3 className="text-3xl font-bold mb-4">Nossos Serviços</h3>
@@ -224,7 +218,7 @@ export function Home() {
 
         <section
           className="max-w-[1120px] m-auto py-5 flex justify-between items-center"
-          id="section-3"
+          id="section-2"
         >
           <div className="grid grid-cols-2 gap-30">
             <div className="flex justify-center">
