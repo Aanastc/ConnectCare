@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export function UserEmail() {
   const { register } = useFormContext()
+
   const navigate = useNavigate()
 
   function handleOnSubmit(event) {
@@ -39,6 +40,7 @@ export function UserEmail() {
         <span className="text-gray-400">ou</span>
         <span className="border-t-2 border-gray-400 flex-1"></span>
       </div>
+
       <form onSubmit={handleOnSubmit}>
         <div className="flex flex-col gap-2">
           <label htmlFor="email" className="text-sm font-bold">

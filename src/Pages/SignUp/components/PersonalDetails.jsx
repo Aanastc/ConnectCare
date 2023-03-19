@@ -1,14 +1,19 @@
-import { CaretLeft } from 'phosphor-react'
+import { CaretLeft, SunHorizon } from 'phosphor-react'
 import { useFormContext } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 import { supabase } from '../../../services/supabase'
 
 export function PersonalDetails() {
+  const [status, setStatus] = useState({
+    type: '',
+    mensagem: ''
+  })
+
   const { register, handleSubmit } = useFormContext()
   const navigate = useNavigate()
 
   async function handleCreateUser(formData) {
-
     const { data, error } = await supabase.auth.signUp({
       email: formData.email,
       password: formData.password,
@@ -25,7 +30,11 @@ export function PersonalDetails() {
     })
 
     if (error) {
-      console.log(error)
+      setStatus({
+        type: 'error',
+        mensagem: 'Cadastre o usuario'
+      })
+      return
     }
 
     console.log(data)
@@ -37,6 +46,13 @@ export function PersonalDetails() {
       <h2 className="text-xl font-semibold text-center mb-8">
         Queremos saber mais sobre você
       </h2>
+
+      {status.type === 'error' ? (
+        <p className={text - red - 600}>{status.mensagem}</p>
+      ) : (
+        ''
+      )}
+
       <form onSubmit={handleSubmit(handleCreateUser)}>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">

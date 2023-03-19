@@ -1,8 +1,63 @@
 import { NavLink } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
+import { useContext, useState } from 'react'
 import { FacebookLogo, GoogleLogo } from 'phosphor-react'
+import { supabase } from '../services/supabase'
 
 export function SignIn() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  })
+
+  const [status, setStatus] = useState({
+    type: '',
+    mensagem: ''
+  })
+
+  const { setUser } = useContext(UserContext)
+
+  const navigate = useNavigate()
+
+  const valueInput = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+
+  const addUser = async e => {
+    e.preventDefault()
+    var saveDataForm = true
+
+    for (let u in formData) {
+      if (formData[u] === '') {
+        saveDataForm = false
+      }
+    }
+
+    if (!saveDataForm) {
+      setStatus({
+        type: 'error',
+        mensagem: 'Erro: Preencha os campos!'
+      })
+      return
+    }
+    const resposta = await supabase.get('users', {
+      params: { email: formData.email }
+    })
+    const usuario = resposta.data[0]
+
+    if (!usuario || formData.password !== usuario.password) {
+      setStatus({
+        type: 'error',
+        mensagem: 'Erro: Email ou senha estão incorretos!'
+      })
+      return
+    }
+
+    const user = await supabase.get(`users/${usuario.id}`)
+
+    localStorage.setItem('user', JSON.stringify(user.data))
+    setUser(user.data)
+    navigate('/')
+  }
 
   return (
     <div className="p-6 rounded-xl shadow-lg bg-white max-w-md w-full">
@@ -35,7 +90,18 @@ export function SignIn() {
         <span className="border-t-2 border-gray-400 flex-1"></span>
       </div>
 
-      <form className="flex flex-col gap-4">
+      {status.type === 'success' ? (
+        <p className={text - green - 600}>{status.mensagem}</p>
+      ) : (
+        ''
+      )}
+      {status.type === 'error' ? (
+        <p className={text - red - 600}>{status.mensagem}</p>
+      ) : (
+        ''
+      )}
+
+      <form className="flex flex-col gap-4" onSubmit={addUser}>
         <div className="flex flex-col items-start gap-2">
           <label htmlFor="email" className="text-sm font-bold">
             Email
@@ -46,6 +112,8 @@ export function SignIn() {
             id="email"
             placeholder="Insira seu email"
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-full placeholder:text-gray-3border-gray-300"
+            onChange={valueInput}
+            value={formData.email}
           />
         </div>
         <div className="flex flex-col items-start gap-2">
@@ -58,6 +126,8 @@ export function SignIn() {
             id="password"
             placeholder="Insira sua senha"
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-full placeholder:text-gray-3border-gray-300"
+            onChange={valueInput}
+            value={formData.password}
           />
           <button type="button" className="text-sm hover:text-purple-600">
             Equeceu a senha?
@@ -73,7 +143,10 @@ export function SignIn() {
       <div className="mt-4 flex justify-center ">
         <span>
           Não tenho conta?{' '}
-          <NavLink to='/auth/sign-up' className="text-purple-600 hover:text-purple-400">
+          <NavLink
+            to="/auth/sign-up"
+            className="text-purple-600 hover:text-purple-400"
+          >
             Faça seu cadastro.
           </NavLink>
         </span>
