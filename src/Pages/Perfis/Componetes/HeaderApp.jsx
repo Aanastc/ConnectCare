@@ -3,7 +3,7 @@ import { Bell, CaretDown } from 'phosphor-react'
 import { Menu, Transition } from '@headlessui/react'
 import { UserContext } from '../../../contexts/UserCtx'
 import { useContext, useEffect } from 'react'
-import { useNavigate, redirect } from 'react-router-dom'
+import { useNavigate, redirect, Navigate } from 'react-router-dom'
 
 import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 
@@ -15,7 +15,7 @@ export function HeaderApp() {
   const { user } = useContext(UserContext)
 
   if (!user) {
-    return redirect('/')
+    return <Navigate to="/auth/sign-in" />
   }
 
   return (

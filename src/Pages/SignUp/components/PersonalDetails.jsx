@@ -25,7 +25,8 @@ export function PersonalDetails() {
           ).toISOString(),
           gender: formData.gender,
           role: formData.role
-        }
+        },
+        emailRedirectTo: '/app'
       }
     })
 
