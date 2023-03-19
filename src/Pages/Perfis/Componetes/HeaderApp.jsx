@@ -1,7 +1,9 @@
 import { Fragment } from 'react'
 import { Bell, CaretDown } from 'phosphor-react'
-import { supabase } from '../../../services/supabase'
 import { Menu, Transition } from '@headlessui/react'
+import { UserContext } from '../../../contexts/UserCtx'
+import { useContext, useEffect } from 'react'
+import { useNavigate, redirect } from 'react-router-dom'
 
 import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 
@@ -10,7 +12,11 @@ function classNames(...classes) {
 }
 
 export function HeaderApp() {
-  supabase.auth.getUser().then(res => console.log(res))
+  const { user } = useContext(UserContext)
+
+  if (!user) {
+    return redirect('/')
+  }
 
   return (
     <nav className="sticky top-0 max-w-[1120px] m-auto flex flex-wrap items-center justify-end px-2 py-3 bg-white mb-3 z-50 gap-4">
@@ -22,7 +28,7 @@ export function HeaderApp() {
           class="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center"
         />
         <p className="text-base font-semibold text-purple-600">
-          nome do usuario
+          {user?.user?.user_metadata?.name}
         </p>
 
         <Menu as="div" className="relative inline-block text-left">

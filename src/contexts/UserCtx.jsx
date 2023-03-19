@@ -1,16 +1,16 @@
 import { createContext, useEffect, useState } from 'react'
 import { supabase } from '../services/supabase'
 
-export const UserContext = createContext(undefined)
+export const UserContext = createContext(null)
 
 export function UserProvider({ children }) {
-  const [user, setUser] = useState(undefined)
+  const [user, setUser] = useState({})
 
   useEffect(() => {
     const userOnLocalStorage = JSON.parse(localStorage.getItem('user'))
 
     if (userOnLocalStorage) {
-      supabase.get(`users/${userOnLocalStorage.id}`).then(res => setUser(res.data))
+      setUser(userOnLocalStorage)
     }
   }, [])
 

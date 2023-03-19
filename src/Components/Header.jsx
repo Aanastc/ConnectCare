@@ -25,6 +25,7 @@ export function Header() {
               <List size={32} weight="light" />
             </button>
           </div>
+
           <div
             className={
               'lg:flex justify-between flex-grow items-center ' +
@@ -32,51 +33,55 @@ export function Header() {
             }
             id="example-navbar-danger"
           >
-            <Scrollspy
-              items={['section-1', 'section-2', 'section-3', 'section-4']}
-              className="flex flex-col items-center lg:flex-row list-none lg:items-center gap-2"
-            >
-              <li className="nav-item">
-                <NavLink
-                  to=""
-                  className={({ isActive }) =>
-                    isActive ? baseNavLinkClassActive : baseNavLinkClass
-                  }
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  to=""
-                  className={({ isActive }) =>
-                    isActive ? baseNavLinkClassActive : baseNavLinkClass
-                  }
-                >
-                  Sobre
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  to=""
-                  className={({ isActive }) =>
-                    isActive ? baseNavLinkClassActive : baseNavLinkClass
-                  }
-                >
-                  Serviços
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  to=""
-                  className={({ isActive }) =>
-                    isActive ? baseNavLinkClassActive : baseNavLinkClass
-                  }
-                >
-                  SAC
-                </NavLink>
-              </li>
-            </Scrollspy>
+            <div id="scrollspy1">
+              <ul
+                data-te-nav-list-ref
+                className="flex flex-col items-center lg:flex-row list-none lg:items-center gap-2"
+              >
+                <li className="nav-item">
+                  <NavLink
+                    data-te-nav-link-ref
+                    data-te-nav-link-active
+                    to=""
+                    className={({ isActive }) =>
+                      isActive ? baseNavLinkClassActive : baseNavLinkClass
+                    }
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    to=""
+                    className={({ isActive }) =>
+                      isActive ? baseNavLinkClassActive : baseNavLinkClass
+                    }
+                  >
+                    Sobre
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    to=""
+                    className={({ isActive }) =>
+                      isActive ? baseNavLinkClassActive : baseNavLinkClass
+                    }
+                  >
+                    Serviços
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    to=""
+                    className={({ isActive }) =>
+                      isActive ? baseNavLinkClassActive : baseNavLinkClass
+                    }
+                  >
+                    SAC
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
             <div className="flex justify-end gap-3">
               <NavLink
                 className="font-bold bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-800"
