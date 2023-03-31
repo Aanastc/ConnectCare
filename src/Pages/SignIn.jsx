@@ -56,7 +56,7 @@ export function SignIn() {
 
     localStorage.setItem('user', JSON.stringify(data))
     setUser(data)
-    navigate('/app')
+    navigate('/Inicio')
   }
 
   return (
