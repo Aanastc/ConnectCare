@@ -27,7 +27,7 @@ export function PersonalDetails() {
           gender: formData.gender,
           role: formData.role
         },
-        emailRedirectTo: '/app'
+        emailRedirectTo: '/Inicio'
       }
     })
 
@@ -39,7 +39,7 @@ export function PersonalDetails() {
       return
     }
     
-    else if (formData.password !== formData.confirmPassword) {
+    else if (formData.password !== formData.passwordConfirmation) {
       setStatus({
         type: 'error',
         mensagem: 'As senhas não coincidem.'
