@@ -26,7 +26,7 @@ export function PersonalDetails() {
           gender: formData.gender,
           role: formData.role
         },
-        emailRedirectTo: '/Inicio'
+        emailRedirectTo: '/inicio'
       }
     })
 
