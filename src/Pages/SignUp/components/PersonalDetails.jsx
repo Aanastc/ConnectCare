@@ -14,6 +14,7 @@ export function PersonalDetails() {
   const navigate = useNavigate()
 
   async function handleCreateUser(formData) {
+
     const { data, error } = await supabase.auth.signUp({
       email: formData.email,
       password: formData.password,
@@ -26,17 +27,25 @@ export function PersonalDetails() {
           gender: formData.gender,
           role: formData.role
         },
-        emailRedirectTo: '/inicio'
+        emailRedirectTo: '/app'
       }
     })
 
-    if (error) {
+    if (formData.password.length < 8) {
       setStatus({
         type: 'error',
-        mensagem: 'Cadastre o usuario'
+        mensagem: 'A senha deve ter no mínimo 8 caracteres.'
       })
       return
     }
+    
+    else if (formData.password !== formData.confirmPassword) {
+      setStatus({
+        type: 'error',
+        mensagem: 'As senhas não coincidem.'
+      })
+      return
+    }    
 
     console.log(data)
     navigate('/auth/sign-up/autenticacao')
@@ -49,7 +58,7 @@ export function PersonalDetails() {
       </h2>
 
       {status.type === 'error' ? (
-        <p className={text - red - 600}>{status.mensagem}</p>
+        <p className="text-red-600">{status.mensagem}</p>
       ) : (
         ''
       )}
@@ -80,26 +89,27 @@ export function PersonalDetails() {
                 {...register('day')}
               />
               <select
-                id="month"
-                className="basis-[50%] border-gray-300 border-2 rounded-lg p-3 text-base w-full"
-                {...register('month')}
-              >
-                <option value="" disabled selected>
-                  Mês
-                </option>
-                <option value="01">Janeiro</option>
-                <option value="02">Fevereiro</option>
-                <option value="03">Março</option>
-                <option value="04">Abril</option>
-                <option value="05">Maio</option>
-                <option value="06">Junho</option>
-                <option value="07">Julho</option>
-                <option value="08">Agosto</option>
-                <option value="09">Setembro</option>
-                <option value="10">Outubro</option>
-                <option value="11">Novembro</option>
-                <option value="12">Dezembro</option>
-              </select>
+               id="month"
+               className="basis-[50%] border-gray-300 border-2 rounded-lg p-3 text-base w-full"
+              {...register('month')}
+>
+  <option value="" disabled defaultValue>
+    Mês
+  </option>
+  <option value="01">Janeiro</option>
+  <option value="02">Fevereiro</option>
+  <option value="03">Março</option>
+  <option value="04">Abril</option>
+  <option value="05">Maio</option>
+  <option value="06">Junho</option>
+  <option value="07">Julho</option>
+  <option value="08">Agosto</option>
+  <option value="09">Setembro</option>
+  <option value="10">Outubro</option>
+  <option value="11">Novembro</option>
+  <option value="12">Dezembro</option>
+</select>
+
               <input
                 id="year"
                 type="number"
