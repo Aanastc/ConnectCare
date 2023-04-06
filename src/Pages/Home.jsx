@@ -1,24 +1,22 @@
+import React from 'react'
+import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { List } from 'phosphor-react'
+import ScrollSpy from 'react-ui-scrollspy'
+import { Star, MagnifyingGlass } from 'phosphor-react'
+
+import { Footer } from '../Components/Footer'
+import Logo from '../assets/icons/LogoRoxa.svg'
+
+import foto1 from '../assets/icons/1.svg'
+import foto2 from '../assets/icons/2.svg'
+import foto3 from '../assets/icons/3.svg'
+import foto4 from '../assets/icons/4.svg'
 import ImgHome from '../assets/imgs/img-home.png'
 import ImgSobre from '../assets/imgs/img-sobre.png'
 import fotoPerfil from '../assets/imgs/fotoPerfil.png'
 import fotoPerfil2 from '../assets/imgs/fotoPerfil2.png'
 import ImgFaleConosco from '../assets/imgs/img-faleConosco.png'
-import foto1 from '../assets/icons/1.svg'
-import foto2 from '../assets/icons/2.svg'
-import foto3 from '../assets/icons/3.svg'
-import foto4 from '../assets/icons/4.svg'
-
-// import { Header } from '../Components/Header'
-import { Footer } from '../Components/Footer'
-
-import { Star, MagnifyingGlass } from 'phosphor-react'
-import ScrollSpy from 'react-ui-scrollspy'
-import { useState } from 'react'
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { List } from 'phosphor-react'
-
-import Logo from '../assets/icons/LogoRoxa.svg'
 
 export function Home() {
   const [isPaciente, setIsPaciente] = useState(true)
@@ -27,7 +25,7 @@ export function Home() {
   return (
     <main>
       <>
-        <nav className="sticky top-0 max-w-[1120px] m-auto flex flex-wrap items-center justify-between px-2 py-3 bg-white mb-3 z-50">
+        <nav className="sticky top-0 w-full max-w-[1120px] m-auto flex flex-wrap items-center justify-between px-2 py-3 bg-white mb-3 z-50">
           <div className="container mx-auto lg:mx-26 flex flex-wrap items-center justify-between">
             <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block">
               <img src={Logo} alt="Logo" className="mb-4" />
@@ -85,31 +83,30 @@ export function Home() {
                   </a>
                 </li>
               </ul>
-            </div>
-            <div className="flex justify-end gap-3">
-              <NavLink
-                className="font-bold bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-800"
-                to="/auth/sign-in"
-              >
-                Entrar
-              </NavLink>
-              <NavLink
-                className="font-bold text-purple-600 py-2 px-4 hover:text-purple-800 hover:bg-gray-100 rounded-full"
-                to="/auth/sign-up"
-              >
-                Registrar
-              </NavLink>
+              <div className="flex justify-end gap-3">
+                <NavLink
+                  className="font-bold bg-purple-600 text-white py-2 px-4 rounded-full hover:bg-purple-800"
+                  to="/auth/sign-in"
+                >
+                  Entrar
+                </NavLink>
+                <NavLink
+                  className="font-bold text-purple-600 py-2 px-4 hover:text-purple-800 hover:bg-gray-100 rounded-full"
+                  to="/auth/sign-up"
+                >
+                  Registrar
+                </NavLink>
+              </div>
             </div>
           </div>
         </nav>
       </>
-      {/* <Header /> */}
       <ScrollSpy>
         <section
-          className="max-w-[1120px] m-auto py-5 flex justify-between items-center"
+          className="w-full lg:max-w-[1120px] m-auto py-5 flex flex-row justify-between items-center"
           id="section-1"
         >
-          <div className="grid grid-cols-2 gap-36">
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-30">
             <div className="flex flex-col justify-center gap-6">
               <div>
                 <h1 className="text-5xl font-bold leading-snug">
@@ -147,12 +144,12 @@ export function Home() {
         </section>
 
         <section
-          className="max-w-[1120px] m-auto py-5 flex justify-between items-center mb-4"
+          className="w-full lg:max-w-[1120px] m-auto py-5 flex justify-between items-center mb-4"
           id="section-3"
         >
           <div>
             <h3 className="text-3xl font-bold mb-4">Nossos Serviços</h3>
-            <div className="flex gap-8">
+            <div className="flex gap-8 flex-col lg:flex-row">
               <div className="rounded-xl bg-purple-200 flex flex-col items-center w-full max-w-[26rem]">
                 <div className="max-h-44">
                   <img src={foto1} className="h-44" />
@@ -217,10 +214,10 @@ export function Home() {
         </section>
 
         <section
-          className="max-w-[1120px] m-auto py-5 flex justify-between items-center"
+          className="w-full lg:max-w-[1120px] m-auto py-5 flex justify-between items-center"
           id="section-2"
         >
-          <div className="grid grid-cols-2 gap-30">
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-30">
             <div className="flex justify-center">
               <img src={ImgSobre} alt="Imagem-Home" />
             </div>
@@ -260,12 +257,12 @@ export function Home() {
           </div>
         </section>
 
-        <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center">
+        <section className="w-full lg:max-w-[1120px] m-auto py-5 flex justify-between items-center">
           <div>
             <h3 className="text-lg font-bold mb-4">
               O que as pessoas dizem do nosso sistema:
             </h3>
-            <div className="flex gap-8">
+            <div className="flex flex-col md:flex-row gap-8">
               <div class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
                 <div class="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-8 text-gray-700 shadow-none">
                   <img
@@ -364,7 +361,7 @@ export function Home() {
         </section>
 
         <section
-          className="max-w-[1120px] m-auto py-5 flex justify-between items-center mb-4"
+          className="w-full lg:max-w-[1120px] m-auto py-5 flex justify-between items-center mb-4"
           id="section-4"
         >
           <div className="container flex flex-col items-center">
@@ -387,7 +384,7 @@ export function Home() {
                 />
               </div>
             </form>
-            <div className="w-[960px]">
+            <div className=" w-full lg:w-[960px]">
               <div className="flex border-b-2 border-b-purple-600 gap-4 mb-2">
                 <button
                   onClick={() => setIsPaciente(true)}
@@ -405,7 +402,7 @@ export function Home() {
               <div className="container mb-4 max-w-[960px]">
                 <h2 className="font-extrabold text-lg mb-1">Principais</h2>
                 {isPaciente ? (
-                  <div className="flex gap-6">
+                  <div className="flex gap-6 flex-col lg:flex-row">
                     <div className="text-left flex flex-col max-w-xs">
                       <a className="underline font-semibold" href="#">
                         Tenho que pagar algum valor a mais ao profissional do
@@ -438,7 +435,7 @@ export function Home() {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-row gap-3">
+                  <div className="flex gap-3 flex-col lg:flex-row">
                     <div className="text-left flex flex-col max-w-xs">
                       <a className="underline font-semibold" href="#">
                         O que posso fazer caso não queira mais continuar o
@@ -480,8 +477,8 @@ export function Home() {
           </div>
         </section>
 
-        <section className="max-w-[1120px] m-auto py-5 flex justify-between items-center">
-          <div className="grid grid-cols-2 gap-24">
+        <section className="w-full max-w-[1120px] m-auto py-5 flex justify-between items-center">
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-24">
             <div className="flex justify-center">
               <img
                 src={ImgFaleConosco}

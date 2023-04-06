@@ -19,7 +19,7 @@ export function HeaderApp() {
   }
 
   return (
-    <nav className="sticky top-0 max-w-[1120px] m-auto flex flex-wrap items-center justify-end px-2 py-3 bg-white mb-3 z-50 gap-4">
+    <nav className="sticky top-0 p-4 flex flex-wrap items-center justify-end bg-white mb-3 z-50 gap-4">
       <Bell size={28} color="#9063CD" />
       <div className="flex flex-row items-center gap-4">
         <img
@@ -37,7 +37,7 @@ export function HeaderApp() {
               <CaretDown
                 size={22}
                 color="#9063CD"
-                className="-mr-1 h-5 w-5 text-gray-400"
+                className="mr-1 h-5 w-5 text-gray-400"
                 aria-hidden="true"
               />
             </Menu.Button>
