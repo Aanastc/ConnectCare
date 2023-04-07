@@ -19,6 +19,7 @@ export function UserEmail() {
       </h2>
       <div className="flex flex-col gap-4">
         <button
+          onClick={() => supabase.auth.signIn({ provider: 'google' })}
           className="flex justify-center gap-4 bg-white text-black font-bold text-base py-3 rounded-lg ease-linear transition-all duration-150 border-purple-600 border-2 hover:bg-purple-100"
           type="button"
           href="#"
@@ -27,6 +28,7 @@ export function UserEmail() {
           Continuar com Google
         </button>
         <button
+          onClick={() => supabase.auth.signIn({ provider: 'facebook' })}
           className="flex justify-center gap-4 bg-white text-black font-bold text-base py-3 rounded-lg ease-linear transition-all duration-150 border-purple-600 border-2 hover:bg-purple-100"
           type="button"
           href="#"

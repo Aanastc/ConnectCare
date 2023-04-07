@@ -16,7 +16,7 @@ import { supabase } from '../services/supabase'
 // [x] Se o usuário clicar em entrar e tiver uma sessão deve ser redirecionado para /Inicioo
 // [x] Criar componente para proteger rotas autenticadas
 // [x] Não permitir usuário não autenticado acessar rotas do aplicativo
-// [ ] Logar Google e Facebook (diz a Leticia q é a msm configuração, eu confio)
+// [ ] Logar Google e Facebook (diz a Leticia q é a msm configuração, eu confio (besta kkkkk))
 
 export const UserContext = createContext(null)
 

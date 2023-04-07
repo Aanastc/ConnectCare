@@ -20,7 +20,7 @@ export function HeaderApp() {
   }
 
   return (
-    <nav className="sticky top-0 p-4 flex flex-wrap items-center justify-end bg-white mb-3 z-50 gap-4">
+    <nav className="relative z-0 top-0 p-4 flex flex-wrap items-center justify-end bg-white gap-4">
       <Bell size={28} color="#9063CD" />
       <div className="flex flex-row items-center gap-4">
         <img
