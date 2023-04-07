@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { FacebookLogo, GoogleLogo } from 'phosphor-react'
 import { supabase } from '../services/supabase'
 import { UserContext } from '../contexts/UserCtx'
@@ -15,8 +15,8 @@ export function SignIn() {
     type: '',
     mensagem: ''
   })
-
-  const { setUser } = useContext(UserContext)
+  1
+  const { singIn, error, authed } = useContext(UserContext)
 
   const navigate = useNavigate()
 
@@ -25,6 +25,7 @@ export function SignIn() {
 
   const addUser = async e => {
     e.preventDefault()
+
     var saveDataForm = true
 
     for (let u in formData) {
@@ -41,7 +42,7 @@ export function SignIn() {
       return
     }
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    await singIn({
       email: formData.email,
       password: formData.password
     })
@@ -54,10 +55,14 @@ export function SignIn() {
       return
     }
 
-    localStorage.setItem('user', JSON.stringify(data))
-    setUser(data)
     navigate('/Inicio')
   }
+
+  useEffect(() => {
+    if (authed) {
+      navigate('/Inicio')
+    }
+  }, [authed])
 
   return (
     <div className="p-6 rounded-xl shadow-lg bg-white max-w-md w-full">

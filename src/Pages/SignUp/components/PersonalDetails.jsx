@@ -1,8 +1,8 @@
-import { CaretLeft, SunHorizon } from 'phosphor-react'
+import { useContext, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
-import { supabase } from '../../../services/supabase'
+import { CaretLeft } from 'phosphor-react'
+import { UserContext } from '../../../contexts/UserCtx'
 
 export function PersonalDetails() {
   const [status, setStatus] = useState({
@@ -11,43 +11,44 @@ export function PersonalDetails() {
   })
 
   const { register, handleSubmit } = useFormContext()
+  const { singUp } = useContext(UserContext)
   const navigate = useNavigate()
 
-  async function handleCreateUser(formData) {
-
-    const { data, error } = await supabase.auth.signUp({
-      email: formData.email,
-      password: formData.password,
-      options: {
-        data: {
-          name: formData.name,
-          birthdate: new Date(
-            `${formData.year}/${formData.month}/${formData.day}`
-          ).toISOString(),
-          gender: formData.gender,
-          role: formData.role
-        },
-        emailRedirectTo: '/Inicio'
-      }
-    })
-
-    if (formData.password.length < 8) {
+  async function handleCreateUser({
+    name,
+    year,
+    month,
+    day,
+    gender,
+    role,
+    email,
+    password,
+    passwordConfirmation
+  }) {
+    if (password.length < 8) {
       setStatus({
         type: 'error',
         mensagem: 'A senha deve ter no mínimo 8 caracteres.'
       })
       return
-    }
-    
-    else if (formData.password !== formData.passwordConfirmation) {
+    } else if (password !== passwordConfirmation) {
       setStatus({
         type: 'error',
         mensagem: 'As senhas não coincidem.'
       })
       return
-    }    
+    }
 
-    console.log(data)
+    const birthdate = new Date(`${year}/${month}/${day}`).toISOString()
+
+    await singUp({
+      name,
+      birthdate,
+      gender,
+      role,
+      email,
+      password
+    })
     navigate('/auth/sign-up/autenticacao')
   }
 
@@ -89,26 +90,26 @@ export function PersonalDetails() {
                 {...register('day')}
               />
               <select
-               id="month"
-               className="basis-[50%] border-gray-300 border-2 rounded-lg p-3 text-base w-full"
-              {...register('month')}
->
-  <option value="" disabled defaultValue>
-    Mês
-  </option>
-  <option value="01">Janeiro</option>
-  <option value="02">Fevereiro</option>
-  <option value="03">Março</option>
-  <option value="04">Abril</option>
-  <option value="05">Maio</option>
-  <option value="06">Junho</option>
-  <option value="07">Julho</option>
-  <option value="08">Agosto</option>
-  <option value="09">Setembro</option>
-  <option value="10">Outubro</option>
-  <option value="11">Novembro</option>
-  <option value="12">Dezembro</option>
-</select>
+                id="month"
+                className="basis-[50%] border-gray-300 border-2 rounded-lg p-3 text-base w-full"
+                {...register('month')}
+              >
+                <option value="" disabled selected className="text-gray-300">
+                  Mês
+                </option>
+                <option value="01">Janeiro</option>
+                <option value="02">Fevereiro</option>
+                <option value="03">Março</option>
+                <option value="04">Abril</option>
+                <option value="05">Maio</option>
+                <option value="06">Junho</option>
+                <option value="07">Julho</option>
+                <option value="08">Agosto</option>
+                <option value="09">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezembro</option>
+              </select>
 
               <input
                 id="year"

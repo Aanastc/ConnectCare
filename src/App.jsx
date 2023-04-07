@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
+import { RequireAuth } from './Components/RequireAuth'
 import { Home } from './Pages/Home'
 import { SignIn } from './Pages/SignIn'
 import { SignUp } from './Pages/SignUp/SignUp'
@@ -26,7 +27,14 @@ export function App() {
             <Route path="autenticacao" element={<Verifique />} />
           </Route>
         </Route>
-        <Route path="/Inicio" element={<Inicio />} />
+        <Route
+          path="/Inicio"
+          element={
+            <RequireAuth>
+              <Inicio />
+            </RequireAuth>
+          }
+        />
       </Route>
       <Route path="*" element={<div>Página não encontrada</div>} />
     </Routes>

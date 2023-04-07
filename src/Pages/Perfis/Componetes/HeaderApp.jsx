@@ -1,21 +1,22 @@
-import { Fragment } from 'react'
-import { Bell, CaretDown } from 'phosphor-react'
+import { Fragment, useContext } from 'react'
 import { Menu, Transition } from '@headlessui/react'
+import { Bell, CaretDown } from 'phosphor-react'
 import { UserContext } from '../../../contexts/UserCtx'
-import { useContext, useEffect } from 'react'
-import { useNavigate, redirect, Navigate } from 'react-router-dom'
 
 import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
+import { useNavigate } from 'react-router-dom'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export function HeaderApp() {
-  const { user } = useContext(UserContext)
+  const { metadata, signOut } = useContext(UserContext)
+  const navigate = useNavigate()
 
-  if (!user) {
-    return <Navigate to="/auth/sign-in" />
+  async function handleSingOut() {
+    await signOut()
+    navigate('/auth/sign-in')
   }
 
   return (
@@ -28,7 +29,7 @@ export function HeaderApp() {
           class="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center"
         />
         <p className="text-base font-semibold text-purple-600">
-          {user?.user?.user_metadata?.name}
+          {metadata?.name}
         </p>
 
         <Menu as="div" className="relative inline-block text-left">
@@ -93,23 +94,20 @@ export function HeaderApp() {
                     </a>
                   )}
                 </Menu.Item>
-                <form method="POST" action="#">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        type="submit"
-                        className={classNames(
-                          active
-                            ? 'bg-gray-100 text-gray-900'
-                            : 'text-gray-700',
-                          'block w-full px-4 py-2 text-left text-sm'
-                        )}
-                      >
-                        Sair
-                      </button>
-                    )}
-                  </Menu.Item>
-                </form>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      type="submit"
+                      className={classNames(
+                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        'block w-full px-4 py-2 text-left text-sm'
+                      )}
+                      onClick={handleSingOut}
+                    >
+                      Sair
+                    </button>
+                  )}
+                </Menu.Item>
               </div>
             </Menu.Items>
           </Transition>
