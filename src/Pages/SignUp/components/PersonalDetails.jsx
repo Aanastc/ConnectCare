@@ -132,7 +132,7 @@ export function PersonalDetails() {
                   className="border-gray-300 border-2 rounded-lg p-3 text-base w-full placeholder:text-gray-300"
                   {...register('gender')}
                 />
-                <label htmlFor="female">Femenino</label>
+                <label htmlFor="female">Feminino</label>
               </div>
               <div className="flex gap-2">
                 <input

@@ -135,7 +135,7 @@ export function SignIn() {
             value={formData.password}
           />
           <button type="button" className="text-sm hover:text-purple-600">
-            Equeceu a senha?
+            Esqueceu a senha?
           </button>
         </div>
         <button

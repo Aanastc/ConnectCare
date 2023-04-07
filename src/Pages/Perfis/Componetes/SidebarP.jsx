@@ -18,7 +18,7 @@ export function SidebarP() {
     >
       {open ? (
         <>
-          <div className="flex flex-row justify-start items-center gap-x-4 mb-4">
+          <div className="flex flex-row justify-start items-center gap-x-4 mb-4 p-2">
             <img src={logo} alt="logo roxa" className={`cursor-pointer duration-500 ${
               open && 'rotate-[360deg]'}`} />
             <h1 className={`text-purple-600 origin-left font-medium text-xl duration-500 ${!open && "scale-50" }`}>Principal</h1>
@@ -54,7 +54,7 @@ export function SidebarP() {
         </>
       ) : (
         <>
-          <div className="flex flex-row justify-start items-center gap-2 mb-4 transition-all duration-300">
+          <div className="flex flex-row justify-start items-center gap-x-4 mb-4 p-2">
             <img src={logo} alt="logo roxa" className={`cursor-pointer duration-500 ${
               open && 'rotate-[360deg]'}`}/>
             <button
