@@ -13,7 +13,7 @@ export function SidebarP() {
 
   return (
     <nav
-      className={`left-0 top-0 h-screen bg-slate-100 p-5 pt-8 fixed inset-0 z-10 duration-300 ${
+      className={`fixed inset-0 z-10 left-0 top-0 h-screen bg-slate-100 p-5 pt-8 duration-300 ${
         open ? 'w-72' : 'w-28'
       }`}
     >
