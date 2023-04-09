@@ -26,9 +26,9 @@ export function HeaderApp() {
         <img
           src={fotoPerfil}
           alt="Foto de uma mulher de cabelo preto sorrindo"
-          class="relative inline-block h-[50px] w-[50px] !rounded-full object-cover object-center"
+          class="relative inline-block h-[40px] w-[40px] !rounded-full object-cover object-center"
         />
-        <p className="text-base font-semibold text-purple-600 uppercase">
+        <p className="text-sm font-medium text-purple-600 uppercase">
           {metadata?.name}
         </p>
         <Menu as="div" className="relative inline-block text-left">

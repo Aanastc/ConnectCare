@@ -13,8 +13,8 @@ export function SidebarP() {
 
   return (
     <nav
-      className={`fixed inset-0 z-10 left-0 top-0 h-screen bg-slate-100 p-5 pt-8 duration-300 ${
-        open ? 'w-72' : 'w-28'
+      className={`fixed inset-0 z-10 left-0 top-0 h-screen bg-slate-100 p-5 pt-8 duration-300 drop-shadow-md shadow-right ${
+        open ? 'w-56' : 'w-24'
       }`}
     >
       {open ? (
@@ -46,23 +46,23 @@ export function SidebarP() {
             <ul className="p-3">
               <>
                 <li
-                  className={`flex gap-2 mb-4 rounded-md p-2 cursor-pointer hover:bg-light-white text-black text-sm items-center gap-x-4 ${
+                  className={`flex mb-4 gap-2 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ${
                     !open && 'scale-150'
                   }`}
                 >
-                  <Stack size={24} />
+                  <Stack size={26} />
                   <p>Geral</p>
                 </li>
                 <li
-                  className={`flex flex-row gap-2 mb-4 rounded-md p-2 cursor-pointer hover:bg-light-white text-black text-sm items-center gap-x-4 ${
+                  className={`flex flex-row gap-2 mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ${
                     !open && 'scale-50'
                   }`}
                 >
-                  <ChatCircleDots size={24} />
+                  <ChatCircleDots size={26} />
                   <p>Chat</p>
                 </li>
-                <li className="flex flex-row gap-2 rounded-md p-2 cursor-pointer hover:bg-light-white text-black text-sm items-center gap-x-4">
-                  <CalendarCheck size={24} />
+                <li className="flex flex-row gap-2 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center">
+                  <CalendarCheck size={26} />
                   <p>Servicos</p>
 
                   <span
@@ -95,14 +95,14 @@ export function SidebarP() {
             <ul className="p-3">
               <>
                 <li
-                  className={`flex flex-row gap-2 mb-4 p-2 cursor-pointer hover:bg-light-white text-black text-xs items-center gap-x-4`}
+                  className={`flex flex-row mb-4 cursor-pointer hover:bg-light-white text-black text-xs items-center `}
                 >
                   <Stack size={24} />
                 </li>
-                <li className="flex flex-row gap-2 mb-4 rounded-md p-2 cursor-pointer hover:bg-light-white text-black text-sm items-center gap-x-4">
+                <li className="flex flex-row mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
                   <ChatCircleDots size={24} />
                 </li>
-                <li className="flex flex-row gap-2 rounded-md p-2 cursor-pointer hover:bg-light-white text-black text-sm items-center gap-x-4">
+                <li className="flex flex-row rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
                   <CalendarCheck size={24} />
 
                   <span
