@@ -22,16 +22,15 @@ export function HeaderApp() {
   return (
     <nav className="sticky z-10 top-0 p-4 flex flex-wrap items-center justify-end bg-white gap-4">
       <Bell size={28} color="#9063CD" />
-      <div className="flex flex-row items-center gap-4">
+      <div className="flex flex-row items-center gap-4 px-2 py-1 rounded-full border-2 border-gray-300 bg-gray-200 hover:bg-gray-300">
         <img
           src={fotoPerfil}
           alt="Foto de uma mulher de cabelo preto sorrindo"
-          class="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center"
+          class="relative inline-block h-[50px] w-[50px] !rounded-full object-cover object-center"
         />
-        <p className="text-base font-semibold text-purple-600">
+        <p className="text-base font-semibold text-purple-600 uppercase">
           {metadata?.name}
         </p>
-
         <Menu as="div" className="relative inline-block text-left">
           <div>
             <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 px-3 py-2">
