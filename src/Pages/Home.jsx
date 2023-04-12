@@ -25,7 +25,7 @@ export function Home() {
   return (
     <main>
       <>
-        <nav className="sticky top-0 w-full max-w-[1120px] m-auto flex flex-wrap items-center justify-between px-2 py-3 bg-white mb-3 z-50">
+        <nav className="sticky top-0 w-full max-w-[1120px] m-auto flex flex-wrap items-center justify-between px-2 py-3 bg-white mb-3 z-50 sm:shadow-lg lg:shadow-none">
           <div className="container mx-auto lg:mx-26 flex flex-wrap items-center justify-between">
             <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block">
               <img src={Logo} alt="Logo" className="mb-4" />
@@ -101,6 +101,7 @@ export function Home() {
           </div>
         </nav>
       </>
+      <div className="p-5">
       <ScrollSpy>
         <section
           className="w-full lg:max-w-[1120px] m-auto py-5 flex flex-row justify-between items-center"
@@ -361,7 +362,7 @@ export function Home() {
         </section>
 
         <section
-          className="w-full lg:max-w-[1120px] m-auto py-5 flex justify-between items-center mb-4"
+          className="w-full lg:max-w-[1120px] m-auto py-5 flex justify-between items-center mb-6"
           id="section-4"
         >
           <div className="container flex flex-col items-center">
@@ -385,7 +386,7 @@ export function Home() {
               </div>
             </form>
             <div className=" w-full lg:w-[960px]">
-              <div className="flex border-b-2 border-b-purple-600 gap-4 mb-2">
+              <div className="flex border-b-2 border-b-purple-600 gap-4 m-2 justify-center lg:justify-start">
                 <button
                   onClick={() => setIsPaciente(true)}
                   className={`font-bold ${isPaciente && 'text-purple-600'}`}
@@ -477,7 +478,7 @@ export function Home() {
           </div>
         </section>
 
-        <section className="w-full max-w-[1120px] m-auto py-5 flex justify-between items-center">
+        <section className="w-full max-w-[1120px] m-auto flex justify-center lg:justify-between items-center">
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-24">
             <div className="flex justify-center">
               <img
@@ -537,6 +538,7 @@ export function Home() {
           </div>
         </section>
       </ScrollSpy>
+      </div>
       <Footer />
     </main>
   )

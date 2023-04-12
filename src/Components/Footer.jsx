@@ -10,8 +10,8 @@ export function Footer() {
   return (
     <>
       <footer className="relative w-full bg-violet-700">
-        <div className="p-5 max-w-[1120px] m-auto grid grid-cols-3">
-          <div className="text-white sm:flex-col">
+        <div className="p-5 max-w-[1120px] m-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
+          <div className="text-white sm:flex-col mb-4 md:mb-0 lg:mb-0">
             <ul>
               <li>
                 <a href="#" className="font-semibold text-base">
@@ -69,7 +69,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          <div className="text-white sm:flex-col">
+          <div className="text-white sm:flex-col pt-4 md:pt-2 lg:pt-o md:content-center">
             <div className="text-right font-thin">
               <p className="mb-2 text-sm">
                 Central de Atendimento: (70) 7070-7070
