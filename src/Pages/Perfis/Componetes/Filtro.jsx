@@ -22,24 +22,25 @@ export function Filtro() {
 
 
   return (
-    <div className="border-purple-400 border-2 rounded-lg shadow-md w-full h-20 mb-4 flex items-center justify-center gap-10 p-2">
+    <div className="border-purple-400 border-2 rounded-lg shadow-md w-full h-20 mb-4 flex items-center justify-around">
       <div className="pl-2 flex flex-col">
         <div className="text-sm text-gray-500 font-medium">Especialidade</div>
         <div className="relative">
           <button
             type="button"
-            className="font-bold text-left w-full"
+            className="font-bold text-left w-full flex flex-row gap-14"
             onClick={handleToggle}
           >
             {selectedOption || 'Selecione'}
             {isOpen ? (
-              <CaretUp size={20} className="ml-2 text-gray-400" />
+              <CaretUp size={20} className="text-gray-400" />
             ) : (
-              <CaretDown size={20} className="ml-2 text-gray-400" />
+              <CaretDown size={20} className="text-gray-400" />
             )}
           </button>
           {isOpen && (
-            <ul className="absolute top-full left-0 mt-2 w-full border-purple-400 border-2 rounded-lg shadow-md bg-white">
+            // colocar um max e min para parar de alterar o espaço dos outros campos
+            <ul className="absolute top-full left-0 z-10 mt-2 w-full border-purple-400 border-2 rounded-lg shadow-md bg-white">
               {options.map((option) => (
                 <li key={option}>
                   <button
