@@ -5,7 +5,6 @@ import {
   WhatsappLogo
 } from 'phosphor-react'
 
-// melhorar responsividade:
 export function Footer() {
   return (
     <>

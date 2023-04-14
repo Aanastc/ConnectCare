@@ -15,7 +15,7 @@ export function SignIn() {
     type: '',
     mensagem: ''
   })
-  1
+  
   const { singIn, error, authed } = useContext(UserContext)
 
   const navigate = useNavigate()
