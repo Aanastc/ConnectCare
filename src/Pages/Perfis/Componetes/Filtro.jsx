@@ -1,40 +1,63 @@
-import { CaretDown } from 'phosphor-react'
+import { CaretDown, CaretUp } from 'phosphor-react'
 import { useState } from 'react'
 
 export function Filtro() {
   const [isOpen, setIsOpen] = useState(false)
+  const [selectedOption, setSelectedOption] = useState(null)
+  const options = ['meidco 1', 'enfermeira 2', 'Opção 3']
+  const optionslocal = ['local 1', 'local 2', 'local 3']
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
   }
 
+  const handleOptionClick = (option) => {
+    setSelectedOption(option)
+    setIsOpen(false)
+  }
+  const handleOrderByClick = (option) => {
+  setOrderBy(option)
+  setIsOpenOrderBy(false)
+}
+
+
   return (
     <div className="border-purple-400 border-2 rounded-lg shadow-md w-full h-20 mb-4 flex items-center justify-center gap-10 p-2">
       <div className="pl-2 flex flex-col">
-        <span className="text-sm text-gray-500 font-medium">Especialidade</span>
-        <div className="flex flex-row items-center gap-14">
-          <p className="font-bold">Selecione</p>
-          <button onClick={handleToggle}>
-            <CaretDown
-              size={22}
-              color="#9063CD"
-              className="mr-1 h-5 w-5 text-gray-400"
-              aria-hidden="true"
-            />
+        <div className="text-sm text-gray-500 font-medium">Especialidade</div>
+        <div className="relative">
+          <button
+            type="button"
+            className="font-bold text-left w-full"
+            onClick={handleToggle}
+          >
+            {selectedOption || 'Selecione'}
+            {isOpen ? (
+              <CaretUp size={20} className="ml-2 text-gray-400" />
+            ) : (
+              <CaretDown size={20} className="ml-2 text-gray-400" />
+            )}
           </button>
-          {/* pendente arrumar  */}
           {isOpen && (
-            <ul>
-              <li>Item 1</li>
+            <ul className="absolute top-full left-0 mt-2 w-full border-purple-400 border-2 rounded-lg shadow-md bg-white">
+              {options.map((option) => (
+                <li key={option}>
+                  <button
+                    type="button"
+                    className="w-full text-left px-4 py-2 hover:bg-purple-400 hover:text-white focus:bg-purple-400 focus:text-white"
+                    onClick={() => handleOptionClick(option)}
+                  >
+                    {option}
+                  </button>
+                </li>
+              ))}
             </ul>
           )}
         </div>
       </div>
       <div className="h-16 border-r-2 border-neutral-400"></div>
       <div className="pl-2 flex flex-col">
-        <label htmlFor="local" className="text-sm text-gray-500 font-medium">
-          Localização
-        </label>
+        <div className="text-sm text-gray-500 font-medium">Localização</div>
         <input
           type="text"
           name="local"
@@ -45,7 +68,7 @@ export function Filtro() {
       </div>
       <div className="h-16 border-r-2 border-neutral-400"></div>
       <div className="pl-2 flex flex-col">
-        <label for="dia" className="text-sm text-gray-500 font-medium">
+      <label for="dia" className="text-sm text-gray-500 font-medium">
           Disponibilidade
         </label>
         <input type="date" id="dia" name="dia" className="font-bold" />
@@ -58,3 +81,4 @@ export function Filtro() {
     </div>
   )
 }
+
