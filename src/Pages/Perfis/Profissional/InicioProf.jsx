@@ -1,5 +1,5 @@
 import { HeaderApp } from '../Componetes/HeaderApp'
-import { ConteudoPac } from './ConteudoPac'
+import { ConteudoProf } from './ConteudoProf'
 
 import {
   ArrowLeft,
@@ -126,7 +126,7 @@ export function InicioPac() {
           )}
         </nav>
         <div className={`relative top-0 z-2 ${open ? 'ml-64' : 'ml-32'}`}>
-          <ConteudoPac />
+          <ConteudoProf />
         </div>
       </>
     </>

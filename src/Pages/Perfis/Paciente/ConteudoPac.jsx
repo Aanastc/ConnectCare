@@ -12,7 +12,7 @@ import {
   Pill
 } from 'phosphor-react'
 
-export function Conteudo() {
+export function ConteudoPac() {
   const especialidade =
     'border-purple-400 border-2 rounded flex flex-col justify-center items-center h-24 w-24 m-2 p-2 hover:bg-purple-400 hover:shadow-md'
 
