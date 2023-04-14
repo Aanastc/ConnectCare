@@ -1,5 +1,5 @@
 import { HeaderApp } from '../Componetes/HeaderApp'
-import { Conteudo } from './Conteudo'
+import { ConteudoProf } from './ConteudoProf'
 
 import {
   ArrowLeft,
@@ -11,7 +11,7 @@ import {
 import logo from '../../../assets/icons/LogoRoxa.svg'
 import { useState } from 'react'
 
-export function Inicio() {
+export function InicioPac() {
   const [open, setOpen] = useState(true)
 
   return (
@@ -126,7 +126,7 @@ export function Inicio() {
           )}
         </nav>
         <div className={`relative top-0 z-2 ${open ? 'ml-64' : 'ml-32'}`}>
-          <Conteudo />
+          <ConteudoProf />
         </div>
       </>
     </>
