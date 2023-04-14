@@ -9,7 +9,7 @@ import { UserEmail } from './Pages/SignUp/components/UserEmail'
 import { PersonalDetails } from './Pages/SignUp/components/PersonalDetails'
 import { Auth } from './Layouts/Auth'
 import { Verifique } from './Pages/SignUp/components/Verifique'
-import { Inicio } from './Pages/Perfis/Paciente/Inicio'
+import { InicioPac } from './Pages/Perfis/Paciente/InicioPac'
 
 import './index.css'
 
@@ -28,10 +28,10 @@ export function App() {
           </Route>
         </Route>
         <Route
-          path="/Inicio"
+          path="/InicioPaciente"
           element={
             <RequireAuth>
-              <Inicio />
+              <InicioPac />
             </RequireAuth>
           }
         />

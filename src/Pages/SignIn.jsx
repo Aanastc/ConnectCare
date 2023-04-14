@@ -55,12 +55,12 @@ export function SignIn() {
       return
     }
 
-    navigate('/Inicio')
+    navigate('/InicioPaciente')
   }
 
   useEffect(() => {
     if (authed) {
-      navigate('/Inicio')
+      navigate('/InicioPaciente')
     }
   }, [authed])
 
@@ -77,7 +77,7 @@ export function SignIn() {
             await supabase.auth.signInWithOAuth({
               provider: 'google',
               options: {
-                redirectTo: 'http://localhost:5173/Inicio'
+                redirectTo: 'http://localhost:5173/InicioPaciente'
               }
             })
           }}
@@ -93,7 +93,7 @@ export function SignIn() {
             await supabase.auth.signInWithOAuth({
               provider: 'facebook',
               options: {
-                redirectTo: 'http://localhost:5173/Inicio'
+                redirectTo: 'http://localhost:5173/InicioPaciente'
               }
             })
           }}

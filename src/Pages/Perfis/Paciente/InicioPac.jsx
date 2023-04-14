@@ -11,7 +11,7 @@ import {
 import logo from '../../../assets/icons/LogoRoxa.svg'
 import { useState } from 'react'
 
-export function Inicio() {
+export function InicioPac() {
   const [open, setOpen] = useState(true)
 
   return (

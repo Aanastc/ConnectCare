@@ -23,7 +23,7 @@ export function UserEmail() {
             await supabase.auth.signInWithOAuth({
               provider: 'google',
               options: {
-                redirectTo: 'http://localhost:5173/Inicio'
+                redirectTo: 'http://localhost:5173/InicioPaciente'
               }
             })
           }}
@@ -39,7 +39,7 @@ export function UserEmail() {
             await supabase.auth.signInWithOAuth({
               provider: 'facebook',
               options: {
-                redirectTo: 'http://localhost:5173/Inicio'
+                redirectTo: 'http://localhost:5173/InicioPaciente'
               }
             })
           }}
