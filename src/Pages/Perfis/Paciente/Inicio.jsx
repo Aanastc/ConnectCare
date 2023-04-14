@@ -17,7 +17,7 @@ export function Inicio() {
   return (
     <>
       <HeaderApp />
-      <div className="flex flex-wrap">
+      <>
         <nav
           className={`fixed inset-0 z-10 left-0 top-0 h-screen bg-slate-100 p-5 pt-8 duration-300 drop-shadow-md shadow-right ${
             open ? 'w-56' : 'w-24'
@@ -128,7 +128,7 @@ export function Inicio() {
         <div className={`relative top-0 z-2 ${open ? 'ml-64' : 'ml-32'}`}>
           <Conteudo />
         </div>
-      </div>
+      </>
     </>
   )
 }
