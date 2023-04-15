@@ -1,6 +1,6 @@
 import { UserContext } from '../../../contexts/UserCtx'
-import { useState, useEffect } from 'react'
 import { useContext } from 'react'
+import { useState, useEffect } from 'react'
 import homePaciente from '../../../../src/assets/icons/homePaciente.svg'
 
 export function Saudacao() {

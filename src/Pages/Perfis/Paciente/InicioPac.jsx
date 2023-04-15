@@ -19,7 +19,7 @@ export function InicioPac() {
       <HeaderApp />
       <>
         <nav
-          className={`fixed inset-0 z-10 left-0 top-0 h-screen bg-slate-100 p-5 pt-8 duration-300 drop-shadow-md shadow-right ${
+          className={`fixed inset-0 z-30 left-0 top-0 h-screen bg-slate-100 p-5 pt-8 duration-300 drop-shadow-md shadow-right ${
             open ? 'w-56' : 'w-24'
           }`}
         >

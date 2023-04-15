@@ -7,7 +7,7 @@ export function Card() {
       <img
         src={fotoPerfil}
         alt="Foto de uma mulher de cabelo preto sorrindo"
-        class="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center"
+        class="relative inline-block h-14 w-14 !rounded-full object-cover object-center"
       />
       <div className="flex flex-row gap-2 m-2">
         <Star size={22} color="#f4ed1a" weight="fill" />

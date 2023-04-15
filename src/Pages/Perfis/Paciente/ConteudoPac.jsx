@@ -19,7 +19,6 @@ export function ConteudoPac() {
   return (
     <main className="p-5 pt-32">
       <Saudacao />
-
       <div className="flex flex-row mb-4 w-full gap-5 justify-center items-center">
         <button className={especialidade}>
           <Baby size={32} color="#0a0a0b" />
