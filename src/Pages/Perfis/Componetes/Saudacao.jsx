@@ -1,7 +1,7 @@
 import { UserContext } from '../../../contexts/UserCtx'
 import { useContext } from 'react'
 import { useState, useEffect } from 'react'
-import homePaciente from '../../../../src/assets/icons/homePaciente.svg'
+import homePerfil from '../../../../src/assets/icons/homePerfil.svg'
 
 export function Saudacao() {
   const { metadata } = useContext(UserContext)
@@ -25,7 +25,7 @@ export function Saudacao() {
   return (
     <div className="flex flex-row justify-center items-center bg-purple-600 rounded-full shadow-md w-full h-20 mb-4">
       <img
-        src={homePaciente}
+        src={homePerfil}
         alt=""
         className="flex items-start absolute top-0 left-28"
       />

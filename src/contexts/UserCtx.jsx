@@ -1,23 +1,6 @@
 import { createContext, useEffect, useState } from 'react'
 import { supabase } from '../services/supabase'
 
-// fluxo entrar:
-//                      setar usuário no contexto (react)
-//                                    |
-// email + senha -> supabase -> erro ou dados -> redireciona /Inicio
-//                                    |
-//                              local storage (supabase)
-//
-// fluxo cadastrar:
-// dados cadastrar -> supabase -> erro ou sucesso -> verificar email
-//
-// TODO:
-// [x] Após verificar o email o usuário deve ser redirecionado para /Inicio
-// [x] Se o usuário clicar em entrar e tiver uma sessão deve ser redirecionado para /Inicioo
-// [x] Criar componente para proteger rotas autenticadas
-// [x] Não permitir usuário não autenticado acessar rotas do aplicativo
-// [ ] Logar Google e Facebook (diz a Leticia q é a msm configuração, eu confio (e era trouxa kkkk))
-
 export const UserContext = createContext(null)
 
 export function UserProvider({ children }) {

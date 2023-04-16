@@ -1,10 +1,10 @@
-import { Fragment, useContext } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { Bell, CaretDown } from 'phosphor-react'
+import { Fragment, useContext } from 'react'
 import { UserContext } from '../../../contexts/UserCtx'
 
-import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 import { NavLink, useNavigate } from 'react-router-dom'
+import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -56,6 +56,7 @@ export function HeaderApp() {
               <div className="py-1">
                 <Menu.Item>
                   {({ active }) => (
+                    // criar a condição do perfil
                     <NavLink
                       to="/Paciente/editarPerfil"
                       className={classNames(

@@ -1,5 +1,6 @@
-import { HeaderApp } from '../Componetes/HeaderApp'
-import { ConteudoProf } from './ConteudoProf'
+import { HeaderApp } from '../Pages/Perfis/Componetes/HeaderApp'
+import { NavLink, Outlet } from 'react-router-dom'
+import { RequireAuth } from '../Components/RequireAuth'
 
 import {
   ArrowLeft,
@@ -8,38 +9,44 @@ import {
   CalendarCheck,
   ArrowRight
 } from 'phosphor-react'
-import logo from '../../../assets/icons/LogoRoxa.svg'
+import logo from '../assets/icons/LogoRoxa.svg'
 import { useState } from 'react'
 
-export function InicioPac() {
+export function Profissional() {
   const [open, setOpen] = useState(true)
 
   return (
-    <>
+    <RequireAuth>
       <HeaderApp />
       <>
         <nav
-          className={`fixed inset-0 z-10 left-0 top-0 h-screen bg-slate-100 p-5 pt-8 duration-300 drop-shadow-md shadow-right ${
+          className={`fixed inset-0 z-30 left-0 top-0 h-screen bg-slate-100 p-5 pt-8 duration-300 drop-shadow-md shadow-right ${
             open ? 'w-56' : 'w-24'
           }`}
         >
           {open ? (
             <>
-              <div className="flex flex-row justify-start items-center gap-x-4 mb-4 p-2">
-                <img
-                  src={logo}
-                  alt="logo roxa"
-                  className={`cursor-pointer duration-500 ${
-                    open && 'rotate-[360deg]'
-                  }`}
-                />
-                <h1
-                  className={`text-purple-600 origin-left font-medium text-xl duration-500 ${
-                    !open && 'scale-50'
-                  }`}
+              <div className="flex flex-row justify-start items-center gap-2 mb-4 p-2">
+                <NavLink
+                  to="/Profissional/visaoGeral"
+                  className="flex flex-row items-center gap-2"
                 >
-                  Principal
-                </h1>
+                  <img
+                    src={logo}
+                    alt="logo roxa"
+                    className={`cursor-pointer duration-500 ${
+                      open && 'rotate-[360deg]'
+                    }`}
+                  />
+                  <h1
+                    className={`text-purple-600 font-medium text-lg duration-500 ${
+                      !open && 'scale-50'
+                    }`}
+                  >
+                    Connect Care
+                  </h1>
+                </NavLink>
+
                 <button
                   className="absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
               border-2 rounded-full"
@@ -51,13 +58,16 @@ export function InicioPac() {
               <div>
                 <ul className="p-3">
                   <>
-                    <li
-                      className={`flex mb-4 gap-2 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ${
-                        !open && 'scale-150'
-                      }`}
-                    >
-                      <Stack size={26} />
-                      <p>Geral</p>
+                    <li>
+                      <NavLink
+                        to="/Profissional/visaoGeral"
+                        className={`flex mb-4 gap-2 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ${
+                          !open && 'scale-150'
+                        }`}
+                      >
+                        <Stack size={26} />
+                        <p>Geral</p>
+                      </NavLink>
                     </li>
                     <li
                       className={`flex flex-row gap-2 mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ${
@@ -69,7 +79,7 @@ export function InicioPac() {
                     </li>
                     <li className="flex flex-row gap-2 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center">
                       <CalendarCheck size={26} />
-                      <p>Servicos</p>
+                      <p>Atendimentos</p>
 
                       <span
                         className={`${
@@ -84,13 +94,15 @@ export function InicioPac() {
           ) : (
             <>
               <div className="flex flex-row justify-start items-center gap-x-4 mb-4 p-2">
-                <img
-                  src={logo}
-                  alt="logo roxa"
-                  className={`cursor-pointer duration-500 ${
-                    open && 'rotate-[360deg]'
-                  }`}
-                />
+                <NavLink to="/Profissional/visaoGeral">
+                  <img
+                    src={logo}
+                    alt="logo roxa"
+                    className={`cursor-pointer duration-500 ${
+                      open && 'rotate-[360deg]'
+                    }`}
+                  />
+                </NavLink>
                 <button
                   className="absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
               border-2 rounded-full"
@@ -102,10 +114,13 @@ export function InicioPac() {
               <div>
                 <ul className="p-3">
                   <>
-                    <li
-                      className={`flex flex-row mb-4 cursor-pointer hover:bg-light-white text-black text-xs items-center `}
-                    >
-                      <Stack size={24} />
+                    <li>
+                      <NavLink
+                        to="/Profissional/visaoGeral"
+                        className={`flex flex-row mb-4 cursor-pointer hover:bg-light-white text-black text-xs items-center `}
+                      >
+                        <Stack size={24} />
+                      </NavLink>
                     </li>
                     <li className="flex flex-row mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
                       <ChatCircleDots size={24} />
@@ -126,9 +141,9 @@ export function InicioPac() {
           )}
         </nav>
         <div className={`relative top-0 z-2 ${open ? 'ml-64' : 'ml-32'}`}>
-          <ConteudoProf />
+          <Outlet />
         </div>
       </>
-    </>
+    </RequireAuth>
   )
 }
