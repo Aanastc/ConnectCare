@@ -77,6 +77,7 @@ export function UserProvider({ children }) {
 
     setMetadata(data.session.user.user_metadata)
     setAuthed(true)
+    return data.session.user.user_metadata
   }
 
   async function signOut() {

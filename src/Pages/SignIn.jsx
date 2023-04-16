@@ -15,8 +15,8 @@ export function SignIn() {
     type: '',
     mensagem: ''
   })
-  
-  const { singIn, error, authed } = useContext(UserContext)
+
+  const { singIn, error, authed, metadata } = useContext(UserContext)
 
   const navigate = useNavigate()
 
@@ -42,7 +42,7 @@ export function SignIn() {
       return
     }
 
-    await singIn({
+    const data = await singIn({
       email: formData.email,
       password: formData.password
     })
@@ -55,12 +55,21 @@ export function SignIn() {
       return
     }
 
-    navigate('/InicioPaciente')
+    if (data?.role == 'patient') {
+      navigate('/Paciente/visaoGeral')
+    } else if (data?.role == 'caregiver') {
+      navigate('/Profisional/visaoGeral')
+    }
   }
 
   useEffect(() => {
-    if (authed) {
-      navigate('/InicioPaciente')
+    if (!authed) {
+      return
+    }
+    if (metadata?.role == 'patient') {
+      navigate('/Paciente/visaoGeral')
+    } else if (metadata?.role == 'caregiver') {
+      navigate('/Profisional/visaoGeral')
     }
   }, [authed])
 
@@ -112,12 +121,12 @@ export function SignIn() {
       </div>
 
       {status.type === 'success' ? (
-        <p className={text - green - 600}>{status.mensagem}</p>
+        <p className={'text-green-600'}>{status.mensagem}</p>
       ) : (
         ''
       )}
       {status.type === 'error' ? (
-        <p className={text - red - 600}>{status.mensagem}</p>
+        <p className={'text-red-600'}>{status.mensagem}</p>
       ) : (
         ''
       )}

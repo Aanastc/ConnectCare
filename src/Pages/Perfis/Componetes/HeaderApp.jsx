@@ -4,7 +4,7 @@ import { Bell, CaretDown } from 'phosphor-react'
 import { UserContext } from '../../../contexts/UserCtx'
 
 import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -56,15 +56,15 @@ export function HeaderApp() {
               <div className="py-1">
                 <Menu.Item>
                   {({ active }) => (
-                    <a
-                      href="#"
+                    <NavLink
+                      to="/Paciente/editarPerfil"
                       className={classNames(
                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                         'block px-4 py-2 text-sm'
                       )}
                     >
                       Editar Perfil
-                    </a>
+                    </NavLink>
                   )}
                 </Menu.Item>
                 <Menu.Item>

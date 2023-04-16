@@ -11,6 +11,7 @@ import { Paciente } from './Layouts/Paciente'
 
 import './index.css'
 import { VisaoGeral } from './Pages/Perfis/Paciente/VisaoGeral'
+import { EditarPerfil } from './Pages/Perfis/Paciente/EditarPerfil'
 
 export function App() {
   return (
@@ -28,6 +29,7 @@ export function App() {
         </Route>
         <Route path="/Paciente" element={<Paciente />}>
           <Route path="visaoGeral" element={<VisaoGeral />} />
+          <Route path="editarPerfil" element={<EditarPerfil />} />
         </Route>
       </Route>
       <Route path="*" element={<div>Página não encontrada</div>} />
