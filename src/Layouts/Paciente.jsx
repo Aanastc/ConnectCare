@@ -1,5 +1,6 @@
-import { HeaderApp } from '../Componetes/HeaderApp'
-import { ConteudoPac } from './ConteudoPac'
+import { HeaderApp } from '../Pages/Perfis/Componetes/HeaderApp'
+import { Outlet } from 'react-router-dom'
+import { RequireAuth } from '../Components/RequireAuth'
 
 import {
   ArrowLeft,
@@ -8,14 +9,14 @@ import {
   CalendarCheck,
   ArrowRight
 } from 'phosphor-react'
-import logo from '../../../assets/icons/LogoRoxa.svg'
+import logo from '../assets/icons/LogoRoxa.svg'
 import { useState } from 'react'
 
-export function InicioPac() {
+export function Paciente() {
   const [open, setOpen] = useState(true)
 
   return (
-    <>
+    <RequireAuth>
       <HeaderApp />
       <>
         <nav
@@ -126,9 +127,9 @@ export function InicioPac() {
           )}
         </nav>
         <div className={`relative top-0 z-2 ${open ? 'ml-64' : 'ml-32'}`}>
-          <ConteudoPac />
+          <Outlet />
         </div>
       </>
-    </>
+    </RequireAuth>
   )
 }
