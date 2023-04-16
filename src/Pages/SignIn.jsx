@@ -55,9 +55,9 @@ export function SignIn() {
       return
     }
 
-    if (data?.role == 'patient') {
+    if (data?.role === 'patient') {
       navigate('/Paciente/visaoGeral')
-    } else if (data?.role == 'caregiver') {
+    } else if (data?.role === 'caregiver') {
       navigate('/Profisional/visaoGeral')
     }
   }
@@ -66,9 +66,9 @@ export function SignIn() {
     if (!authed) {
       return
     }
-    if (metadata?.role == 'patient') {
+    if (metadata?.role === 'patient') {
       navigate('/Paciente/visaoGeral')
-    } else if (metadata?.role == 'caregiver') {
+    } else if (metadata?.role === 'caregiver') {
       navigate('/Profisional/visaoGeral')
     }
   }, [authed])

@@ -37,7 +37,10 @@ export function UserProvider({ children }) {
           gender,
           role
         },
-        emailRedirectTo: 'http://localhost:5173/Inicio'
+        redirectTo:
+          role === 'patient'
+            ? 'http://localhost:5173/Paciente/visaoGeral'
+            : 'http://localhost:5173/Profissional/visaoGeral'
       }
     })
 
