@@ -82,14 +82,14 @@ export function SignIn() {
       </div>
       <div className="flex flex-col gap-4">
         <button
-          onClick={async () => {
-            await supabase.auth.signInWithOAuth({
-              provider: 'google',
-              options: {
-                redirectTo: 'http://localhost:5173/InicioPaciente'
-              }
-            })
-          }}
+          // onClick={async () => {
+          //   await supabase.auth.signInWithOAuth({
+          //     provider: 'google',
+          //     options: {
+          //       redirectTo: 'http://localhost:5173/InicioPaciente'
+          //     }
+          //   })
+          // }}
           className="flex justify-center gap-4 bg-white text-black font-bold text-base py-3 rounded-lg ease-linear transition-all duration-150 border-purple-600 border-2 hover:bg-purple-100"
           type="button"
           href="#"
@@ -98,14 +98,14 @@ export function SignIn() {
           Continuar com Google
         </button>
         <button
-          onClick={async () => {
-            await supabase.auth.signInWithOAuth({
-              provider: 'facebook',
-              options: {
-                redirectTo: 'http://localhost:5173/InicioPaciente'
-              }
-            })
-          }}
+          // onClick={async () => {
+          //   await supabase.auth.signInWithOAuth({
+          //     provider: 'facebook',
+          //     options: {
+          //       redirectTo: 'http://localhost:5173/InicioPaciente'
+          //     }
+          //   })
+          // }}
           className="flex justify-center gap-4 bg-white text-black font-bold text-base py-3 rounded-lg ease-linear transition-all duration-150 border-purple-600 border-2 hover:bg-purple-100"
           type="button"
           href="#"

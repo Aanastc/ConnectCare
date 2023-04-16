@@ -12,9 +12,9 @@ import { Paciente } from './Layouts/Paciente'
 import { VisaoGeral } from './Pages/Perfis/Paciente/VisaoGeral'
 import { EditarPerfil } from './Pages/Perfis/Paciente/EditarPerfil'
 
-// import { Profissional } from './Layouts/Profissional'
-// import { VisaoGeralProf } from './Pages/Perfis/Profissional/VisaoGeralProf'
-// import { EditarPerfilProf } from './Pages/Perfis/Profissional/EditarPerfilProf'
+import { Profissional } from './Layouts/Profissional'
+import { VisaoGeralProf } from './Pages/Perfis/Profissional/VisaoGeralProf'
+import { EditarPerfilProf } from './Pages/Perfis/Profissional/EditarPerfilProf'
 
 import './index.css'
 
@@ -36,10 +36,10 @@ export function App() {
           <Route path="visaoGeral" element={<VisaoGeral />} />
           <Route path="editarPerfil" element={<EditarPerfil />} />
         </Route>
-        {/* <Route path="/Profissional" element={<Profissional />}>
-          <Route path="visaoGeral" element={<VisaoGeralProf />} />
+        <Route path="/Profissional" element={<Profissional />}>
+          <Route path="visaoGeral" element={<VisaoGeralProf/>} />
           <Route path="editarPerfil" element={<EditarPerfilProf />} />
-        </Route> */}
+        </Route>
       </Route>
       <Route path="*" element={<div>Página não encontrada</div>} />
     </Routes>
