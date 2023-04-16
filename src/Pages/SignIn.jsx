@@ -1,8 +1,6 @@
-import { NavLink } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
-import { useContext, useEffect, useState } from 'react'
 import { FacebookLogo, GoogleLogo } from 'phosphor-react'
-import { supabase } from '../services/supabase'
+import { useContext, useEffect, useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { UserContext } from '../contexts/UserCtx'
 
 export function SignIn() {
@@ -58,7 +56,7 @@ export function SignIn() {
     if (data?.role === 'patient') {
       navigate('/Paciente/visaoGeral')
     } else if (data?.role === 'caregiver') {
-      navigate('/Profisional/visaoGeral')
+      navigate('/Profissional/visaoGeral')
     }
   }
 
@@ -69,7 +67,7 @@ export function SignIn() {
     if (metadata?.role === 'patient') {
       navigate('/Paciente/visaoGeral')
     } else if (metadata?.role === 'caregiver') {
-      navigate('/Profisional/visaoGeral')
+      navigate('/Profissional/visaoGeral')
     }
   }, [authed])
 
