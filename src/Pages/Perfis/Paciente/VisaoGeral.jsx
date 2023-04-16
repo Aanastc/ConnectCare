@@ -1,5 +1,5 @@
 import { Filtro } from '../Componetes/Filtro'
-import { Saudacao } from '../Componetes/saudacao'
+import { Saudacao } from '../Componetes/Saudacao'
 import { Card } from './Card'
 import {
   Baby,
@@ -12,7 +12,7 @@ import {
   Pill
 } from 'phosphor-react'
 
-export function ConteudoPac() {
+export function VisaoGeral() {
   const especialidade =
     'border-purple-400 border-2 rounded flex flex-col justify-center items-center h-24 w-24 m-2 p-2 hover:bg-purple-400 hover:shadow-md'
 

@@ -10,7 +10,7 @@ import { Verifique } from './Pages/SignUp/components/Verifique'
 import { Paciente } from './Layouts/Paciente'
 
 import './index.css'
-import { ConteudoPac } from './Pages/Perfis/Paciente/ConteudoPAc'
+import { VisaoGeral } from './Pages/Perfis/Paciente/VisaoGeral'
 
 export function App() {
   return (
@@ -27,7 +27,7 @@ export function App() {
           </Route>
         </Route>
         <Route path="/Paciente" element={<Paciente />}>
-          <Route path="visaoGeral" element={<ConteudoPac/>} />
+          <Route path="visaoGeral" element={<VisaoGeral />} />
         </Route>
       </Route>
       <Route path="*" element={<div>Página não encontrada</div>} />
