@@ -1,12 +1,12 @@
+import { Saudacao } from '../Componetes/Saudacao'
+
 export function VisaoGeralProf() {
   return (
-    <div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, nam
-        mollitia! Omnis similique debitis, veniam quasi ducimus id reiciendis
-        tenetur fugit, odio cupiditate vel voluptate quidem ea sapiente eum
-        voluptatibus?
-      </p>
-    </div>
+    <main className="p-5 pt-32">
+      <Saudacao />
+      <div className="flex flex-wrap gap-12">
+        <p>Em Breve</p>
+      </div>
+    </main>
   )
 }

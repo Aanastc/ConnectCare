@@ -1,15 +1,13 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Bell, CaretDown } from 'phosphor-react'
 import { Fragment, useContext } from 'react'
-import { UserContext } from '../../../contexts/UserCtx'
-
 import { NavLink, useNavigate } from 'react-router-dom'
 import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
+import { UserContext } from '../../../contexts/UserCtx'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
-
 export function HeaderApp() {
   const { metadata, signOut } = useContext(UserContext)
   const navigate = useNavigate()
@@ -55,19 +53,37 @@ export function HeaderApp() {
             <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
               <div className="py-1">
                 <Menu.Item>
-                  {({ active }) => (
-                    // criar a condição do perfil
-                    <NavLink
-                      to="/Paciente/editarPerfil"
-                      className={classNames(
-                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                        'block px-4 py-2 text-sm'
-                      )}
-                    >
-                      Editar Perfil
-                    </NavLink>
-                  )}
+                  {({ active }) =>
+                    metadata?.role === 'patient' ? (
+                      <NavLink
+                        to="/Paciente/editarPerfil"
+                        className={classNames(
+                          active
+                            ? 'bg-gray-100 text-gray-900'
+                            : 'text-gray-700',
+                          'block px-4 py-2 text-sm'
+                        )}
+                      >
+                        Editar Perfil
+                      </NavLink>
+                    ) : (
+                      metadata?.role === 'caregiver' && (
+                        <NavLink
+                          to="/Profissional/editarPerfil"
+                          className={classNames(
+                            active
+                              ? 'bg-gray-100 text-gray-900'
+                              : 'text-gray-700',
+                            'block px-4 py-2 text-sm'
+                          )}
+                        >
+                          Editar Perfil
+                        </NavLink>
+                      )
+                    )
+                  }
                 </Menu.Item>
+
                 <Menu.Item>
                   {({ active }) => (
                     <a

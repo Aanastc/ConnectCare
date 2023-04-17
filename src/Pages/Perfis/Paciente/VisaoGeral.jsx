@@ -1,16 +1,30 @@
-import { Filtro } from '../Componetes/Filtro'
-import { Saudacao } from '../Componetes/Saudacao'
-import { Card } from './Card'
 import {
   Baby,
   Bed,
-  Syringe,
-  Heartbeat,
   FaceMask,
   FirstAidKit,
-  Wheelchair,
-  Pill
+  Heartbeat,
+  Pill,
+  Syringe,
+  Wheelchair
 } from 'phosphor-react'
+import { Filtro } from '../Componetes/Filtro'
+import { Saudacao } from '../Componetes/Saudacao'
+import { Card } from './Card'
+
+// fazer pegar os perfis da tabela sdo supabase depois
+const profissionais = [
+  {
+    name: 'Julia de Sousa',
+    especialidade: 'Cuidadora de idosos',
+    atendimentos: '12'
+  },
+  {
+    name: 'Antony Marques',
+    especialidade: 'Cuidadora Neonatal',
+    atendimentos: '8'
+  }
+]
 
 export function VisaoGeral() {
   const especialidade =
@@ -54,15 +68,14 @@ export function VisaoGeral() {
         </button>
       </div>
       <Filtro />
-      <div className="flex flex-wrap gap-10">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      <div className="flex flex-wrap gap-12 justify-center">
+      {profissionais.map(perfilDoProfissional => (
+          <Card
+            name={perfilDoProfissional.name}
+            especialidade={perfilDoProfissional.especialidade}
+            atendimentos={perfilDoProfissional.atendimentos}
+          />
+        ))}
       </div>
     </main>
   )
