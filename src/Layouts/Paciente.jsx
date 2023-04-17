@@ -15,6 +15,11 @@ import { useState } from 'react'
 export function Paciente() {
   const [open, setOpen] = useState(true)
 
+  const LinkClassActive =
+    'flex mb-4 gap-2 rounded-md cursor-pointer text-purple-500 text-sm items-center'
+  const LinkClass =
+    'flex mb-4 gap-2 rounded-md cursor-pointer text-black text-sm items-center'
+
   return (
     <RequireAuth>
       <HeaderApp />
@@ -27,7 +32,10 @@ export function Paciente() {
           {open ? (
             <>
               <div className="flex flex-row justify-start items-center gap-2 mb-4 p-2">
-                <NavLink to="/Paciente/visaoGeral" className="flex flex-row items-center gap-2">
+                <NavLink
+                  to="/Paciente/visaoGeral"
+                  className="flex flex-row items-center gap-2"
+                >
                   <img
                     src={logo}
                     alt="logo roxa"
@@ -58,9 +66,9 @@ export function Paciente() {
                     <li>
                       <NavLink
                         to="/Paciente/visaoGeral"
-                        className={`flex mb-4 gap-2 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ${
-                          !open && 'scale-150'
-                        }`}
+                        className={({ isActive }) =>
+                          isActive ? LinkClassActive : LinkClass
+                        }
                       >
                         <Stack size={26} />
                         <p>Geral</p>
@@ -114,7 +122,9 @@ export function Paciente() {
                     <li>
                       <NavLink
                         to="/Paciente/visaoGeral"
-                        className={`flex flex-row mb-4 cursor-pointer hover:bg-light-white text-black text-xs items-center `}
+                        className={({ isActive }) =>
+                          isActive ? LinkClassActive : LinkClass
+                        }
                       >
                         <Stack size={24} />
                       </NavLink>

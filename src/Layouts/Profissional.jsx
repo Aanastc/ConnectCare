@@ -1,5 +1,5 @@
 import { HeaderApp } from '../Pages/Perfis/Componetes/HeaderApp'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { RequireAuth } from '../Components/RequireAuth'
 
 import {
@@ -13,6 +13,11 @@ import logo from '../assets/icons/LogoRoxa.svg'
 import { useState } from 'react'
 
 export function Profissional() {
+  const LinkClassActive =
+    'flex mb-4 gap-2 rounded-md cursor-pointer text-purple-500 text-sm items-center'
+  const LinkClass =
+    'flex mb-4 gap-2 rounded-md cursor-pointer text-black text-sm items-center'
+
   const [open, setOpen] = useState(true)
 
   return (
@@ -61,23 +66,31 @@ export function Profissional() {
                     <li>
                       <NavLink
                         to="/Profissional/visaoGeral"
-                        className={`flex mb-4 gap-2 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ${
-                          !open && 'scale-150'
-                        }`}
+                        className={({ isActive }) =>
+                          isActive ? LinkClassActive : LinkClass
+                        }
                       >
                         <Stack size={26} />
                         <p>Geral</p>
                       </NavLink>
                     </li>
-                    <li
-                      className={`flex flex-row gap-2 mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ${
-                        !open && 'scale-50'
-                      }`}
+                    <NavLink
+                      className="flex mb-4 gap-2 rounded-md cursor-pointer text-black text-sm items-center"
+                      // to=""
+                      // className={({ isActive }) =>
+                      //   isActive ? LinkClassActive : LinkClass
+                      // }
                     >
                       <ChatCircleDots size={26} />
                       <p>Chat</p>
-                    </li>
-                    <li className="flex flex-row gap-2 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center">
+                    </NavLink>
+                    <NavLink
+                      className="flex mb-4 gap-2 rounded-md cursor-pointer text-black text-sm items-center"
+                      // to=""
+                      // className={({ isActive }) =>
+                      //   isActive ? LinkClassActive : LinkClass
+                      // }
+                    >
                       <CalendarCheck size={26} />
                       <p>Atendimentos</p>
 
@@ -86,7 +99,7 @@ export function Profissional() {
                           !open && 'hidden'
                         } origin-left duration-500`}
                       ></span>
-                    </li>
+                    </NavLink>
                   </>
                 </ul>
               </div>
@@ -117,7 +130,9 @@ export function Profissional() {
                     <li>
                       <NavLink
                         to="/Profissional/visaoGeral"
-                        className={`flex flex-row mb-4 cursor-pointer hover:bg-light-white text-black text-xs items-center `}
+                        className={({ isActive }) =>
+                          isActive ? LinkClassActive : LinkClass
+                        }
                       >
                         <Stack size={24} />
                       </NavLink>
