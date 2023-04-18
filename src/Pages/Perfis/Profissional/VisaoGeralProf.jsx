@@ -22,8 +22,8 @@ export function VisaoGeralProf() {
   return (
     <main className="p-5 pt-32">
       <Saudacao />
-      <h1 className="font-medium text-2xl mb-4">Em andamento:</h1>
-      <div className="flex flex-wrap gap-10 justify-center">
+      <h1 className="font-medium text-2xl mb-4">Atendimentos em andamento:</h1>
+      <div className="flex flex-wrap gap-10 justify-center mb-4">
         {pacientes.map(pacienteEmAtendimento => (
           <CardAtendimento
             nome={pacienteEmAtendimento.nome}
@@ -33,7 +33,7 @@ export function VisaoGeralProf() {
           />
         ))}
       </div>
-      <h1 className="font-medium text-2xl mb-4">Finalizados:</h1>
+      <h1 className="font-medium text-2xl mb-4">Atendimentos finalizados:</h1>
       <div className="flex flex-wrap gap-10 justify-center">
         {pacientes.map(pacienteEmFinalizado => (
           <CardFinalizados

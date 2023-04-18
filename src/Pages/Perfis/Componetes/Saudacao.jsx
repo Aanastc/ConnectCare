@@ -23,7 +23,7 @@ export function Saudacao() {
     saudacao = 'Boa noite'
   }
   return (
-    <div className="flex flex-row justify-center items-center bg-purple-600 rounded-full shadow-md w-full h-20 mb-4">
+    <div className="flex flex-row justify-center items-center bg-purple-400 rounded-full shadow-md w-full h-20 mb-4">
       <img
         src={homePerfil}
         alt=""

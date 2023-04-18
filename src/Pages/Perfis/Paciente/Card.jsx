@@ -3,7 +3,7 @@ import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 
 export function Card({ name, especialidade, atendimentos }) {
   return (
-    <div class="w-60 flex flex-col justify-center items-center bg-white border border-purple-500 rounded-lg shadow-md p-4">
+    <div class="w-60 flex flex-col justify-center items-center bg-white border border-purple-400 rounded-lg shadow-md p-4">
       <img
         src={fotoPerfil}
         alt="Foto de uma mulher de cabelo preto sorrindo"
@@ -24,7 +24,7 @@ export function Card({ name, especialidade, atendimentos }) {
         <span>{atendimentos}</span>
       </div>
       <div className="flex flex-row justify-between items-center gap-2 mb-0">
-        <button className="bg-purple-600 text-white rounded-lg px-2 py-1 w-36 font-light text-sm">
+        <button className="bg-purple-400 text-white rounded-lg px-2 py-1 w-36 font-light text-sm">
           Ver Perfil
         </button>
         <ChatCircleDots size={28} color="#9063CD" />
