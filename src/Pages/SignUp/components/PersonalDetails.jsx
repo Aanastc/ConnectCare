@@ -129,7 +129,7 @@ export function PersonalDetails() {
                   id="female"
                   type="radio"
                   value="female"
-                  className="border-gray-300 border-2 rounded-lg p-3 text-base w-full placeholder:text-gray-300"
+                  className="border-gray-300 border-2 rounded-lg p-3 text-base w-full placeholder:text-gray-300 accent-purple-600"
                   {...register('gender')}
                 />
                 <label htmlFor="female">Feminino</label>
@@ -139,7 +139,7 @@ export function PersonalDetails() {
                   id="male"
                   type="radio"
                   value="male"
-                  className="border-gray-300 border-2 rounded-lg p-3 text-base w-full placeholder:text-gray-300"
+                  className="border-gray-300 border-2 rounded-lg p-3 text-base w-full placeholder:text-gray-300 accent-purple-600"
                   {...register('gender')}
                 />
                 <label htmlFor="male">Masculino</label>
@@ -149,7 +149,7 @@ export function PersonalDetails() {
                   id="other"
                   type="radio"
                   value="other"
-                  className="border-gray-300 border-2 rounded-lg p-3 text-base w-full placeholder:text-gray-300"
+                  className="border-gray-300 border-2 rounded-lg p-3 text-base w-full placeholder:text-gray-300 accent-purple-600"
                   {...register('gender')}
                 />
                 <label htmlFor="other">Outro</label>
