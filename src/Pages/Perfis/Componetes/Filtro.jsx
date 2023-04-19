@@ -4,7 +4,8 @@ import { useState } from 'react'
 export function Filtro() {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState(null)
-  const options = ['meidco 1', 'enfermeira 2', 'Opção 3']
+  const [orderBy, setOrderBy] = useState(null)
+  const options = ['medico 1', 'enfermeira 2', 'Opção 3']
   const optionslocal = ['local 1', 'local 2', 'local 3']
 
   const handleToggle = () => {
@@ -15,11 +16,11 @@ export function Filtro() {
     setSelectedOption(option)
     setIsOpen(false)
   }
-  const handleOrderByClick = (option) => {
-  setOrderBy(option)
-  setIsOpenOrderBy(false)
-}
 
+  const handleOrderByClick = (option) => {
+    setOrderBy(option)
+    setIsOpen(false)  
+  }
 
   return (
     <div className="border-purple-400 border-2 rounded-lg shadow-md w-full h-20 mb-4 flex items-center justify-around">
@@ -39,7 +40,6 @@ export function Filtro() {
             )}
           </button>
           {isOpen && (
-            // colocar um max e min para parar de alterar o espaço dos outros campos
             <ul className="absolute top-full left-0 z-10 mt-2 w-full border-purple-400 border-2 rounded-lg shadow-md bg-white">
               {options.map((option) => (
                 <li key={option}>
@@ -69,17 +69,52 @@ export function Filtro() {
       </div>
       <div className="h-16 border-r-2 border-neutral-400"></div>
       <div className="pl-2 flex flex-col">
-      <label for="dia" className="text-sm text-gray-500 font-medium">
-          Disponibilidade
-        </label>
+      <div className="text-sm text-gray-500 font-medium">Disponibilidade</div>
+          
         <input type="date" id="dia" name="dia" className="font-bold" />
       </div>
       <div className="h-16 border-r-2 border-neutral-400"></div>
-      <div className="border-purple-400 border rounded-lg p-2 flex flex-row gap-24 items-center">
-        <p className="text-sm text-purple-400">Ordernar por:{}</p>
-        <CaretDown size={22} color="#9063CD" />
+      <div className="border-purple-400 border-2 rounded-lg shadow-md w-full h-20 mb-4 flex items-center justify-around">
+      <div className="pl-2 flex flex-col w-1/4">
+        <div className="text-sm text-gray-500 font-medium">Ordenar por</div>
+        <div className="relative w-full">
+          <button
+            type="button"
+            className="text-left w-full flex flex-row"
+            onClick={handleToggle}
+          >
+            {selectedOption || 'Selecione'}
+            {isOpen ? (
+              <CaretUp size={20} className="text-gray-400" />
+            ) : (
+              <CaretDown size={20} className="text-gray-400" />
+            )}
+          </button>
+          {isOpen && (
+            <ul className="absolute top-full left-0 z-10 mt-2 w-full border-purple-400 border-2 rounded-lg shadow-md bg-white">
+              <li>
+                <button
+                  type="button"
+                  className="w-full text-left px-4 py-2"
+                  onClick={() => handleOrderByClick('Mais recentes')}
+                >
+                  Mais recentes
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="w-full text-left px-4 py-2"
+                  onClick={() => handleOrderByClick('Mais antigos')}
+                >
+                  Mais antigos
+                </button>
+              </li>
+            </ul>
+          )}
+        </div>
       </div>
     </div>
-  )
+</div>
+  );
 }
-
