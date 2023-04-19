@@ -28,10 +28,79 @@ export function EditarPerfil() {
               onClick={() => setIsConta(false)}
               className={`font-bold ${!isConta && 'text-purple-600'}`}
             >
-              Informações
+              Dados Clinicos
             </button>
           </div>
-          {isConta ? <Conta /> : <></>}
+          {isConta ? (
+            <Conta />
+          ) : (
+            <>
+              <div className="flex flex-row gap-8 mb-4">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="peso" className="text-sm font-bold">
+                    Peso
+                  </label>
+                  <input
+                    id="peso"
+                    type="text"
+                    placeholder="Insira seu peso"
+                    className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 placeholder:text-gray-400"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="altura" className="text-sm font-bold">
+                    Altura
+                  </label>
+                  <input
+                    id="altura"
+                    type="text"
+                    placeholder="Insira sua altura"
+                    className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 placeholder:text-gray-400"
+                  />
+                </div>
+              </div>
+              <div className="flex justify-between items-center">
+                <div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      className="w-4 h-4 checked:bg-purple-600 checked:border-gray-500 rounded"
+                    />
+                    <label htmlFor="" className="ml-2">
+                      Asma
+                    </label>
+                  </div>
+                  <div>
+                    <input type="checkbox" name="" id="" className="w-4 h-4" />
+                    <label htmlFor="" className="ml-2">
+                      Bronquite
+                    </label>
+                  </div>
+                  <div>
+                    <input type="checkbox" name="" id="" className="w-4 h-4" />
+                    <label htmlFor="" className="ml-2">
+                      Pneumonia
+                    </label>
+                  </div>
+                  <div>
+                    <input type="checkbox" name="" id="" className="w-4 h-4" />
+                    <label htmlFor="" className="ml-2">
+                      Úlcera
+                    </label>
+                  </div>
+                  <div>
+                    <input type="checkbox" name="" id="" className="w-4 h-4" />
+                    <label htmlFor="" className="ml-2">
+                      Outro:
+                    </label>
+                  </div>
+                </div>
+                <div></div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </main>
