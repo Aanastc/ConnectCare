@@ -8,7 +8,7 @@ import {
   Syringe,
   Wheelchair
 } from 'phosphor-react'
-import { Filtro } from '../Componetes/Filtro'
+import { Filtro } from './Filtro'
 import { Saudacao } from '../Componetes/Saudacao'
 import { Card } from './Card'
 
