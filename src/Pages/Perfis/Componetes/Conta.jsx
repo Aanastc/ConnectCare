@@ -1,8 +1,15 @@
 import { useContext } from 'react'
 import { UserContext } from '../../../contexts/UserCtx'
+import { format } from 'date-fns'
 
 export function Conta() {
   const { metadata } = useContext(UserContext)
+
+  const dataNiver = format(
+    new Date(metadata.birthdate),
+    'dd/LL/yyyy'
+  ).toString()
+
   return (
     <>
       <div className="flex flex-row gap-8 mb-4">
@@ -37,7 +44,7 @@ export function Conta() {
           <input
             id="birthdate"
             type="text"
-            value={metadata?.birthdate}
+            value={dataNiver}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 value:text-black"
           />
         </div>
@@ -172,9 +179,9 @@ export function Conta() {
           <a
             href="https://buscacepinter.correios.com.br/app/endereco/index.php"
             target="_blank"
-            className="font-bold text-start text-xs text-gray-600 hover:underline"
+            className="text-xs text-gray-500 font-medium italic text-start"
           >
-            Não sei meu CEP
+            *Não sei meu CEP
           </a>
         </div>
         <button className="bg-purple-500 text-white rounded-full h-10 w-64">
