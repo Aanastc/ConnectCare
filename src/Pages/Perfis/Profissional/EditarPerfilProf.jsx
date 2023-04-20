@@ -116,16 +116,16 @@ export function EditarPerfilProf() {
                 Adicionar
                 <PlusCircle size={32} />
               </button>
-              <div className='flex flex-row justify-between'>
-                <button className='flex flex-row border-2 border-gray-400 p-2 rounded-lg gap-4 items-center w-64 justify-between'>
+              <div className="flex flex-row justify-between">
+                <button className="flex flex-row border-2 border-gray-400 p-2 rounded-lg gap-4 items-center w-64 justify-between">
                   Upload curriculo
                   <CloudArrowUp size={28} />
                 </button>
-                <button className='flex flex-row border-2 border-gray-400 p-2 rounded-lg gap-4 items-center w-64 justify-between'>
+                <button className="flex flex-row border-2 border-gray-400 p-2 rounded-lg gap-4 items-center w-64 justify-between">
                   Upload doc conselho
                   <CloudArrowUp size={28} />
                 </button>
-                <button className='flex flex-row border-2 border-gray-400 p-2 rounded-lg gap-4 items-center w-64 justify-between'>
+                <button className="flex flex-row border-2 border-gray-400 p-2 rounded-lg gap-4 items-center w-64 justify-between">
                   Upload certificados
                   <CloudArrowUp size={28} />
                 </button>

@@ -2,7 +2,6 @@ import { Saudacao } from '../Componetes/Saudacao'
 import { CardAtendimento } from './CardAtendimento'
 import { CardFinalizados } from './CardFinalizados'
 
-// fazer pegar os perfis da tabela sdo supabase depois
 const pacientes = [
   {
     nome: 'Julia de Sousa',

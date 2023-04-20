@@ -1,16 +1,16 @@
+import { NavLink, Outlet } from 'react-router-dom'
 import { HeaderApp } from '../Pages/Perfis/Componetes/HeaderApp'
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
-import { RequireAuth } from '../Components/RequireAuth'
+import { RequireAuth } from '../contexts/RequireAuth'
 
 import {
   ArrowLeft,
-  Stack,
-  ChatCircleDots,
+  ArrowRight,
   CalendarCheck,
-  ArrowRight
+  ChatCircleDots,
+  Stack
 } from 'phosphor-react'
-import logo from '../assets/icons/LogoRoxa.svg'
 import { useState } from 'react'
+import logo from '../assets/icons/LogoRoxa.svg'
 
 export function Profissional() {
   const LinkClassActive =

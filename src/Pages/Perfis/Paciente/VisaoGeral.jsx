@@ -12,7 +12,6 @@ import { Filtro } from '../Componetes/Filtro'
 import { Saudacao } from '../Componetes/Saudacao'
 import { Card } from './Card'
 
-// fazer pegar os perfis da tabela sdo supabase depois
 const profissionais = [
   {
     name: 'Julia de Sousa',
@@ -69,7 +68,7 @@ export function VisaoGeral() {
       </div>
       <Filtro />
       <div className="flex flex-wrap gap-12 justify-center">
-      {profissionais.map(perfilDoProfissional => (
+        {profissionais.map(perfilDoProfissional => (
           <Card
             name={perfilDoProfissional.name}
             especialidade={perfilDoProfissional.especialidade}

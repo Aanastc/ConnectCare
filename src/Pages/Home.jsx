@@ -1,22 +1,26 @@
-import React from 'react'
-import { useState } from 'react'
+import {
+  FacebookLogo,
+  InstagramLogo,
+  List,
+  MagnifyingGlass,
+  Star,
+  TwitterLogo,
+  WhatsappLogo
+} from 'phosphor-react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { List } from 'phosphor-react'
 import ScrollSpy from 'react-ui-scrollspy'
-import { Star, MagnifyingGlass } from 'phosphor-react'
 
-import { Footer } from '../Components/Footer'
 import Logo from '../assets/icons/LogoRoxa.svg'
-
 import foto1 from '../assets/icons/1.svg'
 import foto2 from '../assets/icons/2.svg'
 import foto3 from '../assets/icons/3.svg'
 import foto4 from '../assets/icons/4.svg'
-import ImgHome from '../assets/imgs/img-home.png'
-import ImgSobre from '../assets/imgs/img-sobre.png'
 import fotoPerfil from '../assets/imgs/fotoPerfil.png'
 import fotoPerfil2 from '../assets/imgs/fotoPerfil2.png'
 import ImgFaleConosco from '../assets/imgs/img-faleConosco.png'
+import ImgHome from '../assets/imgs/img-home.png'
+import ImgSobre from '../assets/imgs/img-sobre.png'
 
 export function Home() {
   const [isPaciente, setIsPaciente] = useState(true)
@@ -104,43 +108,48 @@ export function Home() {
       <div className="p-5">
         <ScrollSpy>
           <section
-            className="w-full lg:max-w-[1120px] m-auto py-5 flex flex-row justify-between items-center"
+            className="w-full max-w-screen-lg mx-auto py-5 flex flex-col lg:flex-row justify-between items-center"
             id="section-1"
           >
-            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-30">
-              <div className="flex flex-col justify-center gap-6">
-                <div>
-                  <h1 className="text-5xl font-bold leading-snug">
-                    Cuidamos de vidas conectando pacientes e profissionais da
-                    saúde.
-                  </h1>
-                  <p className="leading-snug">
-                    Percebemos, cada vez mais, que o consenso sobre a
-                    necessidade de qualificação apresenta tendências no sentido
-                    de aprovar a manutenção do sistema de formação de quadros
-                    que corresponde às necessidades.
-                  </p>
-                </div>
-                <div className="text-center py-2 flex gap-4">
-                  <a href="https://play.google.com/store/games?hl=pt_BR&gl=US">
-                    <img
-                      width={180}
-                      src="https://logodownload.org/wp-content/uploads/2017/04/disponivel-google-play-badge-1.png"
-                      alt="Dowload-Android"
-                    />
-                  </a>
-                  <a href="https://www.apple.com/br/app-store/">
-                    <img
-                      width={180}
-                      src="https://logodownload.org/wp-content/uploads/2017/05/disponivel-na-app-store-botao-1.png"
-                      alt="Dowload-IOS"
-                    />
-                  </a>
-                </div>
+            <div className="lg:w-1/2 flex flex-col justify-center gap-6">
+              <div>
+                <h1 className="text-4xl lg:text-6xl text-purple-600 mb-2 font-medium">
+                  Connect Care
+                </h1>
+                <h2 className="text-2xl lg:text-4xl font-bold leading-snug">
+                  Cuidamos de vidas conectando pacientes e profissionais da
+                  saúde.
+                </h2>
+                <p className="leading-snug">
+                  Percebemos, cada vez mais, que o consenso sobre a necessidade
+                  de qualificação apresenta tendências no sentido de aprovar a
+                  manutenção do sistema de formação de quadros que corresponde
+                  às necessidades.
+                </p>
               </div>
-              <div className="flex justify-center">
-                <img src={ImgHome} alt="Imagem-Home" />
+              <div className="text-center py-2 flex gap-4">
+                <a href="https://play.google.com/store/games?hl=pt_BR&gl=US">
+                  <img
+                    width={120}
+                    src="https://logodownload.org/wp-content/uploads/2017/04/disponivel-google-play-badge-1.png"
+                    alt="Dowload-Android"
+                  />
+                </a>
+                <a href="https://www.apple.com/br/app-store/">
+                  <img
+                    width={120}
+                    src="https://logodownload.org/wp-content/uploads/2017/05/disponivel-na-app-store-botao-1.png"
+                    alt="Dowload-IOS"
+                  />
+                </a>
               </div>
+            </div>
+            <div className="lg:w-1/2 flex justify-center">
+              <img
+                src={ImgHome}
+                alt="Imagem-Home"
+                className="w-full lg:w-auto"
+              />
             </div>
           </section>
 
@@ -541,7 +550,92 @@ export function Home() {
           </section>
         </ScrollSpy>
       </div>
-      <Footer />
+      <footer className="relative w-full bg-violet-700">
+        <div className="p-5 max-w-[1120px] mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
+          <div className="text-white mb-4 md:mb-0 lg:mb-0">
+            <ul className="text-sm md:text-base">
+              <li>
+                <a href="#" className="font-semibold">
+                  Connect Care
+                </a>
+              </li>
+              <li>
+                <a href="#" className="">
+                  Site Institucional
+                </a>
+              </li>
+              <li>
+                <a href="#" className="">
+                  Fale Conosco
+                </a>
+              </li>
+              <li>
+                <a href="#" className="">
+                  Carreiras
+                </a>
+              </li>
+              <li>
+                <a href="#" className="">
+                  Connect Care Canadá
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="text-white">
+            <ul className="text-sm md:text-base">
+              <li>
+                <a href="#" className="font-semibold">
+                  Outros
+                </a>
+              </li>
+              <li>
+                <a href="#" className="">
+                  Segurança
+                </a>
+              </li>
+              <li>
+                <a href="#" className="">
+                  Trabalhe Conosco
+                </a>
+              </li>
+              <li>
+                <a href="#" className="">
+                  Ajuda
+                </a>
+              </li>
+              <li>
+                <a href="#" className="">
+                  Políticas de Privacidade
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="text-white pt-4 md:pt-0 md:pl-4 lg:pl-0">
+            <div className="text-right font-thin text-xs md:text-sm">
+              <p className="mb-2">Central de Atendimento: (70) 7070-7070</p>
+              <p className="mb-0">Av. Jorgin Do Grau, 1111 - Edson Queiroz</p>
+              <p className="mb-4"> CEP 33678-950 - Fortaleza-CE Brasil</p>
+            </div>
+            <div className="flex justify-end gap-4">
+              <a className="text-white">
+                <WhatsappLogo
+                  size={24}
+                  href="https://www.whatsapp.com/?lang=pt_br"
+                />
+              </a>
+              <a className="text-white" href="https://pt-br.facebook.com/">
+                <FacebookLogo size={24} />
+              </a>
+              <a className="text-white" href="https://twitter.com/">
+                <TwitterLogo size={24} />
+              </a>
+              <a className="text-white" href="https://www.instagram.com/">
+                <InstagramLogo size={24} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </main>
   )
 }

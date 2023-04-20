@@ -1,6 +1,6 @@
 import { HeaderApp } from '../Pages/Perfis/Componetes/HeaderApp'
 import { NavLink, Outlet } from 'react-router-dom'
-import { RequireAuth } from '../Components/RequireAuth'
+import { RequireAuth } from '../contexts/RequireAuth'
 
 import {
   ArrowLeft,
