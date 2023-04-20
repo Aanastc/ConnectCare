@@ -1,10 +1,28 @@
 import { Eyedropper, Trash } from 'phosphor-react'
+import Switch from 'react-switch'
+
 import { useState } from 'react'
 import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 import { Conta } from '../Componetes/Conta'
 
+const switches = [
+  { id: 1, text: 'Faz uso de dispositivo invasivo', checked: false },
+  { id: 2, text: 'Possui riscos cirúrgicos', checked: false },
+  { id: 3, text: 'Tem alergia a algum medicamento', checked: false },
+  { id: 4, text: 'Faz uso de medicamento controlado', checked: false },
+  { id: 5, text: 'Possui alguma comorbidade', checked: false }
+]
+
 export function EditarPerfil() {
   const [isConta, setIsConta] = useState(true)
+  const [switchState, setSwitchState] = useState(switches)
+
+  function handleSwitchChange(id, checked) {
+    const updatedSwitchState = switchState.map(item =>
+      item.id === id ? { ...item, checked } : item
+    )
+    setSwitchState(updatedSwitchState)
+  }
 
   return (
     <main>
@@ -59,45 +77,111 @@ export function EditarPerfil() {
                   />
                 </div>
               </div>
-              <div className="flex justify-between items-center">
-                <div>
-                  <div>
+              <div className="grid grid-flow-col justify-stretch gap-12 mb-4">
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center">
                     <input
                       type="checkbox"
                       name=""
                       id=""
-                      className="w-4 h-4 checked:bg-purple-600 checked:border-gray-500 rounded"
+                      className="w-4 h-4 accent-purple-600"
                     />
                     <label htmlFor="" className="ml-2">
                       Asma
                     </label>
                   </div>
-                  <div>
-                    <input type="checkbox" name="" id="" className="w-4 h-4" />
+                  <div className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      className="w-4 h-4 accent-purple-600"
+                    />
                     <label htmlFor="" className="ml-2">
                       Bronquite
                     </label>
                   </div>
-                  <div>
-                    <input type="checkbox" name="" id="" className="w-4 h-4" />
+                  <div className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      className="w-4 h-4 accent-purple-600"
+                    />
                     <label htmlFor="" className="ml-2">
                       Pneumonia
                     </label>
                   </div>
-                  <div>
-                    <input type="checkbox" name="" id="" className="w-4 h-4" />
+                  <div className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      className="w-4 h-4 accent-purple-600"
+                    />
                     <label htmlFor="" className="ml-2">
                       Úlcera
                     </label>
                   </div>
-                  <div>
-                    <input type="checkbox" name="" id="" className="w-4 h-4" />
+                  <div className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      className="w-4 h-4 accent-purple-600"
+                    />
                     <label htmlFor="" className="ml-2">
                       Outro:
                     </label>
                   </div>
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="outro" className="text-sm font-bold" />
+                    <input
+                      id="outro"
+                      type="text"
+                      placeholder="Anemia, Catapora, Diabetes...."
+                      className="rounded-lg p-3 text-base placeholder:text-gray-400 bg-gray-200 w-80"
+                    />
+                  </div>
                 </div>
-                <div></div>
+                <div className="flex flex-col gap-2">
+                  {switchState.map(item => (
+                    <div className="flex flex-row items-center" key={item.id}>
+                      <Switch
+                        checked={item.checked}
+                        onChange={checked =>
+                          handleSwitchChange(item.id, checked)
+                        }
+                        onColor="#9063CD"
+                        offColor="#D1D5DB"
+                        handleDiameter={24}
+                        uncheckedIcon={false}
+                        checkedIcon={false}
+                        className="mr-2"
+                      />
+                      <p className="font-medium">{item.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col mb-4">
+                <div className="flex flex-col">
+                  <label htmlFor="motivo" className="block text-sm font-bold">
+                    Motivo
+                  </label>
+                  <textarea
+                    name="motivo"
+                    id="motivo"
+                    placeholder="Descreva o motivo do atendimento"
+                    className="border-gray-300 border-2 rounded-lg p-3 h-36 text-base placeholder:text-gray-400 mt-2 resize-none"
+                    style={{ verticalAlign: 'top' }}
+                  />
+                </div>
+              </div>
+              <div className="flex justify-end">
+                <button className="bg-purple-500 text-white rounded-full h-10 w-64">
+                  Salvar
+                </button>
               </div>
             </>
           )}
