@@ -85,15 +85,13 @@ export function Profissional() {
                       <p>Chat</p>
                     </NavLink>
                     <NavLink
-                      className="flex mb-4 gap-2 rounded-md cursor-pointer text-black text-sm items-center"
-                      // to=""
-                      // className={({ isActive }) =>
-                      //   isActive ? LinkClassActive : LinkClass
-                      // }
+                      to="solicitacoes"
+                      className={({ isActive }) =>
+                        isActive ? LinkClassActive : LinkClass
+                      }
                     >
                       <CalendarCheck size={26} />
-                      <p>Atendimentos</p>
-
+                      <p>Solicitações</p>
                       <span
                         className={`${
                           !open && 'hidden'

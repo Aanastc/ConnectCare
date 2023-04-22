@@ -16,6 +16,7 @@ import './index.css'
 import { Profissional } from './Layouts/Profissional'
 import { VisaoGeralProf } from './Pages/Perfis/Profissional/VisaoGeralProf'
 import { EditarPerfilProf } from './Pages/Perfis/Profissional/EditarPerfilProf'
+import { Solicitacoes } from './Pages/Perfis/Profissional/Solicitacoes'
 
 export function App() {
   return (
@@ -37,6 +38,7 @@ export function App() {
       <Route path="/Profissional" element={<Profissional />}>
         <Route path="visaoGeral" element={<VisaoGeralProf />} />
         <Route path="editarPerfil" element={<EditarPerfilProf />} />
+        <Route path="solicitacoes" element={<Solicitacoes />} />
       </Route>
       <Route path="*" element={<div>Página não encontrada</div>} />
     </Routes>
