@@ -40,18 +40,20 @@ export function Conta() {
   console.log(profile)
 
   useEffect(() => {
-    ;(async () => {
-      const {
-        data: [profile],
-        error
-      } = await supabase.from('profiles').select('*').eq('id', metadata?.id)
-      reset({
-        name: profile?.name,
-        birthdate: dataNiver,
-        gender: profile?.gender,
-        cpf: profile.CPF
-      })
-    })()
+    reset({
+      name: profile?.name,
+      birthdate: dataNiver,
+      gender: profile?.gender,
+      cpf: profile.CPF,
+      rg: profile.RG,
+      rua: profile.logadouro,
+      numero: profile.numero,
+      bairro: profile.bairro,
+      complemento: profile.complemento,
+      uf: profile.estado,
+      cidade: profile.cidade,
+      cep: profile.cep
+    })
   }, [])
 
   return (
@@ -64,7 +66,6 @@ export function Conta() {
           <input
             id="name"
             type="text"
-            // value={profile?.name}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 value:text-black"
             {...register('name')}
           />
@@ -90,7 +91,6 @@ export function Conta() {
           <input
             id="birthdate"
             type="text"
-            // value={dataNiver}
             {...register('birthdate')}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 value:text-black"
           />
@@ -102,7 +102,6 @@ export function Conta() {
           <input
             id="gender"
             type="text"
-            // value={profile?.gender}
             {...register('gender')}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-44 value:text-black"
           />
