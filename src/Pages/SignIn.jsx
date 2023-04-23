@@ -14,7 +14,7 @@ export function SignIn() {
     mensagem: ''
   })
 
-  const { singIn, error, authed, metadata } = useContext(UserContext)
+  const { singIn, error, authed, profile } = useContext(UserContext)
 
   const navigate = useNavigate()
 
@@ -64,9 +64,9 @@ export function SignIn() {
     if (!authed) {
       return
     }
-    if (metadata?.role === 'patient') {
+    if (profile?.role === 'patient') {
       navigate('/Paciente/visaoGeral')
-    } else if (metadata?.role === 'caregiver') {
+    } else if (profile?.role === 'caregiver') {
       navigate('/Profissional/visaoGeral')
     }
   }, [authed])

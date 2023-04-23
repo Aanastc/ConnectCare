@@ -9,7 +9,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 export function HeaderApp() {
-  const { metadata, signOut } = useContext(UserContext)
+  const { signOut, profile } = useContext(UserContext)
   const navigate = useNavigate()
 
   async function handleSingOut() {
@@ -27,7 +27,7 @@ export function HeaderApp() {
           class="relative inline-block h-[40px] w-[40px] !rounded-full object-cover object-center"
         />
         <p className="text-sm font-medium text-purple-600 uppercase">
-          {metadata?.name}
+          {profile?.name}
         </p>
         <Menu as="div" className="relative inline-block text-left">
           <div>
@@ -54,7 +54,7 @@ export function HeaderApp() {
               <div className="py-1">
                 <Menu.Item>
                   {({ active }) =>
-                    metadata?.role === 'patient' ? (
+                    profile?.role === 'patient' ? (
                       <NavLink
                         to="/Paciente/editarPerfil"
                         className={classNames(
@@ -67,7 +67,7 @@ export function HeaderApp() {
                         Editar Perfil
                       </NavLink>
                     ) : (
-                      metadata?.role === 'caregiver' && (
+                      profile?.role === 'caregiver' && (
                         <NavLink
                           to="/Profissional/editarPerfil"
                           className={classNames(

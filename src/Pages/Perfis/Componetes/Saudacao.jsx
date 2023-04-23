@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import homePerfil from '../../../../src/assets/icons/homePerfil.svg'
 
 export function Saudacao() {
-  const { metadata } = useContext(UserContext)
+  const { profile } = useContext(UserContext)
   const [horario, setHorario] = useState(new Date().getHours())
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export function Saudacao() {
         className="flex items-start absolute top-0 left-28"
       />
       <h1 className="text-3xl font-normal text-black flex items-center uppercase">
-        {saudacao}, {metadata?.name}!
+        {`${saudacao}, ${profile?.name}!`}
       </h1>
     </div>
   )

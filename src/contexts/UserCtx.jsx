@@ -7,6 +7,18 @@ export function UserProvider({ children }) {
   const [metadata, setMetadata] = useState(undefined)
   const [authed, setAuthed] = useState(false)
   const [error, setError] = useState(undefined)
+  const [profile, setProfile] = useState(undefined)
+
+  async function fetchProfile(id) {
+    const {
+      data: [profile],
+      error
+    } = await supabase.from('profiles').select('*').eq('id', id)
+
+    setProfile(profile)
+
+    return profile
+  }
 
   useEffect(() => {
     const retriveSession = async () => {
@@ -18,8 +30,9 @@ export function UserProvider({ children }) {
       }
 
       if (data.session) {
-        setMetadata(data.session?.user.user_metadata)
+        setMetadata(data.session?.user)
         setAuthed(true)
+        fetchProfile(data.session.user.id)
       }
     }
 
@@ -61,8 +74,9 @@ export function UserProvider({ children }) {
       return
     }
 
-    setMetadata(data.session.user.user_metadata)
+    setMetadata(data.session.user)
     setAuthed(true)
+    fetchProfile(data.session.user.id)
     return data.session.user.user_metadata
   }
 
@@ -76,11 +90,21 @@ export function UserProvider({ children }) {
 
     setMetadata(undefined)
     setAuthed(false)
+    setProfile(undefined)
   }
 
   return (
     <UserContext.Provider
-      value={{ metadata, authed, error, singUp, singIn, signOut }}
+      value={{
+        metadata,
+        authed,
+        error,
+        singUp,
+        singIn,
+        signOut,
+        profile,
+        fetchProfile
+      }}
     >
       {children}
     </UserContext.Provider>

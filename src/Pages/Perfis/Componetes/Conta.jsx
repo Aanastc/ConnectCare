@@ -5,18 +5,18 @@ import { useForm } from 'react-hook-form'
 import { format } from 'date-fns'
 
 export function Conta() {
-  const { metadata } = useContext(UserContext)
+  const { metadata, profile, fetchProfile } = useContext(UserContext)
 
   const { reset, register, handleSubmit } = useForm()
 
   const dataNiver = format(
-    new Date(metadata.birthdate),
+    new Date(profile?.birthdate),
     'dd/LL/yyyy'
   ).toString()
 
   async function handleConta(data) {
     const birthdate = new Date(data.birthdate).toISOString()
-    await supabase
+    const { data: res, error } = await supabase
       .from('profiles')
       .update({
         name: data.name,
@@ -32,22 +32,24 @@ export function Conta() {
         cidade: data.cidade,
         cep: data.cep
       })
-      .eq('name', metadata?.name)
-    // console.log(res)
+      .eq('id', metadata?.id)
+    console.log(res)
+    fetchProfile(metadata?.id)
   }
 
-  console.log(metadata)
+  console.log(profile)
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       const {
         data: [profile],
         error
-      } = await supabase.from('profiles').select('*').eq('name', metadata.name)
+      } = await supabase.from('profiles').select('*').eq('id', metadata?.id)
       reset({
         name: profile?.name,
         birthdate: dataNiver,
-        gender: profile?.gender
+        gender: profile?.gender,
+        cpf: profile.CPF
       })
     })()
   }, [])
@@ -62,7 +64,7 @@ export function Conta() {
           <input
             id="name"
             type="text"
-            // value={metadata?.name}
+            // value={profile?.name}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 value:text-black"
             {...register('name')}
           />
@@ -74,7 +76,7 @@ export function Conta() {
           <input
             id="email"
             type="email"
-            value={metadata?.email}
+            value={profile?.email}
             // {...register('email')}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 value:text-black"
           />
@@ -100,7 +102,7 @@ export function Conta() {
           <input
             id="gender"
             type="text"
-            // value={metadata?.gender}
+            // value={profile?.gender}
             {...register('gender')}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-44 value:text-black"
           />
@@ -112,7 +114,7 @@ export function Conta() {
           <input
             id="perfil"
             type="text"
-            value={metadata?.role}
+            value={profile?.role}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-44 value:text-black"
           />
         </div>
