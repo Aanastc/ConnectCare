@@ -11,7 +11,7 @@ export function UserProvider({ children }) {
   useEffect(() => {
     const retriveSession = async () => {
       const { data, error } = await supabase.auth.getSession()
-
+      console.log(data)
       if (error) {
         setError(error)
         return
@@ -38,9 +38,9 @@ export function UserProvider({ children }) {
           role
         },
         emailRedirectTo:
-        role === 'patient'
-          ? 'http://localhost:5173/Paciente/visaoGeral'
-          : 'http://localhost:5173/Profissional/visaoGeral'
+          role === 'patient'
+            ? 'http://localhost:5173/Paciente/visaoGeral'
+            : 'http://localhost:5173/Profissional/visaoGeral'
       }
     })
 

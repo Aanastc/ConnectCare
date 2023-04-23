@@ -1,17 +1,59 @@
-import { useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import { UserContext } from '../../../contexts/UserCtx'
+import { supabase } from '../../../services/supabase'
+import { useForm } from 'react-hook-form'
 import { format } from 'date-fns'
 
 export function Conta() {
   const { metadata } = useContext(UserContext)
+
+  const { reset, register, handleSubmit } = useForm()
 
   const dataNiver = format(
     new Date(metadata.birthdate),
     'dd/LL/yyyy'
   ).toString()
 
+  async function handleConta(data) {
+    const birthdate = new Date(data.birthdate).toISOString()
+    await supabase
+      .from('profiles')
+      .update({
+        name: data.name,
+        birthdate: birthdate,
+        gender: data.gender,
+        CPF: data.cpf,
+        RG: data.rg,
+        logadouro: data.rua,
+        numero: data.numero,
+        bairro: data.bairro,
+        complemento: data.complemento,
+        estado: data.uf,
+        cidade: data.cidade,
+        cep: data.cep
+      })
+      .eq('name', metadata?.name)
+    // console.log(res)
+  }
+
+  console.log(metadata)
+
+  useEffect(() => {
+    (async () => {
+      const {
+        data: [profile],
+        error
+      } = await supabase.from('profiles').select('*').eq('name', metadata.name)
+      reset({
+        name: profile?.name,
+        birthdate: dataNiver,
+        gender: profile?.gender
+      })
+    })()
+  }, [])
+
   return (
-    <>
+    <form onSubmit={handleSubmit(handleConta)}>
       <div className="flex flex-row gap-8 mb-4">
         <div className="flex flex-col gap-2">
           <label htmlFor="name" className="text-sm font-bold">
@@ -20,8 +62,9 @@ export function Conta() {
           <input
             id="name"
             type="text"
-            value={metadata?.name}
+            // value={metadata?.name}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 value:text-black"
+            {...register('name')}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -32,39 +75,42 @@ export function Conta() {
             id="email"
             type="email"
             value={metadata?.email}
+            // {...register('email')}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 value:text-black"
           />
         </div>
       </div>
       <div className="flex flex-row gap-8 mb-4">
         <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="text-sm font-bold">
+          <label htmlFor="birthdate" className="text-sm font-bold">
             Data de Aniversario
           </label>
           <input
             id="birthdate"
             type="text"
-            value={dataNiver}
+            // value={dataNiver}
+            {...register('birthdate')}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 value:text-black"
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="text-sm font-bold">
+          <label htmlFor="gender" className="text-sm font-bold">
             Sexo
           </label>
           <input
             id="gender"
             type="text"
-            value={metadata?.gender}
+            // value={metadata?.gender}
+            {...register('gender')}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-44 value:text-black"
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="text-sm font-bold">
+          <label htmlFor="perfil" className="text-sm font-bold">
             Perfil
           </label>
           <input
-            id=""
+            id="perfil"
             type="text"
             value={metadata?.role}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-44 value:text-black"
@@ -81,6 +127,7 @@ export function Conta() {
             type="text"
             placeholder="000.000.000-00"
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 placeholder:text-gray-400"
+            {...register('cpf')}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -92,6 +139,7 @@ export function Conta() {
             type="text"
             placeholder="00.000.000-00"
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 placeholder:text-gray-400"
+            {...register('rg')}
           />
         </div>
       </div>
@@ -105,6 +153,7 @@ export function Conta() {
             type="text"
             placeholder="Rua. Almeida de Costa"
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 placeholder:text-gray-400"
+            {...register('rua')}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -116,6 +165,7 @@ export function Conta() {
             type="text"
             placeholder="325"
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-24 placeholder:text-gray-400"
+            {...register('numero')}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -127,6 +177,7 @@ export function Conta() {
             type="text"
             placeholder="Confidentes"
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-64 placeholder:text-gray-400"
+            {...register('bairro')}
           />
         </div>
       </div>
@@ -140,6 +191,7 @@ export function Conta() {
             type="text"
             placeholder="Bloco 9 ap.209"
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 placeholder:text-gray-400"
+            {...register('complemento')}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -149,8 +201,9 @@ export function Conta() {
           <input
             id="uf"
             type="text"
-            placeholder="325"
+            placeholder="CE"
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-24 placeholder:text-gray-400"
+            {...register('uf')}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -162,6 +215,7 @@ export function Conta() {
             type="text"
             placeholder="Fortaleza"
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-64 placeholder:text-gray-400"
+            {...register('cidade')}
           />
         </div>
       </div>
@@ -174,7 +228,8 @@ export function Conta() {
             id="cep"
             type="text"
             placeholder="00000-000"
-            className="border-gray-300 border-2 rounded-lg p-3 text-base w-44 placeholder:text-black"
+            className="border-gray-300 border-2 rounded-lg p-3 text-base w-44 placeholder:text-gray-400"
+            {...register('cep')}
           />
           <a
             href="https://buscacepinter.correios.com.br/app/endereco/index.php"
@@ -188,6 +243,6 @@ export function Conta() {
           Salvar
         </button>
       </div>
-    </>
+    </form>
   )
 }
