@@ -194,16 +194,44 @@ export function Conta() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="uf" className="text-sm font-bold">
-            Estado
-          </label>
-          <input
-            id="uf"
-            type="text"
-            placeholder="CE"
-            className="border-gray-300 border-2 rounded-lg p-3 text-base w-24 placeholder:text-gray-400"
+          <p className="text-sm font-bold">Estado</p>
+          <select
+            id="UF"
+            name="UF"
             {...register('uf')}
-          />
+            className="basis-[50%] border-gray-300 border-2 rounded-lg p-3 text-base w-24"
+          >
+            <option value="" className="text-gray-400">
+              UF
+            </option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MS">MS</option>
+            <option value="MT">MT</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS">RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+          </select>
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="Cidade" className="text-sm font-bold">
