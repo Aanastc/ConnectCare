@@ -1,7 +1,8 @@
-import { Eyedropper, Trash, PlusCircle, CloudArrowUp } from 'phosphor-react'
+import { Eyedropper, Trash } from 'phosphor-react'
 import { useState } from 'react'
 import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 import { Conta } from '../Componetes/Conta'
+import { Informacao } from './Informacao'
 
 export function EditarPerfilProf() {
   const [isConta, setIsConta] = useState(true)
@@ -31,107 +32,7 @@ export function EditarPerfilProf() {
               Informações
             </button>
           </div>
-          {isConta ? (
-            <Conta />
-          ) : (
-            <>
-              <div className="flex flex-row gap-8 mb-4">
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="peso" className="text-sm font-bold">
-                    Peso
-                  </label>
-                  <input
-                    id="peso"
-                    type="text"
-                    placeholder="Insira seu peso"
-                    className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 placeholder:text-gray-400"
-                  />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="altura" className="text-sm font-bold">
-                    Altura
-                  </label>
-                  <input
-                    id="altura"
-                    type="text"
-                    placeholder="Insira sua altura"
-                    className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 placeholder:text-gray-400"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col mb-4">
-                <div className="flex flex-col">
-                  <label htmlFor="resumo" className="block text-sm font-bold">
-                    Resumo
-                  </label>
-                  <textarea
-                    name="resumo"
-                    id="resumo"
-                    placeholder="Fale um pouco sobre você"
-                    className="border-gray-300 border-2 rounded-lg p-3 h-44 text-base placeholder:text-gray-400 mt-2 resize-none"
-                    style={{ verticalAlign: 'top' }}
-                  />
-                </div>
-              </div>
-              <h2 className="text-lg font-bold mb-2">Experiências</h2>
-              <div className="flex flex-row gap-8 mb-4">
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="cargo" className="text-sm font-bold">
-                    Cargo
-                  </label>
-                  <input
-                    id="cargo"
-                    type="text"
-                    placeholder="Insira seu cargo"
-                    className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 placeholder:text-gray-400"
-                  />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="duracao" className="text-sm font-bold">
-                    Duração
-                  </label>
-                  <input
-                    id="duracao"
-                    type="text"
-                    placeholder="Insira a duração"
-                    className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 placeholder:text-gray-400"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col mb-4">
-                <div className="flex flex-col">
-                  <label htmlFor="resumo" className="block text-sm font-bold">
-                    Resumo
-                  </label>
-                  <textarea
-                    name="atividade"
-                    id="atividade"
-                    placeholder="Descreva suas atividades"
-                    className="border-gray-300 border-2 rounded-lg p-3 h-44 text-base placeholder:text-gray-400 mt-2 resize-none"
-                    style={{ verticalAlign: 'top' }}
-                  />
-                </div>
-              </div>
-              <button className="flex flex-row justify-end items-center gap-2 font-bold mb-4">
-                Adicionar
-                <PlusCircle size={32} />
-              </button>
-              <div className="flex flex-row justify-between">
-                <button className="flex flex-row border-2 border-gray-400 p-2 rounded-lg gap-4 items-center w-64 justify-between">
-                  Upload curriculo
-                  <CloudArrowUp size={28} />
-                </button>
-                <button className="flex flex-row border-2 border-gray-400 p-2 rounded-lg gap-4 items-center w-64 justify-between">
-                  Upload doc conselho
-                  <CloudArrowUp size={28} />
-                </button>
-                <button className="flex flex-row border-2 border-gray-400 p-2 rounded-lg gap-4 items-center w-64 justify-between">
-                  Upload certificados
-                  <CloudArrowUp size={28} />
-                </button>
-              </div>
-            </>
-          )}
+          {isConta ? <Conta /> : <Informacao />}
         </div>
       </div>
     </main>

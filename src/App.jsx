@@ -11,12 +11,14 @@ import { Verifique } from './Pages/SignUp/components/Verifique'
 import { Paciente } from './Layouts/Paciente'
 import { EditarPerfil } from './Pages/Perfis/Paciente/EditarPerfil'
 import { VisaoGeral } from './Pages/Perfis/Paciente/VisaoGeral'
+import { PerfilProf } from './Pages/Perfis/Paciente/PerfilProf'
 
-import './index.css'
 import { Profissional } from './Layouts/Profissional'
 import { VisaoGeralProf } from './Pages/Perfis/Profissional/VisaoGeralProf'
 import { EditarPerfilProf } from './Pages/Perfis/Profissional/EditarPerfilProf'
 import { Solicitacoes } from './Pages/Perfis/Profissional/Solicitacoes'
+
+import './index.css'
 
 export function App() {
   return (
@@ -34,6 +36,7 @@ export function App() {
       <Route path="/Paciente" element={<Paciente />}>
         <Route path="visaoGeral" element={<VisaoGeral />} />
         <Route path="editarPerfil" element={<EditarPerfil />} />
+        <Route path="perfilDoProfissional" element={<PerfilProf />} />
       </Route>
       <Route path="/Profissional" element={<Profissional />}>
         <Route path="visaoGeral" element={<VisaoGeralProf />} />

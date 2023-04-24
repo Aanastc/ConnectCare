@@ -33,11 +33,9 @@ export function Conta() {
         cep: data.cep
       })
       .eq('id', metadata?.id)
-    console.log(res)
+
     fetchProfile(metadata?.id)
   }
-
-  console.log(profile)
 
   useEffect(() => {
     reset({

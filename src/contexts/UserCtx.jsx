@@ -11,8 +11,7 @@ export function UserProvider({ children }) {
 
   async function fetchProfile(id) {
     const {
-      data: [profile],
-      error
+      data: [profile]
     } = await supabase.from('profiles').select('*').eq('id', id)
 
     setProfile(profile)
@@ -29,11 +28,9 @@ export function UserProvider({ children }) {
         return
       }
 
-      if (data.session) {
-        setMetadata(data.session?.user)
-        setAuthed(true)
-        fetchProfile(data.session.user.id)
-      }
+      setMetadata(data.session?.user)
+      setAuthed(true)
+      fetchProfile(data.session.user.id)
     }
 
     retriveSession()
@@ -73,6 +70,7 @@ export function UserProvider({ children }) {
       setError(error)
       return
     }
+    setError(undefined)
 
     setMetadata(data.session.user)
     setAuthed(true)

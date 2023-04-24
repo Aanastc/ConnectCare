@@ -11,21 +11,30 @@ import {
 import { Filtro } from './Filtro'
 import { Saudacao } from '../Componetes/Saudacao'
 import { Card } from './Card'
-
-const profissionais = [
-  {
-    name: 'Julia de Sousa',
-    especialidade: 'Cuidadora de idosos',
-    atendimentos: '12'
-  },
-  {
-    name: 'Antony Marques',
-    especialidade: 'Cuidadora Neonatal',
-    atendimentos: '8'
-  }
-]
+import { useEffect, useState } from 'react'
+import { supabase } from '../../../services/supabase'
 
 export function VisaoGeral() {
+  const [profissionais, setProfissionais] = useState([])
+
+  useEffect(() => {
+    async function getProfissionais() {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select(
+          `
+      name,
+      profissional (
+        especialidade
+      )`
+        )
+        .eq('role', 'caregiver')
+      if (error) console.log('Erro ao buscar profissionais:', error)
+      else setProfissionais(data)
+    }
+    getProfissionais()
+  }, [])
+
   const especialidade =
     'border-purple-400 border-2 rounded flex flex-col justify-center items-center h-24 w-24 m-2 p-2 hover:bg-purple-400 hover:shadow-md'
 
@@ -71,7 +80,7 @@ export function VisaoGeral() {
         {profissionais.map(perfilDoProfissional => (
           <Card
             name={perfilDoProfissional.name}
-            especialidade={perfilDoProfissional.especialidade}
+            especialidade={perfilDoProfissional?.profissional?.especialidade}
             atendimentos={perfilDoProfissional.atendimentos}
           />
         ))}
