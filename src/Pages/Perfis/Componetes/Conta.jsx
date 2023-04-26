@@ -1,22 +1,19 @@
-import { useEffect, useContext } from 'react'
-import { UserContext } from '../../../contexts/UserCtx'
+import { useEffect } from 'react'
+import { useUser } from '../../../contexts/UserCtx'
 import { supabase } from '../../../services/supabase'
 import { useForm } from 'react-hook-form'
 import { format } from 'date-fns'
 
 export function Conta() {
-  const { metadata, profile, fetchProfile } = useContext(UserContext)
+  const { user, refetchUser, loading } = useUser()
 
   const { reset, register, handleSubmit } = useForm()
 
-  const dataNiver = format(
-    new Date(profile?.birthdate),
-    'dd/LL/yyyy'
-  ).toString()
-
   async function handleConta(data) {
-    const birthdate = new Date(data.birthdate).toISOString()
-    const { data: res, error } = await supabase
+    const [day, month, year] = data.birthdate.split('/')
+    const birthdate = new Date(`${year}/${month}/${day}`).toISOString()
+
+    await supabase
       .from('profiles')
       .update({
         name: data.name,
@@ -32,27 +29,28 @@ export function Conta() {
         cidade: data.cidade,
         cep: data.cep
       })
-      .eq('id', metadata?.id)
-
-    fetchProfile(metadata?.id)
+      .eq('id', user?.id)
+    refetchUser()
   }
 
   useEffect(() => {
+    if (loading) return
+
     reset({
-      name: profile?.name,
-      birthdate: dataNiver,
-      gender: profile?.gender,
-      cpf: profile.CPF,
-      rg: profile.RG,
-      rua: profile.logadouro,
-      numero: profile.numero,
-      bairro: profile.bairro,
-      complemento: profile.complemento,
-      uf: profile.estado,
-      cidade: profile.cidade,
-      cep: profile.cep
+      name: user.name,
+      birthdate: format(new Date(user.birthdate), 'dd/LL/yyyy').toString(),
+      gender: user?.gender,
+      cpf: user.CPF,
+      rg: user.RG,
+      rua: user.logadouro,
+      numero: user.numero,
+      bairro: user.bairro,
+      complemento: user.complemento,
+      uf: user.estado,
+      cidade: user.cidade,
+      cep: user.cep
     })
-  }, [])
+  }, [user, loading])
 
   return (
     <form onSubmit={handleSubmit(handleConta)}>
@@ -75,7 +73,7 @@ export function Conta() {
           <input
             id="email"
             type="email"
-            value={profile?.email}
+            value={user?.email}
             // {...register('email')}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 value:text-black"
           />
@@ -111,7 +109,7 @@ export function Conta() {
           <input
             id="perfil"
             type="text"
-            value={profile?.role}
+            value={user?.role}
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-44 value:text-black"
           />
         </div>

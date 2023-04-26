@@ -1,110 +1,49 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { supabase } from '../services/supabase'
+import { useAuth } from './AuthCtx'
 
 export const UserContext = createContext(null)
 
 export function UserProvider({ children }) {
-  const [metadata, setMetadata] = useState(undefined)
-  const [authed, setAuthed] = useState(false)
-  const [error, setError] = useState(undefined)
-  const [profile, setProfile] = useState(undefined)
-
-  async function fetchProfile(id) {
-    const {
-      data: [profile]
-    } = await supabase.from('profiles').select('*').eq('id', id)
-
-    setProfile(profile)
-
-    return profile
-  }
+  const [user, setUser] = useState({})
+  const [loading, setLoading] = useState(true)
+  const [refetchIndex, setRefetchIndex] = useState(1)
+  const { session, authed } = useAuth()
 
   useEffect(() => {
-    const retriveSession = async () => {
-      const { data, error } = await supabase.auth.getSession()
-      console.log(data)
-      if (error) {
-        setError(error)
-        return
-      }
+    if (!authed) return
 
-      setMetadata(data.session?.user)
-      setAuthed(true)
-      fetchProfile(data.session.user.id)
+    const getUser = async () => {
+      const {
+        data: [profile]
+      } = await supabase.from('profiles').select('*').eq('id', session.user.id)
+
+      setUser(profile)
+      setLoading(false)
+
+      return profile
     }
 
-    retriveSession()
-  }, [])
+    getUser()
+  }, [authed, refetchIndex])
 
-  async function singUp({ name, birthdate, gender, role, email, password }) {
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          name,
-          birthdate,
-          gender,
-          role
-        },
-        emailRedirectTo:
-          role === 'patient'
-            ? 'http://localhost:5173/Paciente/visaoGeral'
-            : 'http://localhost:5173/Profissional/visaoGeral'
-      }
-    })
-
-    if (error) {
-      setError(error)
-      return
-    }
-  }
-
-  async function singIn({ email, password }) {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password
-    })
-
-    if (error) {
-      setError(error)
-      return
-    }
-    setError(undefined)
-
-    setMetadata(data.session.user)
-    setAuthed(true)
-    fetchProfile(data.session.user.id)
-    return data.session.user.user_metadata
-  }
-
-  async function signOut() {
-    const { error } = await supabase.auth.signOut()
-
-    if (error) {
-      setError(error)
-      return
-    }
-
-    setMetadata(undefined)
-    setAuthed(false)
-    setProfile(undefined)
+  function refetchUser() {
+    setRefetchIndex(prev => prev + 1)
   }
 
   return (
     <UserContext.Provider
       value={{
-        metadata,
-        authed,
-        error,
-        singUp,
-        singIn,
-        signOut,
-        profile,
-        fetchProfile
+        user,
+        loading,
+        refetchUser
       }}
     >
       {children}
     </UserContext.Provider>
   )
+}
+
+export const useUser = () => {
+  return useContext(UserContext)
 }

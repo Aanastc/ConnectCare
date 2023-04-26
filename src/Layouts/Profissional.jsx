@@ -9,6 +9,7 @@ import {
 } from 'phosphor-react'
 
 import { HeaderApp } from '../Pages/Perfis/Componetes/HeaderApp'
+import { useUser } from '../contexts/UserCtx'
 
 import logo from '../assets/icons/LogoRoxa.svg'
 
@@ -19,6 +20,7 @@ export function Profissional() {
     'flex mb-4 gap-2 rounded-md cursor-pointer text-black text-sm items-center'
 
   const [open, setOpen] = useState(true)
+  const { loading } = useUser()
 
   return (
     <>
@@ -154,6 +156,7 @@ export function Profissional() {
           )}
         </nav>
         <div className={`relative top-0 z-2 ${open ? 'ml-64' : 'ml-32'}`}>
+          {/* <HeaderApp /> */}
           <Outlet />
         </div>
       </>
