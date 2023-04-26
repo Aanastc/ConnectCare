@@ -74,15 +74,7 @@ export function Paciente() {
                         <p>Geral</p>
                       </NavLink>
                     </li>
-                    <li
-                      className={`flex flex-row gap-2 mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ${
-                        !open && 'scale-50'
-                      }`}
-                    >
-                      <ChatCircleDots size={26} />
-                      <p>Chat</p>
-                    </li>
-                    <li className="flex flex-row gap-2 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center">
+                    <li className="flex flex-row gap-2 mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center">
                       <CalendarCheck size={26} />
                       <p>Servicos</p>
 
@@ -91,6 +83,14 @@ export function Paciente() {
                           !open && 'hidden'
                         } origin-left duration-500`}
                       ></span>
+                    </li>
+                    <li
+                      className={`flex flex-row gap-2 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ${
+                        !open && 'scale-50'
+                      }`}
+                    >
+                      <ChatCircleDots size={26} />
+                      <p>Chat</p>
                     </li>
                   </>
                 </ul>
@@ -130,9 +130,6 @@ export function Paciente() {
                       </NavLink>
                     </li>
                     <li className="flex flex-row mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
-                      <ChatCircleDots size={24} />
-                    </li>
-                    <li className="flex flex-row rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
                       <CalendarCheck size={24} />
 
                       <span
@@ -140,6 +137,9 @@ export function Paciente() {
                           !open && 'hidden'
                         } origin-left duration-500`}
                       ></span>
+                    </li>
+                    <li className="flex flex-row rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
+                      <ChatCircleDots size={24} />
                     </li>
                   </>
                 </ul>

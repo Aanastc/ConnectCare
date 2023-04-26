@@ -12,6 +12,7 @@ import { Paciente } from './Layouts/Paciente'
 import { EditarPerfil } from './Pages/Perfis/Paciente/EditarPerfil'
 import { VisaoGeral } from './Pages/Perfis/Paciente/VisaoGeral'
 import { PerfilProf } from './Pages/Perfis/Paciente/PerfilProf'
+import { ContratoInfos } from './Pages/Perfis/Paciente/ContratoInfos'
 
 import { Profissional } from './Layouts/Profissional'
 import { VisaoGeralProf } from './Pages/Perfis/Profissional/VisaoGeralProf'
@@ -37,6 +38,7 @@ export function App() {
         <Route path="visaoGeral" element={<VisaoGeral />} />
         <Route path="editarPerfil" element={<EditarPerfil />} />
         <Route path="perfilDoProfissional" element={<PerfilProf />} />
+        <Route path="ContratoInfo" element={<ContratoInfos />} />
       </Route>
       <Route path="/Profissional" element={<Profissional />}>
         <Route path="visaoGeral" element={<VisaoGeralProf />} />

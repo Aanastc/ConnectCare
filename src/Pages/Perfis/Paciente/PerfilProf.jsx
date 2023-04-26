@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 
 export function PerfilProf() {
@@ -77,9 +78,11 @@ export function PerfilProf() {
               <button className="bg-purple-500 text-white rounded-full h-10 w-72">
                 CONVERSAR COM PROFISSIONAL
               </button>
-              <button className="bg-purple-500 text-white rounded-full h-10 w-72">
-                CONTRATAR
-              </button>
+              <NavLink to="/Paciente/ContratoInfo">
+                <button className="bg-purple-500 text-white rounded-full h-10 w-72">
+                  CONTRATAR
+                </button>
+              </NavLink>
             </div>
           </div>
         </div>

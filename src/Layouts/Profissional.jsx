@@ -75,16 +75,6 @@ export function Profissional() {
                       </NavLink>
                     </li>
                     <NavLink
-                      className="flex mb-4 gap-2 rounded-md cursor-pointer text-black text-sm items-center"
-                      // to=""
-                      // className={({ isActive }) =>
-                      //   isActive ? LinkClassActive : LinkClass
-                      // }
-                    >
-                      <ChatCircleDots size={26} />
-                      <p>Chat</p>
-                    </NavLink>
-                    <NavLink
                       to="solicitacoes"
                       className={({ isActive }) =>
                         isActive ? LinkClassActive : LinkClass
@@ -97,6 +87,16 @@ export function Profissional() {
                           !open && 'hidden'
                         } origin-left duration-500`}
                       ></span>
+                    </NavLink>
+                    <NavLink
+                      className="flex gap-2 rounded-md cursor-pointer text-black text-sm items-center"
+                      // to=""
+                      // className={({ isActive }) =>
+                      //   isActive ? LinkClassActive : LinkClass
+                      // }
+                    >
+                      <ChatCircleDots size={26} />
+                      <p>Chat</p>
                     </NavLink>
                   </>
                 </ul>
@@ -136,9 +136,6 @@ export function Profissional() {
                       </NavLink>
                     </li>
                     <li className="flex flex-row mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
-                      <ChatCircleDots size={24} />
-                    </li>
-                    <li className="flex flex-row rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
                       <CalendarCheck size={24} />
 
                       <span
@@ -146,6 +143,9 @@ export function Profissional() {
                           !open && 'hidden'
                         } origin-left duration-500`}
                       ></span>
+                    </li>
+                    <li className="flex flex-row mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
+                      <ChatCircleDots size={24} />
                     </li>
                   </>
                 </ul>
