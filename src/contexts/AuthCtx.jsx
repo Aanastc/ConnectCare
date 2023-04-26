@@ -3,6 +3,11 @@ import { supabase } from '../services/supabase'
 
 export const AuthContext = createContext(null)
 
+const roleRoute = {
+  patient: 'Paciente/visaoGeral',
+  caregiver: 'Profissional/visaoGeral'
+}
+
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(undefined)
   const [authed, setAuthed] = useState(false)
@@ -38,7 +43,7 @@ export function AuthProvider({ children }) {
           gender,
           role
         },
-        emailRedirectTo: 'http://localhost:5173/auth/sign-in'
+        emailRedirectTo: `http://localhost:5173/${roleRoute[role]}`
       }
     })
 
