@@ -1,8 +1,9 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { CaretLeft } from 'phosphor-react'
-import { UserContext } from '../../../contexts/UserCtx'
+import { useAuth } from '../../../contexts/AuthCtx'
+
 export function PersonalDetails() {
   const [status, setStatus] = useState({
     type: '',
@@ -10,7 +11,7 @@ export function PersonalDetails() {
   })
 
   const { register, handleSubmit } = useFormContext()
-  const { singUp } = useContext(UserContext)
+  const { singUp } = useAuth()
   const navigate = useNavigate()
 
   async function handleCreateUser({
@@ -24,31 +25,38 @@ export function PersonalDetails() {
     password,
     passwordConfirmation
   }) {
-    if (password.length < 8) {
+    try {
+      if (password.length < 8) {
+        setStatus({
+          type: 'error',
+          mensagem: 'A senha deve ter no mínimo 8 caracteres.'
+        })
+        return
+      } else if (password !== passwordConfirmation) {
+        setStatus({
+          type: 'error',
+          mensagem: 'As senhas não coincidem.'
+        })
+        return
+      }
+
+      const birthdate = new Date(`${year}/${month}/${day}`).toISOString()
+
+      await singUp({
+        name,
+        birthdate,
+        gender,
+        role,
+        email,
+        password
+      })
+      navigate('/auth/sign-up/autenticacao')
+    } catch (error) {
       setStatus({
         type: 'error',
-        mensagem: 'A senha deve ter no mínimo 8 caracteres.'
+        mensagem: 'Ocorreu um erro ao fazer cadastro.'
       })
-      return
-    } else if (password !== passwordConfirmation) {
-      setStatus({
-        type: 'error',
-        mensagem: 'As senhas não coincidem.'
-      })
-      return
     }
-
-    const birthdate = new Date(`${year}/${month}/${day}`).toISOString()
-
-    await singUp({
-      name,
-      birthdate,
-      gender,
-      role,
-      email,
-      password
-    })
-    navigate('/auth/sign-up/autenticacao')
   }
 
   return (

@@ -1,7 +1,5 @@
+import { useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-import { HeaderApp } from '../Pages/Perfis/Componetes/HeaderApp'
-import { RequireAuth } from '../contexts/RequireAuth'
-
 import {
   ArrowLeft,
   ArrowRight,
@@ -9,7 +7,10 @@ import {
   ChatCircleDots,
   Stack
 } from 'phosphor-react'
-import { useState } from 'react'
+
+import { HeaderApp } from '../Pages/Perfis/Componetes/HeaderApp'
+import { useUser } from '../contexts/UserCtx'
+
 import logo from '../assets/icons/LogoRoxa.svg'
 
 export function Profissional() {
@@ -19,9 +20,10 @@ export function Profissional() {
     'flex mb-4 gap-2 rounded-md cursor-pointer text-black text-sm items-center'
 
   const [open, setOpen] = useState(true)
+  const { loading } = useUser()
 
   return (
-    <RequireAuth>
+    <>
       <HeaderApp />
       <>
         <nav
@@ -75,16 +77,6 @@ export function Profissional() {
                       </NavLink>
                     </li>
                     <NavLink
-                      className="flex mb-4 gap-2 rounded-md cursor-pointer text-black text-sm items-center"
-                      // to=""
-                      // className={({ isActive }) =>
-                      //   isActive ? LinkClassActive : LinkClass
-                      // }
-                    >
-                      <ChatCircleDots size={26} />
-                      <p>Chat</p>
-                    </NavLink>
-                    <NavLink
                       to="solicitacoes"
                       className={({ isActive }) =>
                         isActive ? LinkClassActive : LinkClass
@@ -97,6 +89,16 @@ export function Profissional() {
                           !open && 'hidden'
                         } origin-left duration-500`}
                       ></span>
+                    </NavLink>
+                    <NavLink
+                      className="flex gap-2 rounded-md cursor-pointer text-black text-sm items-center"
+                      // to=""
+                      // className={({ isActive }) =>
+                      //   isActive ? LinkClassActive : LinkClass
+                      // }
+                    >
+                      <ChatCircleDots size={26} />
+                      <p>Chat</p>
                     </NavLink>
                   </>
                 </ul>
@@ -136,9 +138,6 @@ export function Profissional() {
                       </NavLink>
                     </li>
                     <li className="flex flex-row mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
-                      <ChatCircleDots size={24} />
-                    </li>
-                    <li className="flex flex-row rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
                       <CalendarCheck size={24} />
 
                       <span
@@ -147,6 +146,9 @@ export function Profissional() {
                         } origin-left duration-500`}
                       ></span>
                     </li>
+                    <li className="flex flex-row mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
+                      <ChatCircleDots size={24} />
+                    </li>
                   </>
                 </ul>
               </div>
@@ -154,9 +156,10 @@ export function Profissional() {
           )}
         </nav>
         <div className={`relative top-0 z-2 ${open ? 'ml-64' : 'ml-32'}`}>
+          {/* <HeaderApp /> */}
           <Outlet />
         </div>
       </>
-    </RequireAuth>
+    </>
   )
 }

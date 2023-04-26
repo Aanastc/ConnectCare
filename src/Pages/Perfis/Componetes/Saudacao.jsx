@@ -1,11 +1,10 @@
-import { UserContext } from '../../../contexts/UserCtx'
-import { useContext } from 'react'
 import { useState, useEffect } from 'react'
+import { useUser } from '../../../contexts/UserCtx'
 import homePerfil from '../../../../src/assets/icons/homePerfil.svg'
 
 export function Saudacao() {
-  const { profile } = useContext(UserContext)
   const [horario, setHorario] = useState(new Date().getHours())
+  const { user } = useUser()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -30,7 +29,7 @@ export function Saudacao() {
         className="flex items-start absolute top-0 left-28"
       />
       <h1 className="text-3xl font-normal text-black flex items-center uppercase">
-        {`${saudacao}, ${profile?.name}!`}
+        {`${saudacao}, ${user.name || ''}!`}
       </h1>
     </div>
   )

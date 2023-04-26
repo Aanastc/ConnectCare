@@ -1,15 +1,17 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Bell, CaretDown } from 'phosphor-react'
-import { Fragment, useContext } from 'react'
+import { Fragment } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
-import { UserContext } from '../../../contexts/UserCtx'
+import { useAuth } from '../../../contexts/AuthCtx'
+import { useUser } from '../../../contexts/UserCtx'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 export function HeaderApp() {
-  const { signOut, profile } = useContext(UserContext)
+  const { signOut } = useAuth()
+  const { user } = useUser()
   const navigate = useNavigate()
 
   async function handleSingOut() {
@@ -27,7 +29,7 @@ export function HeaderApp() {
           class="relative inline-block h-[40px] w-[40px] !rounded-full object-cover object-center"
         />
         <p className="text-sm font-medium text-purple-600 uppercase">
-          {profile?.name}
+          {user.name}
         </p>
         <Menu as="div" className="relative inline-block text-left">
           <div>
@@ -54,7 +56,7 @@ export function HeaderApp() {
               <div className="py-1">
                 <Menu.Item>
                   {({ active }) =>
-                    profile?.role === 'patient' ? (
+                    user.role === 'patient' ? (
                       <NavLink
                         to="/Paciente/editarPerfil"
                         className={classNames(
@@ -67,7 +69,7 @@ export function HeaderApp() {
                         Editar Perfil
                       </NavLink>
                     ) : (
-                      profile?.role === 'caregiver' && (
+                      user.role === 'caregiver' && (
                         <NavLink
                           to="/Profissional/editarPerfil"
                           className={classNames(
