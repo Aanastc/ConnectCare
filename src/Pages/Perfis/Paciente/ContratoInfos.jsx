@@ -33,6 +33,35 @@ export function ContratoInfos() {
         <div className="flex gap-8 pb-2 border-b-2 border-b-black mb-4">
           <h1 className="text-2xl text-purple-400">Detalhes do Caso Clínico</h1>
         </div>
+        <div className="flex flex-col">
+          <div className="flex flex-col mb-4">
+            <div className="flex flex-col">
+              <label htmlFor="diagnostico" className="block text-sm font-bold">
+                Diagnóstico
+              </label>
+              <textarea
+                name="diagnostico"
+                id="diagnostico"
+                placeholder='Descreva o diagnóstico'
+                className="border-gray-300 border-2 rounded-lg p-3 h-20 w-56 text-base placeholder:text-gray-400 mt-2 resize-none"
+                style={{ verticalAlign: 'top' }}
+              />
+            </div>
+          </div>
+          <div className="flex flex-col mb-4">
+            <div className="flex flex-col">
+              <label htmlFor="descricao" className="block text-sm font-bold">
+                Descrição
+              </label>
+              <textarea
+                name="descricao"
+                id="descricao"
+                className="border-gray-300 border-2 rounded-lg p-3 h-36 text-base placeholder:text-gray-400 mt-2 resize-none"
+                style={{ verticalAlign: 'top' }}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </form>
   )
