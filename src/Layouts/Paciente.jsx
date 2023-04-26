@@ -1,7 +1,5 @@
-import { HeaderApp } from '../Pages/Perfis/Componetes/HeaderApp'
+import { useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-import { RequireAuth } from '../contexts/RequireAuth'
-
 import {
   ArrowLeft,
   Stack,
@@ -9,8 +7,10 @@ import {
   CalendarCheck,
   ArrowRight
 } from 'phosphor-react'
+
+import { HeaderApp } from '../Pages/Perfis/Componetes/HeaderApp'
+
 import logo from '../assets/icons/LogoRoxa.svg'
-import { useState } from 'react'
 
 export function Paciente() {
   const [open, setOpen] = useState(true)
@@ -21,7 +21,7 @@ export function Paciente() {
     'flex mb-4 gap-2 rounded-md cursor-pointer text-black text-sm items-center'
 
   return (
-    <RequireAuth>
+    <>
       <HeaderApp />
       <>
         <nav
@@ -151,6 +151,6 @@ export function Paciente() {
           <Outlet />
         </div>
       </>
-    </RequireAuth>
+    </>
   )
 }

@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
+
 import { Auth } from './Layouts/Auth'
 import { Home } from './Pages/Home'
 import { SignIn } from './Pages/SignIn'
@@ -7,6 +8,7 @@ import { PersonalDetails } from './Pages/SignUp/components/PersonalDetails'
 import { Role } from './Pages/SignUp/components/Role'
 import { UserEmail } from './Pages/SignUp/components/UserEmail'
 import { Verifique } from './Pages/SignUp/components/Verifique'
+import { RequireAuth } from './contexts/RequireAuth'
 
 import { Paciente } from './Layouts/Paciente'
 import { EditarPerfil } from './Pages/Perfis/Paciente/EditarPerfil'
@@ -34,13 +36,21 @@ export function App() {
           <Route path="autenticacao" element={<Verifique />} />
         </Route>
       </Route>
-      <Route path="/Paciente" element={<Paciente />}>
+      <Route
+        path="/Paciente"
+        element={<RequireAuth roles={['patient']} component={<Paciente />} />}
+      >
         <Route path="visaoGeral" element={<VisaoGeral />} />
         <Route path="editarPerfil" element={<EditarPerfil />} />
         <Route path="perfilDoProfissional" element={<PerfilProf />} />
         <Route path="ContratoInfo" element={<ContratoInfos />} />
       </Route>
-      <Route path="/Profissional" element={<Profissional />}>
+      <Route
+        path="/Profissional"
+        element={
+          <RequireAuth roles={['caregiver']} component={<Profissional />} />
+        }
+      >
         <Route path="visaoGeral" element={<VisaoGeralProf />} />
         <Route path="editarPerfil" element={<EditarPerfilProf />} />
         <Route path="solicitacoes" element={<Solicitacoes />} />

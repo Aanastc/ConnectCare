@@ -1,7 +1,12 @@
 import { FacebookLogo, GoogleLogo } from 'phosphor-react'
-import { useContext, useEffect, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
-import { UserContext } from '../contexts/UserCtx'
+import { useEffect, useState } from 'react'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthCtx'
+
+const roleRoute = {
+  patient: '/Paciente/visaoGeral',
+  caregiver: '/Profissional/visaoGeral'
+}
 
 export function SignIn() {
   const [formData, setFormData] = useState({
@@ -14,62 +19,46 @@ export function SignIn() {
     mensagem: ''
   })
 
-  const { singIn, error, authed, profile } = useContext(UserContext)
-
+  const { singIn } = useAuth()
   const navigate = useNavigate()
+  const { state } = useLocation()
 
   const valueInput = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value })
 
   const addUser = async e => {
-    e.preventDefault()
+    try {
+      e.preventDefault()
 
-    var saveDataForm = true
+      var saveDataForm = true
 
-    for (let u in formData) {
-      if (formData[u] === '') {
-        saveDataForm = false
+      for (let u in formData) {
+        if (formData[u] === '') {
+          saveDataForm = false
+        }
       }
-    }
 
-    if (!saveDataForm) {
-      setStatus({
-        type: 'error',
-        mensagem: 'Erro: Preencha os campos!'
+      if (!saveDataForm) {
+        setStatus({
+          type: 'error',
+          mensagem: 'Erro: Preencha os campos!'
+        })
+        return
+      }
+
+      const { user } = await singIn({
+        email: formData.email,
+        password: formData.password
       })
-      return
-    }
 
-    const data = await singIn({
-      email: formData.email,
-      password: formData.password
-    })
-
-    if (error) {
+      navigate(state?.path || roleRoute[user.user_metadata.role])
+    } catch (error) {
       setStatus({
         type: 'error',
         mensagem: 'Erro: Email ou senha estão incorretos!'
       })
-      return
-    }
-
-    if (data?.role === 'patient') {
-      navigate('/Paciente/visaoGeral')
-    } else if (data?.role === 'caregiver') {
-      navigate('/Profissional/visaoGeral')
     }
   }
-
-  useEffect(() => {
-    if (!authed) {
-      return
-    }
-    if (profile?.role === 'patient') {
-      navigate('/Paciente/visaoGeral')
-    } else if (profile?.role === 'caregiver') {
-      navigate('/Profissional/visaoGeral')
-    }
-  }, [authed])
 
   return (
     <div className="p-6 rounded-xl shadow-lg bg-white max-w-md w-full">

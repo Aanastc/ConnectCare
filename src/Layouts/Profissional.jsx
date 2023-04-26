@@ -1,7 +1,5 @@
+import { useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-import { HeaderApp } from '../Pages/Perfis/Componetes/HeaderApp'
-import { RequireAuth } from '../contexts/RequireAuth'
-
 import {
   ArrowLeft,
   ArrowRight,
@@ -9,7 +7,9 @@ import {
   ChatCircleDots,
   Stack
 } from 'phosphor-react'
-import { useState } from 'react'
+
+import { HeaderApp } from '../Pages/Perfis/Componetes/HeaderApp'
+
 import logo from '../assets/icons/LogoRoxa.svg'
 
 export function Profissional() {
@@ -21,7 +21,7 @@ export function Profissional() {
   const [open, setOpen] = useState(true)
 
   return (
-    <RequireAuth>
+    <>
       <HeaderApp />
       <>
         <nav
@@ -157,6 +157,6 @@ export function Profissional() {
           <Outlet />
         </div>
       </>
-    </RequireAuth>
+    </>
   )
 }
