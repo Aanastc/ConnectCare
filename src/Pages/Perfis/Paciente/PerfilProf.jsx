@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { useState } from 'react'
-=======
-import { NavLink } from 'react-router-dom'
->>>>>>> e11bcb0cdf650f3e3e3a8c7bdcd3d418628c3fd0
 import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 import { supabase } from '../../../services/supabase'
 import { useEffect } from 'react'
@@ -116,19 +112,6 @@ export function PerfilProf() {
                   </button>
                 </NavLink>
               </div>
-<<<<<<< HEAD
-=======
-            </div>
-            <div className="mb-2 flex justify-center gap-10">
-              <button className="bg-purple-500 text-white rounded-full h-10 w-72">
-                CONVERSAR COM PROFISSIONAL
-              </button>
-              <NavLink to="/Paciente/ContratoInfo">
-                <button className="bg-purple-500 text-white rounded-full h-10 w-72">
-                  CONTRATAR
-                </button>
-              </NavLink>
->>>>>>> e11bcb0cdf650f3e3e3a8c7bdcd3d418628c3fd0
             </div>
           </div>
         </div>
