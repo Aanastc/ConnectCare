@@ -1,4 +1,5 @@
 import { CaretRight } from 'phosphor-react'
+import arrow from '../../../assets/icons/caret-right-thin.svg'
 export function ContratoDados() {
   return (
     <form>
@@ -6,22 +7,22 @@ export function ContratoDados() {
         <div className="flex gap-8 pb-2 border-b-2 border-b-black mb-4">
           <h1 className="text-2xl text-purple-400">Detalhes do Contrato</h1>
         </div>
-        <div className="flex flex-row justify-between mb-4">
+        <div className="flex flex-row items-center mb-4 gap-36">
           <div className="flex flex-col">
             <p className="text-sm font-bold">Período</p>
-            <div className="border-gray-300 border-2 rounded-lg w-96 flex justify-center items-center">
-              <div className="pl-2 flex flex-col">
+            <div className="border-gray-300 border-2 rounded-lg w-96 h-14 flex justify-between items-center z-20 px-2">
+              <div className="flex flex-col">
                 <label for="dia" className="text-sm text-gray-500 font-medium">
                   De
                 </label>
-                <input type="date" id="dia" name="dia" className="font-bold" />
+                <input
+                  type="date"
+                  id="dia"
+                  name="dia"
+                  className="font-bold focus::border-none focus::outline-none"
+                />
               </div>
-              <CaretRight
-                size={40}
-                color="#A3A3A3"
-                weight="thin"
-                // className="absolute top-0 left-28"
-              />
+              <img src={arrow} className="absolute top-30 left-44 w-20 z-0" />
               <div className="pl-2 flex flex-col">
                 <label for="dia" className="text-sm text-gray-500 font-medium">
                   Até
@@ -30,7 +31,7 @@ export function ContratoDados() {
               </div>
             </div>
           </div>
-          <div>
+          <div className="ml-2">
             <p className="text-sm font-bold">Horário</p>
             <div className="flex flex-row gap-2">
               <div>
@@ -42,7 +43,7 @@ export function ContratoDados() {
                 />
                 <label
                   htmlFor="manha"
-                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-12 flex justify-center items-center cursor-pointer"
+                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-14 flex justify-center items-center cursor-pointer"
                 >
                   <span>Manhã</span>
                 </label>
@@ -56,7 +57,7 @@ export function ContratoDados() {
                 />
                 <label
                   htmlFor="tarde"
-                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-12 flex justify-center items-center cursor-pointer"
+                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-14 flex justify-center items-center cursor-pointer"
                 >
                   <span>Tarde</span>
                 </label>
@@ -70,7 +71,7 @@ export function ContratoDados() {
                 />
                 <label
                   htmlFor="noite"
-                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-12 flex justify-center items-center cursor-pointer"
+                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-14 flex justify-center items-center cursor-pointer"
                 >
                   <span>Noite</span>
                 </label>
@@ -84,7 +85,7 @@ export function ContratoDados() {
                 />
                 <label
                   htmlFor="integral"
-                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-12 flex justify-center items-center cursor-pointer"
+                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-14 flex justify-center items-center cursor-pointer"
                 >
                   <span>Integral</span>
                 </label>
@@ -92,7 +93,7 @@ export function ContratoDados() {
             </div>
           </div>
         </div>
-        <div className="flex flex-row gap-8 mb-4">
+        <div className="flex flex-row gap-24 mb-4">
           <div>
             <p className="text-sm font-bold">Dias da semana</p>
             <div className="flex flex-row gap-2">
@@ -105,7 +106,7 @@ export function ContratoDados() {
                 />
                 <label
                   htmlFor="domingo"
-                  class="label-role border-gray-300 border-2 rounded-full w-7 flex justify-center items-center cursor-pointer"
+                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
                 >
                   <span>D</span>
                 </label>
@@ -119,7 +120,7 @@ export function ContratoDados() {
                 />
                 <label
                   htmlFor="segunda"
-                  class="label-role border-gray-300 border-2 rounded-full w-7 flex justify-center items-center cursor-pointer"
+                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
                 >
                   <span>S</span>
                 </label>
@@ -133,7 +134,7 @@ export function ContratoDados() {
                 />
                 <label
                   htmlFor="terca"
-                  class="label-role border-gray-300 border-2 rounded-full w-7 flex justify-center items-center cursor-pointer"
+                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
                 >
                   <span>T</span>
                 </label>
@@ -147,7 +148,7 @@ export function ContratoDados() {
                 />
                 <label
                   htmlFor="quarta"
-                  class="label-role border-gray-300 border-2 rounded-full w-7 flex justify-center items-center cursor-pointer"
+                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
                 >
                   <span>Q</span>
                 </label>
@@ -161,7 +162,7 @@ export function ContratoDados() {
                 />
                 <label
                   htmlFor="quinta"
-                  class="label-role border-gray-300 border-2 rounded-full w-7 flex justify-center items-center cursor-pointer"
+                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
                 >
                   <span>Q</span>
                 </label>
@@ -175,7 +176,7 @@ export function ContratoDados() {
                 />
                 <label
                   htmlFor="sexta"
-                  class="label-role border-gray-300 border-2 rounded-full w-7 flex justify-center items-center cursor-pointer"
+                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
                 >
                   <span>S</span>
                 </label>
@@ -189,7 +190,7 @@ export function ContratoDados() {
                 />
                 <label
                   htmlFor="sabado"
-                  class="label-role border-gray-300 border-2 rounded-full w-7 flex justify-center items-center cursor-pointer"
+                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
                 >
                   <span>S</span>
                 </label>
