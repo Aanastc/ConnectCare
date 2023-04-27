@@ -1,12 +1,13 @@
+import { CloudArrowUp, MinusCircle, PlusCircle } from 'phosphor-react'
 import { useFieldArray, useForm } from 'react-hook-form'
-import { useContext } from 'react'
-import { UserContext } from '../../../contexts/UserCtx'
-import { CloudArrowUp, PlusCircle, MinusCircle } from 'phosphor-react'
+import { useUser } from '../../../contexts/UserCtx'
 import { supabase } from '../../../services/supabase'
+import { useEffect, useState } from 'react'
 
 export function Informacao() {
-  const { metadata } = useContext(UserContext)
-  const { register, handleSubmit, control } = useForm({
+  const [loadingUpdate, setLoadingUpdate] = useState(false)
+  const { user, loading } = useUser()
+  const { register, handleSubmit, control, reset } = useForm({
     defaultValues: {
       experiencias: [{ cargo: '', duracao: '', atividade: '' }]
     }
@@ -16,9 +17,28 @@ export function Informacao() {
     name: 'experiencias'
   })
 
+  async function getDadosProfissional() {
+    const {
+      data: [profissional]
+    } = await supabase.from('profissional').select('*').eq('id', user.id)
+
+    if (!profissional) return
+
+    reset({
+      peso: profissional.peso,
+      altura: profissional.altura,
+      formacao: profissional.formacao,
+      especialidade: profissional.especialidade,
+      resumo: profissional.resumo,
+      restricoes: profissional.restricoes,
+      experiencias: profissional.experiencias
+    })
+  }
+
   async function handleProfissional(data) {
-    console.log(data)
-    const { data: res, error } = await supabase
+    setLoadingUpdate(true)
+
+    await supabase
       .from('profissional')
       .update({
         peso: data.peso,
@@ -26,21 +46,19 @@ export function Informacao() {
         formacao: data.formacao,
         resumo: data.resumo,
         restricoes: data.restricoes,
-        especialidade: data.especialidade
+        especialidade: data.especialidade,
+        experiencias: data.experiencias
       })
-      .eq('id', metadata?.id)
+      .eq('id', user.id)
 
-    await supabase.from('profissional_experiencia').insert(
-      data.experiencias.map(exp => ({
-        cargo: exp.cargo,
-        duracao: exp.duracao,
-        resumo: exp.resumo,
-        profissional_id: metadata?.id
-      }))
-    )
-
-    console.log(res, error, metadata?.id)
+    setLoadingUpdate(false)
   }
+
+  useEffect(() => {
+    if (loading) return
+
+    getDadosProfissional()
+  }, [user, loading])
 
   return (
     <form onSubmit={handleSubmit(handleProfissional)}>
@@ -202,7 +220,16 @@ export function Informacao() {
       </div>
       <div className="mb-2 flex justify-end items-center">
         <button className="bg-purple-500 text-white rounded-full h-10 w-64">
-          Salvar
+          {loadingUpdate ? (
+            <div
+              class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+              role="status"
+            >
+              <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
+            </div>
+          ) : (
+            'Salvar'
+          )}
         </button>
       </div>
     </form>

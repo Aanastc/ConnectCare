@@ -1,45 +1,68 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Switch from 'react-switch'
-import { UserContext } from '../../../contexts/UserCtx'
-import { useContext } from 'react'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
+import { useUser } from '../../../contexts/UserCtx'
 import { supabase } from '../../../services/supabase'
 
-const switches = [
-  { id: 1, text: 'Faz uso de dispositivo invasivo', checked: false },
-  { id: 2, text: 'Possui riscos cirúrgicos', checked: false },
-  { id: 3, text: 'Tem alergia a algum medicamento', checked: false },
-  { id: 4, text: 'Faz uso de medicamento controlado', checked: false }
+const comobirdades = [
+  { label: 'Asma', value: 'asma' },
+  { label: 'Bronquite', value: 'bronquite' },
+  { label: 'Pneumonia', value: 'pneumonia' },
+  { label: 'Úlcera', value: 'ulcera' }
+]
+const cuidados = [
+  { label: 'Faz uso de dispositivo invasivo', value: 'dispositivo_invasivo' },
+  { label: 'Possui riscos cirúrgicos', value: 'risco_cirurgico' },
+  { label: 'Tem alergia a algum medicamento', value: 'alergia' },
+  {
+    label: 'Faz uso de medicamento controlado',
+    value: 'medicamento_controlado'
+  }
 ]
 
 export function DadosClinicos() {
-  const [switchState, setSwitchState] = useState(switches)
+  const [loadingUpdate, setLoadingUpdate] = useState(false)
+  const { register, handleSubmit, control, reset } = useForm()
+  const { user, loading } = useUser()
 
-  function handleSwitchChange(id, checked) {
-    const updatedSwitchState = switchState.map(item =>
-      item.id === id ? { ...item, checked } : item
-    )
-    setSwitchState(updatedSwitchState)
+  async function getDadosPaciente() {
+    const {
+      data: [paciente]
+    } = await supabase.from('paciente').select('*').eq('id', user.id)
+
+    if (!paciente) return
+
+    reset({
+      peso: paciente.peso,
+      altura: paciente.altura,
+      comobirdades: paciente.comobirdades,
+      cuidados: paciente.cuidados,
+      motivo: paciente.casoClinico
+    })
   }
 
-  const { metadata } = useContext(UserContext)
-  const { register, handleSubmit } = useForm()
-
   async function handlePaciente(data) {
-    console.log(data)
-    const { data: res, error } = await supabase
+    setLoadingUpdate(true)
+
+    await supabase
       .from('paciente')
       .update({
         peso: data.peso,
         altura: data.altura,
         comobirdades: data.comobirdades,
-        casoClinico: data.motivo,
-        cuidados: switchState
+        cuidados: data.cuidados,
+        casoClinico: data.motivo
       })
-      .eq('id', metadata?.id)
+      .eq('id', user?.id)
 
-    console.log(res, error, metadata?.id)
+    setLoadingUpdate(false)
   }
+
+  useEffect(() => {
+    if (loading) return
+
+    getDadosPaciente()
+  }, [user, loading])
 
   return (
     <form onSubmit={handleSubmit(handlePaciente)}>
@@ -69,54 +92,19 @@ export function DadosClinicos() {
       </div>
       <div className="grid grid-flow-col justify-stretch gap-12 mb-4">
         <div className="flex flex-col gap-2">
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              name="asma"
-              id="asma"
-              {...register('comobirdades.asma')}
-              className="w-4 h-4 accent-purple-600"
-            />
-            <label htmlFor="asma" className="ml-2">
-              Asma
-            </label>
-          </div>
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              name="bronquite"
-              id="bronquite"
-              {...register('comobirdades.bronquite')}
-              className="w-4 h-4 accent-purple-600"
-            />
-            <label htmlFor="bronquite" className="ml-2">
-              Bronquite
-            </label>
-          </div>
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              name="pneumonia"
-              id="pneumonia"
-              {...register('comobirdades.pneumonia')}
-              className="w-4 h-4 accent-purple-600"
-            />
-            <label htmlFor="pneumonia" className="ml-2">
-              Pneumonia
-            </label>
-          </div>
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              name="ulcera"
-              id="ulcera"
-              {...register('comobirdades.ulcera')}
-              className="w-4 h-4 accent-purple-600"
-            />
-            <label htmlFor="ulcera" className="ml-2">
-              Úlcera
-            </label>
-          </div>
+          {comobirdades.map(item => (
+            <div className="flex items-center" key={item.value}>
+              <input
+                id={item.value}
+                type="checkbox"
+                {...register(`comobirdades.${item.value}`)}
+                className="w-4 h-4 accent-purple-600"
+              />
+              <label htmlFor={item.value} className="ml-2">
+                {item.label}
+              </label>
+            </div>
+          ))}
           <div className="flex flex-col gap-2">
             <label htmlFor="outro" className="text-sm font-bold">
               Outro:
@@ -131,20 +119,30 @@ export function DadosClinicos() {
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          {switchState.map(item => (
-            <div className="flex flex-row items-center" key={item.id}>
-              <Switch
-                checked={item.checked}
-                onChange={checked => handleSwitchChange(item.id, checked)}
-                onColor="#9063CD"
-                offColor="#D1D5DB"
-                handleDiameter={24}
-                uncheckedIcon={false}
-                checkedIcon={false}
-                className="mr-2"
-              />
-              <p className="font-medium">{item.text}</p>
-            </div>
+          {cuidados.map(item => (
+            <Controller
+              key={item.value}
+              control={control}
+              name={`cuidados.${item.value}`}
+              defaultValue={false}
+              render={({ field: { onChange, value } }) => (
+                <>
+                  <div className="flex flex-row items-center">
+                    <Switch
+                      checked={value}
+                      onChange={onChange}
+                      onColor="#9063CD"
+                      offColor="#D1D5DB"
+                      handleDiameter={24}
+                      uncheckedIcon={false}
+                      checkedIcon={false}
+                      className="mr-2"
+                    />
+                    <p className="font-medium">{item.label}</p>
+                  </div>
+                </>
+              )}
+            />
           ))}
         </div>
       </div>
@@ -164,7 +162,16 @@ export function DadosClinicos() {
       </div>
       <div className="flex justify-end">
         <button className="bg-purple-500 text-white rounded-full h-10 w-64">
-          Salvar
+          {loadingUpdate ? (
+            <div
+              class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+              role="status"
+            >
+              <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
+            </div>
+          ) : (
+            'Salvar'
+          )}
         </button>
       </div>
     </form>

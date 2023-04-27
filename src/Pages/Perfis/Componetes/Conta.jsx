@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useUser } from '../../../contexts/UserCtx'
 import { supabase } from '../../../services/supabase'
 import { useForm } from 'react-hook-form'
 import { format } from 'date-fns'
 
 export function Conta() {
+  const [loadingUpdate, setLoadingUpdate] = useState(false)
   const { user, refetchUser, loading } = useUser()
 
   const { reset, register, handleSubmit } = useForm()
@@ -12,6 +13,8 @@ export function Conta() {
   async function handleConta(data) {
     const [day, month, year] = data.birthdate.split('/')
     const birthdate = new Date(`${year}/${month}/${day}`).toISOString()
+
+    setLoadingUpdate(true)
 
     await supabase
       .from('profiles')
@@ -31,6 +34,7 @@ export function Conta() {
       })
       .eq('id', user?.id)
     refetchUser()
+    setLoadingUpdate(false)
   }
 
   useEffect(() => {
@@ -265,7 +269,16 @@ export function Conta() {
           </a>
         </div>
         <button className="bg-purple-500 text-white rounded-full h-10 w-64">
-          Salvar
+          {loadingUpdate ? (
+            <div
+              class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+              role="status"
+            >
+              <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
+            </div>
+          ) : (
+            'Salvar'
+          )}
         </button>
       </div>
     </form>
