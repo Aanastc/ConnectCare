@@ -2,13 +2,15 @@ import { useState } from 'react'
 import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 import { supabase } from '../../../services/supabase'
 import { useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 
 export function PerfilProf() {
-  const [profissionais, setProfissionais] = useState([])
+  const [profissional, setProfissional] = useState(null)
+  const [load, setLoad] = useState(true)
+  const { id } = useParams()
 
   useEffect(() => {
-    async function getProfissionais() {
+    async function getProfissional() {
       const { data, error } = await supabase
         .from('profiles')
         .select(
@@ -20,27 +22,28 @@ export function PerfilProf() {
         restricoes
       )`
         )
-        .eq('role', 'caregiver')
-      if (error) console.log('Erro ao buscar profissionais:', error)
-      else setProfissionais(data)
+        .eq('id', id)
+      if (error) console.log('Erro ao buscar profissional:', error)
+      else setProfissional(data[0])
+      setLoad(false)
     }
-    getProfissionais()
+    getProfissional()
   }, [])
 
   return (
     <main>
-      {profissionais.map(perfilDoProfissional => (
+      {load ? null : (
         <div className="flex flex-row gap-6 mb-4 justify-center">
           <div className="flex justify-center flex-col p-3 border border-purple-500 rounded-lg items-center shadow-lg h-56 ">
             <img src={fotoPerfil} alt="" className="h-40 rounded-3xl mb-4" />
             <div className="flex flex-row gap-8">
-              <p className="text-purple-400 text-base">{`${perfilDoProfissional.name} - iadade`}</p>
+              <p className="text-purple-400 text-base">{`${profissional.name} - idade`}</p>
             </div>
           </div>
           <div className="flex flex-col p-6 border border-purple-500 rounded-lg shadow-lg">
             <div className="border-b-2 border-b-black mb-4">
               <h2 className="text-purple-400 text-lg font-medium">
-                Dados Profissionais
+                Dados profissional
               </h2>
             </div>
             <div>
@@ -52,7 +55,7 @@ export function PerfilProf() {
                   <input
                     id="formacao"
                     type="text"
-                    value={perfilDoProfissional?.profissional?.formacao}
+                    value={profissional?.profissional?.formacao}
                     className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 capitalize value:text-black"
                   />
                 </div>
@@ -63,7 +66,7 @@ export function PerfilProf() {
                   <input
                     id="especialidade"
                     type="text"
-                    value={perfilDoProfissional?.profissional?.especialidade}
+                    value={profissional?.profissional?.especialidade}
                     className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 capitalize value:text-black"
                   />
                 </div>
@@ -96,7 +99,7 @@ export function PerfilProf() {
                   <textarea
                     name="restricoes"
                     id="restricoes"
-                    value={perfilDoProfissional?.profissional?.restricoes}
+                    value={profissional?.profissional?.restricoes}
                     className="border-gray-300 border-2 rounded-lg p-3 h-44 text-base value:text-black mt-2 resize-none"
                     style={{ verticalAlign: 'top' }}
                   />
@@ -115,7 +118,7 @@ export function PerfilProf() {
             </div>
           </div>
         </div>
-      ))}
+      )}
     </main>
   )
 }

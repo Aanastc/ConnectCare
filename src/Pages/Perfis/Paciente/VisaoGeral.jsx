@@ -23,10 +23,11 @@ export function VisaoGeral() {
         .from('profiles')
         .select(
           `
-      name,
-      profissional (
-        especialidade
-      )`
+          id,
+          name,
+          profissional (
+            especialidade
+          )`
         )
         .eq('role', 'caregiver')
       if (error) console.log('Erro ao buscar profissionais:', error)
@@ -79,6 +80,7 @@ export function VisaoGeral() {
       <div className="flex flex-wrap gap-12 justify-center">
         {profissionais.map(perfilDoProfissional => (
           <Card
+            profissionalId={perfilDoProfissional.id}
             name={perfilDoProfissional.name}
             especialidade={perfilDoProfissional?.profissional?.especialidade}
             atendimentos={perfilDoProfissional.atendimentos}

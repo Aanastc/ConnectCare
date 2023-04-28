@@ -43,7 +43,7 @@ export function App() {
       >
         <Route path="visaoGeral" element={<VisaoGeral />} />
         <Route path="editarPerfil" element={<EditarPerfil />} />
-        <Route path="perfilDoProfissional" element={<PerfilProf />} />
+        <Route path="perfilDoProfissional/:id" element={<PerfilProf />} />
         <Route path="InfoContract" element={<ContratoDados />} />
       </Route>
       <Route
