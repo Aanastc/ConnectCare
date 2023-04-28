@@ -52,7 +52,7 @@ export function VisaoGeralProf() {
               nome={pacienteEmAtendimento.paciente.profiles.name}
               casoClinico={pacienteEmAtendimento?.paciente?.casoClinico}
               horario={pacienteEmAtendimento.horario}
-              dias={pacienteEmAtendimento.dias.join(' - ')}
+              dias={pacienteEmAtendimento.dias?.join(' - ')}
             />
           ))}
         </div>
