@@ -81,6 +81,7 @@ export function Solicitacoes() {
           periodo_inicial,
           periodo_final,
           pernoite,
+          descricao,
           paciente (
             profiles (
               name
@@ -145,8 +146,7 @@ export function Solicitacoes() {
                 </p>
                 <p className="font-semibold">
                   Observações:
-                  {/* ainda não tem */}
-                  {/* <span className="font-normal"> {item.Observacoes}</span> */}
+                  <span className="font-normal"> {item.descricao}</span>
                 </p>
               </div>
               <div className="flex flex-col justify-center items-center gap-6">
