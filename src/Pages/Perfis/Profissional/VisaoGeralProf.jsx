@@ -5,6 +5,12 @@ import { CardFinalizados } from './CardFinalizados'
 import { supabase } from '../../../services/supabase'
 import { useUser } from '../../../contexts/UserCtx'
 
+const CONTRATO_STATUS = {
+  PENDENTE: 'pendente',
+  ACEITO: 'aceito',
+  REJEITADO: 'rejeitado'
+}
+
 export function VisaoGeralProf() {
   const [paciente, setpaciente] = useState([])
   const { user, loading } = useUser()
@@ -16,16 +22,19 @@ export function VisaoGeralProf() {
         .from('contrato')
         .select(
           `
-        *,
-        paciente (
-          peso,
-          altura
-
+          horario,
+          dias:dias_semana,
+          paciente (
+            casoClinico,
+            profiles (
+              name
+            )
+          )
+        `
         )
-      `
-        )
+        .eq('status', CONTRATO_STATUS.PENDENTE)
         .eq('profissinal_id', user.id)
-      console.log(data)
+
       if (error) console.log('Erro ao buscar paciente:', error)
       else setpaciente(data)
     }
@@ -40,10 +49,10 @@ export function VisaoGeralProf() {
         <div className="flex flex-wrap gap-10 justify-center mb-4">
           {paciente.map(pacienteEmAtendimento => (
             <CardAtendimento
-              nome={pacienteEmAtendimento.name}
+              nome={pacienteEmAtendimento.paciente.profiles.name}
               casoClinico={pacienteEmAtendimento?.paciente?.casoClinico}
               horario={pacienteEmAtendimento.horario}
-              dias={pacienteEmAtendimento.dias}
+              dias={pacienteEmAtendimento.dias.join(' - ')}
             />
           ))}
         </div>
