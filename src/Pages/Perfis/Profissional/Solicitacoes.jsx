@@ -52,16 +52,8 @@ export function Solicitacoes() {
                 <span className="font-normal"> {item.dias}</span>
               </p>
               <p className="font-semibold">
-                Contratação:
-                <span className="font-normal"> {item.Contratacao}</span>
-              </p>
-              <p className="font-semibold">
                 Período do contrato:
                 <span className="font-normal"> {item.PeriodoDoContrato}</span>
-              </p>
-              <p className="font-semibold">
-                Benefícios:
-                <span className="font-normal"> {item.Beneficios}</span>
               </p>
               <p className="font-semibold">
                 Pernoite:

@@ -308,17 +308,17 @@ export function ContratoDados() {
           </div>
         </div>
         <div className="flex justify-end">
+          {status.type === 'success' ? (
+            <p style={{ color: 'green' }}>{status.mensagem}</p>
+          ) : (
+            ''
+          )}
           <button
             className="bg-purple-500 text-white rounded-full h-10 w-64"
             onClick={() => setShowModal(true)}
           >
             Enviar
           </button>
-          {status.type === 'success' ? (
-            <p style={{ color: 'green' }}>{status.mensagem}</p>
-          ) : (
-            ''
-          )}
           {showModal ? (
             <>
               <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
