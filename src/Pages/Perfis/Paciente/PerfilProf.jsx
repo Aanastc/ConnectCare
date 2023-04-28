@@ -109,7 +109,7 @@ export function PerfilProf() {
                 <button className="bg-purple-500 text-white rounded-full h-10 w-72">
                   CONVERSAR COM PROFISSIONAL
                 </button>
-                <NavLink to="/Paciente/InfoContract">
+                <NavLink to="InfoContract">
                   <button className="bg-purple-500 text-white rounded-full h-10 w-72">
                     CONTRATAR
                   </button>

@@ -10,6 +10,7 @@ const comobirdades = [
   { label: 'Pneumonia', value: 'pneumonia' },
   { label: 'Úlcera', value: 'ulcera' }
 ]
+
 const cuidados = [
   { label: 'Faz uso de dispositivo invasivo', value: 'dispositivo_invasivo' },
   { label: 'Possui riscos cirúrgicos', value: 'risco_cirurgico' },

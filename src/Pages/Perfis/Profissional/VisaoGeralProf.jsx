@@ -3,27 +3,34 @@ import { Saudacao } from '../Componetes/Saudacao'
 import { CardAtendimento } from './CardAtendimento'
 // import { CardFinalizados } from './CardFinalizados'
 import { supabase } from '../../../services/supabase'
+import { useUser } from '../../../contexts/UserCtx'
 
 export function VisaoGeralProf() {
   const [paciente, setpaciente] = useState([])
+  const { user, loading } = useUser()
 
   useEffect(() => {
+    if (loading) return
     async function getpaciente() {
       const { data, error } = await supabase
-        .from('profiles')
+        .from('contrato')
         .select(
           `
-      name,
-      paciente (
-        casoClinico
-      )`
+        *,
+        paciente (
+          peso,
+          altura
+
         )
-        .eq('role', 'patient')
+      `
+        )
+        .eq('profissinal_id', user.id)
+      console.log(data)
       if (error) console.log('Erro ao buscar paciente:', error)
       else setpaciente(data)
     }
     getpaciente()
-  }, [])
+  }, [loading])
 
   return (
     <main className="p-5 pt-32">
