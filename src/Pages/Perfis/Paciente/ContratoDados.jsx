@@ -27,11 +27,11 @@ export function ContratoDados() {
 
   async function handleContrato(data) {
     await supabase.from('contrato').insert({
-      horario: '',
-      pernoite: '',
+      horario: 'Integral',
+      pernoite: 'Sim',
       periodo_inicial: data.periodo_inicial,
       periodo_final: data.periodo_final,
-      dias_semana: '',
+      dias_semana: ['Segunda', 'Quarta', 'Sexta'],
       diagnostico: data.diagnostico,
       descricao: data.descricao,
       profissinal_id: id,

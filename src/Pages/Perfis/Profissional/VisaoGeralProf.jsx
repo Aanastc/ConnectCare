@@ -32,14 +32,14 @@ export function VisaoGeralProf() {
           )
         `
         )
-        .eq('status', CONTRATO_STATUS.PENDENTE)
+        .eq('status', CONTRATO_STATUS.ACEITO)
         .eq('profissinal_id', user.id)
 
       if (error) console.log('Erro ao buscar paciente:', error)
       else setpaciente(data)
     }
     getpaciente()
-  }, [loading])
+  }, [user, loading])
 
   return (
     <main className="p-5 pt-32">
