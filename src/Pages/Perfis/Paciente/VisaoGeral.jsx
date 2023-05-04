@@ -1,46 +1,55 @@
-import {
-  Baby,
-  Bed,
-  FaceMask,
-  FirstAidKit,
-  Heartbeat,
-  Pill,
-  Syringe,
-  Wheelchair
-} from 'phosphor-react'
-import { Filtro } from './Filtro'
-import { Saudacao } from '../Componetes/Saudacao'
-import { Card } from './Card'
-import { useEffect, useState } from 'react'
-import { supabase } from '../../../services/supabase'
+import React, { useState, useEffect } from 'react';
+import { Baby, Bed, FaceMask, FirstAidKit, Heartbeat, Pill, Syringe, Wheelchair } from 'phosphor-react';
+import { Filtro } from './Filtro';
+import { Saudacao } from '../Componetes/Saudacao';
+import { Card } from './Card';
+import { NavLink } from 'react-router-dom';
 
 export function VisaoGeral() {
-  const [profissionais, setProfissionais] = useState([])
+  const [showProfileNotification, setShowProfileNotification] = useState(false);
 
   useEffect(() => {
-    async function getProfissionais() {
-      const { data, error } = await supabase
-        .from('profiles')
-        .select(
-          `
-          id,
-          name,
-          profissional (
-            especialidade
-          )`
-        )
-        .eq('role', 'caregiver')
-      if (error) console.log('Erro ao buscar profissionais:', error)
-      else setProfissionais(data)
+    const profileNotificationDismissed = localStorage.getItem('profileNotificationDismissed');
+    setShowProfileNotification(!profileNotificationDismissed);
+  }, []);
+
+  function handleProfileNotificationClick() {
+    localStorage.setItem('profileNotificationDismissed', 'true');
+    setShowProfileNotification(false);
+  }
+
+  const profissionais = [
+    {
+      name: 'Julia de Sousa',
+      especialidade: 'Cuidadora de idosos',
+      atendimentos: '12'
+    },
+    {
+      name: 'Antony Marques',
+      especialidade: 'Cuidadora Neonatal',
+      atendimentos: '8'
     }
-    getProfissionais()
-  }, [])
+  ]
 
   const especialidade =
     'border-purple-400 border-2 rounded flex flex-col justify-center items-center h-24 w-24 m-2 p-2 hover:bg-purple-400 hover:shadow-md'
 
   return (
     <main className="p-5 pt-32">
+      {showProfileNotification && (
+        <div className="bg-yellow-100 p-4 mb-4 rounded-md">
+          <p className="text-yellow-800">
+            Por favor, complete seu perfil para ter acesso completo à plataforma.
+          </p>
+          <NavLink
+            className="bg-yellow-500 text-white px-4 py-2 rounded-md mt-2 hover:bg-yellow-600"
+            to="/Paciente/editarPerfil"
+            onClick={handleProfileNotificationClick}
+           >
+            Completar perfil
+          </NavLink>
+        </div>
+      )}
       <Saudacao />
       <div className="flex flex-row mb-4 w-full gap-5 justify-center items-center">
         <button className={especialidade}>
@@ -80,9 +89,8 @@ export function VisaoGeral() {
       <div className="flex flex-wrap gap-12 justify-center">
         {profissionais.map(perfilDoProfissional => (
           <Card
-            profissionalId={perfilDoProfissional.id}
             name={perfilDoProfissional.name}
-            especialidade={perfilDoProfissional?.profissional?.especialidade}
+            especialidade={perfilDoProfissional.especialidade}
             atendimentos={perfilDoProfissional.atendimentos}
           />
         ))}
