@@ -35,7 +35,7 @@ export function Role() {
               htmlFor="caregiver"
               class="label-role flex flex-col items-center p-4 bg-purple-100 rounded-lg cursor-pointer w-44 h-44 border-2 border-purple-100 hover:bg-purple-200 hover:border-purple-200"
             >
-              <span class="text-xs font-semibold uppercase">
+              <span class="text-xs font-bold uppercase text-center mb-2">
                 Desejo cuidar de pessoas
               </span>
               <div className="max-h-36">
@@ -55,7 +55,7 @@ export function Role() {
               htmlFor="patient"
               class="label-role flex flex-col items-center p-4 bg-purple-100 rounded-lg cursor-pointer w-44 h-44 border-2 border-purple-100 hover:bg-purple-200 hover:border-purple-200"
             >
-              <span class="text-xs font-semibold uppercase">
+              <span class="text-xs font-bold uppercase text-center">
                 Desejo encontrar um profissional da saúde
               </span>
               <div className="max-h-36">

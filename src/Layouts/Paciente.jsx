@@ -76,7 +76,7 @@ export function Paciente() {
                     </li>
                     <li className="flex flex-row gap-2 mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center">
                       <CalendarCheck size={26} />
-                      <p>Servicos</p>
+                      <p>Serviços</p>
 
                       <span
                         className={`${
@@ -84,13 +84,17 @@ export function Paciente() {
                         } origin-left duration-500`}
                       ></span>
                     </li>
-                    <li
-                      className={`flex flex-row gap-2 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ${
-                        !open && 'scale-50'
-                      }`}
-                    >
-                      <ChatCircleDots size={26} />
-                      <p>Chat</p>
+
+                    <li>
+                      <NavLink
+                        to="/Paciente/chat"
+                        className={({ isActive }) =>
+                          isActive ? LinkClassActive : LinkClass
+                        }
+                      >
+                        <ChatCircleDots size={26} />
+                        <p>Chat</p>
+                      </NavLink>
                     </li>
                   </>
                 </ul>
@@ -138,8 +142,15 @@ export function Paciente() {
                         } origin-left duration-500`}
                       ></span>
                     </li>
-                    <li className="flex flex-row rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
-                      <ChatCircleDots size={24} />
+                    <li>
+                      <NavLink
+                        to="/Paciente/chat"
+                        className={({ isActive }) =>
+                          isActive ? LinkClassActive : LinkClass
+                        }
+                      >
+                        <ChatCircleDots size={24} />
+                      </NavLink>
                     </li>
                   </>
                 </ul>

@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 
 export function Card({ profissionalId, name, especialidade, atendimentos }) {
-
   return (
     <NavLink to={`/Paciente/perfilDoProfissional/${profissionalId}`}>
       <div class="w-60 flex flex-col justify-center items-center bg-white border border-purple-400 rounded-lg shadow-md p-4 h-64">
@@ -30,7 +29,9 @@ export function Card({ profissionalId, name, especialidade, atendimentos }) {
           <button className="bg-purple-400 text-white rounded-lg px-2 py-1 w-36 font-light text-sm">
             Ver Perfil
           </button>
-          <ChatCircleDots size={28} color="#9063CD" />
+          <NavLink to="/Paciente/chat">
+            <ChatCircleDots size={28} color="#9063CD" />
+          </NavLink>
         </div>
       </div>
     </NavLink>

@@ -128,16 +128,19 @@ export function Home() {
                 </p>
               </div>
               <div className="text-center py-2 flex gap-4">
-                <a href="https://play.google.com/store/games?hl=pt_BR&gl=US">
+                <a
+                  href="https://play.google.com/store/games?hl=pt_BR&gl=US"
+                  target="_blank"
+                >
                   <img
-                    width={120}
+                    width={150}
                     src="https://logodownload.org/wp-content/uploads/2017/04/disponivel-google-play-badge-1.png"
                     alt="Dowload-Android"
                   />
                 </a>
-                <a href="https://www.apple.com/br/app-store/">
+                <a href="https://www.apple.com/br/app-store/" target="_blank">
                   <img
-                    width={120}
+                    width={150}
                     src="https://logodownload.org/wp-content/uploads/2017/05/disponivel-na-app-store-botao-1.png"
                     alt="Dowload-IOS"
                   />
@@ -617,19 +620,32 @@ export function Home() {
               <p className="mb-4"> CEP 33678-950 - Fortaleza-CE Brasil</p>
             </div>
             <div className="flex justify-end gap-4">
-              <a className="text-white">
-                <WhatsappLogo
-                  size={24}
-                  href="https://www.whatsapp.com/?lang=pt_br"
-                />
+              <a
+                target="_blank"
+                className="text-white"
+                href="https://www.whatsapp.com/?lang=pt_br"
+              >
+                <WhatsappLogo size={24} />
               </a>
-              <a className="text-white" href="https://pt-br.facebook.com/">
+              <a
+                target="_blank"
+                className="text-white"
+                href="https://pt-br.facebook.com/"
+              >
                 <FacebookLogo size={24} />
               </a>
-              <a className="text-white" href="https://twitter.com/">
+              <a
+                target="_blank"
+                className="text-white"
+                href="https://twitter.com/"
+              >
                 <TwitterLogo size={24} />
               </a>
-              <a className="text-white" href="https://www.instagram.com/">
+              <a
+                target="_blank"
+                className="text-white"
+                href="https://www.instagram.com/"
+              >
                 <InstagramLogo size={24} />
               </a>
             </div>

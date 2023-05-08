@@ -91,11 +91,10 @@ export function Profissional() {
                       ></span>
                     </NavLink>
                     <NavLink
-                      className="flex gap-2 rounded-md cursor-pointer text-black text-sm items-center"
-                      // to=""
-                      // className={({ isActive }) =>
-                      //   isActive ? LinkClassActive : LinkClass
-                      // }
+                      to="/Profissional/chat"
+                      className={({ isActive }) =>
+                        isActive ? LinkClassActive : LinkClass
+                      }
                     >
                       <ChatCircleDots size={26} />
                       <p>Chat</p>
@@ -146,9 +145,14 @@ export function Profissional() {
                         } origin-left duration-500`}
                       ></span>
                     </li>
-                    <li className="flex flex-row mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
+                    <NavLink
+                      to="/Profissional/chat"
+                      className={({ isActive }) =>
+                        isActive ? LinkClassActive : LinkClass
+                      }
+                    >
                       <ChatCircleDots size={24} />
-                    </li>
+                    </NavLink>
                   </>
                 </ul>
               </div>

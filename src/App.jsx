@@ -21,6 +21,8 @@ import { VisaoGeralProf } from './Pages/Perfis/Profissional/VisaoGeralProf'
 import { EditarPerfilProf } from './Pages/Perfis/Profissional/EditarPerfilProf'
 import { Solicitacoes } from './Pages/Perfis/Profissional/Solicitacoes'
 
+import { Chat } from './Pages/Chat'
+
 import './index.css'
 
 export function App() {
@@ -44,7 +46,11 @@ export function App() {
         <Route path="visaoGeral" element={<VisaoGeral />} />
         <Route path="editarPerfil" element={<EditarPerfil />} />
         <Route path="perfilDoProfissional/:id" element={<PerfilProf />} />
-        <Route path="perfilDoProfissional/:id/InfoContract" element={<ContratoDados />} />
+        <Route
+          path="perfilDoProfissional/:id/InfoContract"
+          element={<ContratoDados />}
+        />
+        <Route path="chat" element={<Chat />} />
       </Route>
       <Route
         path="/Profissional"
@@ -55,6 +61,7 @@ export function App() {
         <Route path="visaoGeral" element={<VisaoGeralProf />} />
         <Route path="editarPerfil" element={<EditarPerfilProf />} />
         <Route path="solicitacoes" element={<Solicitacoes />} />
+        <Route path="chat" element={<Chat />} />
       </Route>
       <Route path="*" element={<div>Página não encontrada</div>} />
     </Routes>

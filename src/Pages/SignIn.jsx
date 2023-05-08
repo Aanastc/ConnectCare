@@ -64,7 +64,7 @@ export function SignIn() {
     <div className="p-6 rounded-xl shadow-lg bg-white max-w-md w-full">
       <div className="flex justify-center mb-6">
         <h2 className="text-xl font-semibold justify-center">
-          Bem vindo de volta
+          Bem vindo de volta!
         </h2>
       </div>
       <div className="flex flex-col gap-4">
