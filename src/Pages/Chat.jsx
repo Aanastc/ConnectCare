@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useUser } from '../contexts/UserCtx'
 import { PaperPlaneRight, Smiley } from 'phosphor-react'
 
@@ -43,7 +43,7 @@ export function Chat() {
             >
               <div className="flex items-center">
                 {!message.sender === user.name && (
-                  <div className="flex-shrink-0 bg-blue-500 text-white rounded-full h-8 w-8 flex items-center justify-center">
+                  <div className="flex-shrink-0 bg-purple-500 text-white rounded-full h-8 w-8 flex items-center justify-center">
                     <span className="text-sm font-bold">A</span>
                   </div>
                 )}
