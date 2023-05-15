@@ -1,7 +1,6 @@
-import { Eyedropper, Trash } from 'phosphor-react'
 import { useState } from 'react'
-import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 import { Conta } from '../Componetes/Conta'
+import { FotoPerfil } from '../Componetes/PerfilFoto'
 import { DadosClinicos } from './DadosClinicos'
 
 export function EditarPerfil() {
@@ -10,13 +9,7 @@ export function EditarPerfil() {
   return (
     <main>
       <div className="flex flex-row gap-6 mb-4 justify-center">
-        <div className="flex justify-center flex-col p-3 border border-purple-500 rounded-lg items-center shadow-lg h-56 ">
-          <img src={fotoPerfil} alt="" className="h-40 rounded-3xl mb-4" />
-          <div className="flex flex-row gap-8">
-            <Trash size={28} />
-            <Eyedropper size={28} />
-          </div>
-        </div>
+        <FotoPerfil />
         <div className="flex flex-col p-6 border border-purple-500 rounded-lg shadow-lg">
           <div className="flex gap-8 pb-2 border-b-2 border-b-black mb-4">
             <button

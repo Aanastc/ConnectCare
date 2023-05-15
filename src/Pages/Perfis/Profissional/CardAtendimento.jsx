@@ -1,12 +1,9 @@
-import Paciente1 from '../../../assets/imgs/Paciente1.png'
-
-export function CardAtendimento({ nome, casoClinico, horario, dias }) {
+export function CardAtendimento({ nome, casoClinico, horario, dias, avatar }) {
   return (
     <div className="flex flex-row gap-4 items-center mb-4">
       <div>
         <img
-          src={Paciente1}
-          alt=""
+          src={avatar}
           class="relative inline-block h-20 w-20 !rounded-full object-cover object-center"
         />
       </div>

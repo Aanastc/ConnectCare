@@ -18,7 +18,15 @@ export function UserProvider({ children }) {
         data: [profile]
       } = await supabase.from('profiles').select('*').eq('id', session.user.id)
 
-      setUser(profile)
+      const { data } = await supabase.storage
+        .from('FotoPerfil')
+        .getPublicUrl(profile.avatarPath)
+
+      setUser({
+        ...profile,
+        avatar: data.publicUrl
+      })
+
       setLoading(false)
 
       return profile

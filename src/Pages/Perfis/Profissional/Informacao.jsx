@@ -1,8 +1,8 @@
-import { CloudArrowUp, MinusCircle, PlusCircle } from 'phosphor-react'
+import { MinusCircle, PlusCircle } from 'phosphor-react'
+import { useEffect, useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { useUser } from '../../../contexts/UserCtx'
 import { supabase } from '../../../services/supabase'
-import { useEffect, useState } from 'react'
 
 export function Informacao() {
   const [loadingUpdate, setLoadingUpdate] = useState(false)
@@ -202,21 +202,6 @@ export function Informacao() {
             style={{ verticalAlign: 'top' }}
           />
         </div>
-      </div>
-
-      <div className="flex flex-row justify-between mb-4">
-        <button className="flex flex-row border-2 border-gray-400 p-2 rounded-lg gap-4 items-center w-64 justify-between">
-          Upload curriculo
-          <CloudArrowUp size={28} />
-        </button>
-        <button className="flex flex-row border-2 border-gray-400 p-2 rounded-lg gap-4 items-center w-64 justify-between">
-          Upload doc conselho
-          <CloudArrowUp size={28} />
-        </button>
-        <button className="flex flex-row border-2 border-gray-400 p-2 rounded-lg gap-4 items-center w-64 justify-between">
-          Upload certificados
-          <CloudArrowUp size={28} />
-        </button>
       </div>
       <div className="mb-2 flex justify-end items-center">
         <button className="bg-purple-500 text-white rounded-full h-10 w-64">
