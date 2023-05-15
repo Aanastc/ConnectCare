@@ -74,17 +74,17 @@ export function Paciente() {
                         <p>Geral</p>
                       </NavLink>
                     </li>
-                    <li className="flex flex-row gap-2 mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center">
-                      <CalendarCheck size={26} />
-                      <p>Serviços</p>
-
-                      <span
-                        className={`${
-                          !open && 'hidden'
-                        } origin-left duration-500`}
-                      ></span>
+                    <li>
+                      <NavLink
+                        to="/Paciente/servicos"
+                        className={({ isActive }) =>
+                          isActive ? LinkClassActive : LinkClass
+                        }
+                      >
+                        <CalendarCheck size={26} />
+                        <p>Serviços</p>
+                      </NavLink>
                     </li>
-
                     <li>
                       <NavLink
                         to="/Paciente/chat"
@@ -133,14 +133,15 @@ export function Paciente() {
                         <Stack size={24} />
                       </NavLink>
                     </li>
-                    <li className="flex flex-row mb-4 rounded-md cursor-pointer hover:bg-light-white text-black text-sm items-center ">
-                      <CalendarCheck size={24} />
-
-                      <span
-                        className={`${
-                          !open && 'hidden'
-                        } origin-left duration-500`}
-                      ></span>
+                    <li>
+                      <NavLink
+                        to="/Paciente/servicos"
+                        className={({ isActive }) =>
+                          isActive ? LinkClassActive : LinkClass
+                        }
+                      >
+                        <CalendarCheck size={26} />
+                      </NavLink>
                     </li>
                     <li>
                       <NavLink
