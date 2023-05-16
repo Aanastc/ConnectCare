@@ -50,7 +50,7 @@ export function VisaoGeralProf() {
         <div className="flex flex-wrap gap-16 items-center mb-4">
           {paciente.map(pacienteEmAtendimento => (
             <CardAtendimento
-              // avatar={pacienteEmAtendimento.paciente.user.avatar}
+              avatar={pacienteEmAtendimento.paciente.profiles.avatarPath}
               nome={pacienteEmAtendimento.paciente.profiles.name}
               casoClinico={pacienteEmAtendimento?.paciente?.casoClinico}
               horario={pacienteEmAtendimento.horario}

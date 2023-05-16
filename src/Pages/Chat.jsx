@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useUser } from '../contexts/UserCtx'
-import { PaperPlaneRight, Smiley } from 'phosphor-react'
+import { PaperPlaneRight, Smiley, Paperclip } from 'phosphor-react'
+
+import { useParams } from 'react-router-dom'
 
 export function Chat() {
   const { user } = useUser()
@@ -22,9 +24,11 @@ export function Chat() {
     }
   }
 
+  // colocar para pegar o id do perfil
+
   return (
     <main>
-      <div className="border border-purple-500 rounded-lg shadow-lg w-full max-w-[1235px]">
+      <div className="border border-purple-500 rounded-lg shadow-lg w-full max-w-[1215px]">
         <div className="flex flex-row items-center gap-4 border-b-2 border-b-purple-500 p-2">
           <img
             className="w-10 h-10 rounded-full ring-2 ring-gray-300"
@@ -37,7 +41,7 @@ export function Chat() {
           {messages.map((message, index) => (
             <div
               key={index}
-              className={`flex my-2 ${
+              className={`flex m-2 break-words ${
                 message.sender === user.name ? 'justify-end' : 'justify-start'
               }`}
             >
@@ -51,7 +55,7 @@ export function Chat() {
               <div
                 className={`rounded-lg py-2 px-4 ml-2 ${
                   message.sender === user.name
-                    ? 'bg-gray-200 border border-purple-500'
+                    ? 'bg-gray-200 border border-purple-500 max-w-[490px] h-full'
                     : 'bg-gray-800 text-white'
                 }`}
               >
@@ -64,19 +68,28 @@ export function Chat() {
           <div className="flex-1 pr-2">
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-3 flex items-center">
-                <Smiley size={32} />
+                <Smiley
+                  size={32}
+                  weight="thin"
+                  className="hover:text-purple-500"
+                />
+                <Paperclip
+                  size={32}
+                  weight="thin"
+                  className="hover:text-purple-500"
+                />
               </span>
               <input
                 type="text"
-                className="w-full pl-12 p-2 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full pl-20 p-2 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 placeholder="Digite uma mensagem..."
                 value={inputValue}
                 onChange={handleInputChange}
               />
             </div>
           </div>
-          <button className="hover:text-purple-500" onClick={handleSendMessage}>
-            <PaperPlaneRight size={32} />
+          <button onClick={handleSendMessage}>
+            <PaperPlaneRight size={32} className="hover:text-purple-500" />
           </button>
         </div>
       </div>

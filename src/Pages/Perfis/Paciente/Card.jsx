@@ -29,7 +29,7 @@ export function Card({ profissionalId, name, especialidade, atendimentos }) {
           <button className="bg-purple-400 text-white rounded-lg px-2 py-1 w-36 font-light text-sm">
             Ver Perfil
           </button>
-          <NavLink to="/Paciente/chat">
+          <NavLink to={`/Paciente/chat/${profissionalId}`}>
             <ChatCircleDots size={28} color="#9063CD" />
           </NavLink>
         </div>
