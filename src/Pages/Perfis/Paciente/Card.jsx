@@ -2,12 +2,18 @@ import { ChatCircleDots, Star } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
 import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 
-export function Card({ profissionalId, name, especialidade, atendimentos }) {
+export function Card({
+  profissionalId,
+  name,
+  especialidade,
+  atendimentos,
+  avatar
+}) {
   return (
     <NavLink to={`/Paciente/perfilDoProfissional/${profissionalId}`}>
       <div class="w-60 flex flex-col justify-center items-center bg-white border border-purple-400 rounded-lg shadow-md p-4 h-64">
         <img
-          src={fotoPerfil}
+          src={avatar}
           alt="Foto de uma mulher de cabelo preto sorrindo"
           class="relative inline-block h-14 w-14 !rounded-full object-cover object-center"
         />

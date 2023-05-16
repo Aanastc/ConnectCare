@@ -24,7 +24,7 @@ export function HeaderApp() {
       <Bell size={28} color="#9063CD" />
       <div className="flex flex-row items-center gap-4 px-2 py-1 rounded-full border-2 border-gray-300 bg-gray-200 hover:bg-gray-300">
         <img
-          src={user.avatar}
+          src={user.avatarPath}
           alt="Foto de uma mulher de cabelo preto sorrindo"
           class="relative inline-block h-[40px] w-[40px] !rounded-full object-cover object-center"
         />

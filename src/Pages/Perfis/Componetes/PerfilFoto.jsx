@@ -5,37 +5,40 @@ import { useUser } from '../../../contexts/UserCtx'
 import { supabase } from '../../../services/supabase'
 
 export function FotoPerfil() {
-  const [image, setImage] = useState(null)
   const [preview, setPreview] = useState(null)
   const { user, refetchUser, loading } = useUser()
-  console.log(user)
 
   const handleImageUpload = async event => {
     const file = event.target.files[0]
     setPreview(file)
-    console.log(file)
   }
 
   const handleSave = async () => {
-    const path = preview.name
-
-    const { data, error } = await supabase.storage
+    const timestamp = Date.now()
+    const uploadName = `${timestamp}`
+    const { data: upload, error: uploadError } = await supabase.storage
       .from('FotoPerfil')
-      .upload(path, preview)
+      .upload(uploadName, preview, {
+        contentType: preview.contentType
+      })
+
+    if (uploadError) {
+      // do something
+    }
+
+    const { data: avatar } = supabase.storage
+      .from('FotoPerfil')
+      .getPublicUrl(upload.path)
 
     await supabase
       .from('profiles')
       .update({
-        avatarPath: path
+        avatarPath: avatar.publicUrl
       })
       .eq('id', user?.id)
     refetchUser()
 
-    if (error) {
-      console.error(error)
-    } else {
-      setPreview(null)
-    }
+    setPreview(null)
   }
 
   return (
@@ -47,7 +50,7 @@ export function FotoPerfil() {
         </div>
       ) : (
         <>
-          <img src={user.avatar} className="h-40 w-36 rounded-3xl mb-4" />
+          <img src={user.avatarPath} className="h-40 w-36 rounded-3xl mb-4" />
           <div className="flex flex-row gap-8">
             <Trash size={28} weight="thin" />
             <label for="file-upload" class="custom-file-upload">

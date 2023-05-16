@@ -26,6 +26,7 @@ export function VisaoGeral() {
           `
           id,
           name,
+          avatarPath,
           profissional (
             especialidade
           )`
@@ -111,6 +112,7 @@ export function VisaoGeral() {
             name={perfilDoProfissional.name}
             especialidade={perfilDoProfissional?.profissional?.especialidade}
             atendimentos={perfilDoProfissional.atendimentos}
+            avatar={perfilDoProfissional.avatarPath}
           />
         ))}
       </div>
