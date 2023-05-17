@@ -21,12 +21,16 @@ export function Chat() {
         sender: user.name
       }
 
-      const { data, error } = await supabase.from('chat').insert(newMessage) // Insere a nova mensagem na tabela 'chat'
+      const { data, error } = await supabase
+        .from('chat')
+        .insert(newMessage)
+        .select('*') // Insere a nova mensagem na tabela 'chat'
+      const [messageData] = data
 
       if (error) {
         console.error('Erro ao enviar a mensagem:', error)
       } else {
-        setMessages([...messages, newMessage])
+        setMessages(prev => [...prev, messageData])
         setInputValue('')
       }
     }
@@ -47,18 +51,34 @@ export function Chat() {
     }
 
     fetchMessages()
+  }, [])
 
+  useEffect(() => {
     const subscription = supabase
-      .from('chat')
-      .on('INSERT', payload => {
-        setMessages([...messages, payload.new])
-      })
+      .channel('chat-realtime')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'chat'
+        },
+        payload => {
+          setMessages(prev => {
+            const messageAlreadyInChat = prev.some(
+              msg => msg.id === payload.new.id
+            )
+
+            if (messageAlreadyInChat) return prev
+
+            return [...prev, payload.new]
+          })
+        }
+      )
       .subscribe()
 
-    return () => {
-      subscription.unsubscribe()
-    }
-  }, [messages])
+    return () => subscription.unsubscribe()
+  }, [])
 
   return (
     <main className="flex justify-center items-center h-screen">
