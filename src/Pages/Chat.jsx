@@ -1,9 +1,7 @@
-import { supabase } from '../services/supabase'
-import React, { useState, useEffect } from 'react'
+import { PaperPlaneRight, Smiley } from 'phosphor-react'
+import { useEffect, useState } from 'react'
 import { useUser } from '../contexts/UserCtx'
-import { PaperPlaneRight, Smiley, Paperclip } from 'phosphor-react'
-
-import { useParams } from 'react-router-dom'
+import { supabase } from '../services/supabase'
 
 export function Chat() {
   const { user } = useUser()
@@ -24,7 +22,7 @@ export function Chat() {
       const { data, error } = await supabase
         .from('chat')
         .insert(newMessage)
-        .select('*') // Insere a nova mensagem na tabela 'chat'
+        .select('*')
       const [messageData] = data
 
       if (error) {
@@ -41,7 +39,7 @@ export function Chat() {
       const { data, error } = await supabase
         .from('chat')
         .select('*')
-        .order('id') // Lê todas as mensagens da tabela 'chat'
+        .order('id')
 
       if (error) {
         console.error('Erro ao buscar as mensagens:', error)
@@ -99,18 +97,11 @@ export function Chat() {
                 message.sender === user.name ? 'justify-end' : 'justify-start'
               }`}
             >
-              <div className="flex items-center">
-                {message.sender !== user.name && (
-                  <div className="flex-shrink-0 bg-purple-500 text-white rounded-br-3xl rounded-tr-3xl rounded-tl-xl h-8 w-8 flex items-center justify-center">
-                    <span className="text-sm font-bold">{user.name}</span>
-                  </div>
-                )}
-              </div>
               <div
                 className={`rounded-lg py-2 px-4 ml-2 ${
                   message.sender === user.name
                     ? 'bg-gray-200 border border-purple-500 max-w-[490px] h-full rounded-bl-3xl rounded-tl-3xl rounded-tr-xl'
-                    : 'bg-gray-800 text-white'
+                    : 'bg-gray-800 text-white rounded-br-3xl rounded-tr-3xl rounded-tl-xl'
                 }`}
               >
                 <p className="text-sm">{message.content}</p>

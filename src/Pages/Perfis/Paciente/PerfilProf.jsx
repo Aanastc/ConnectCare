@@ -1,8 +1,6 @@
-import { useState } from 'react'
-import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
-import { supabase } from '../../../services/supabase'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
+import { supabase } from '../../../services/supabase'
 
 export function PerfilProf() {
   const [profissional, setProfissional] = useState(null)
@@ -16,6 +14,7 @@ export function PerfilProf() {
         .select(
           `
       name,
+      avatarPath,
       profissional (
         especialidade,
         formacao,
@@ -35,7 +34,10 @@ export function PerfilProf() {
       {load ? null : (
         <div className="flex flex-row gap-6 mb-4 justify-center">
           <div className="flex justify-center flex-col p-3 border border-purple-500 rounded-lg items-center shadow-lg h-56 ">
-            <img src={fotoPerfil} alt="" className="h-40 rounded-3xl mb-4" />
+            <img
+              src={profissional.avatarPath}
+              className="h-40 rounded-3xl mb-4"
+            />
             <div className="flex flex-row gap-8">
               <p className="text-purple-400 text-base">{`${profissional.name} - idade`}</p>
             </div>
@@ -106,9 +108,11 @@ export function PerfilProf() {
                 </div>
               </div>
               <div className="mb-2 flex justify-center gap-10">
-                <button className="bg-purple-500 text-white rounded-full h-10 w-72">
-                  CONVERSAR COM PROFISSIONAL
-                </button>
+                <NavLink to="/Paciente/chat">
+                  <button className="bg-purple-500 text-white rounded-full h-10 w-72">
+                    CONVERSAR COM PROFISSIONAL
+                  </button>
+                </NavLink>
                 <NavLink to="InfoContract">
                   <button className="bg-purple-500 text-white rounded-full h-10 w-72">
                     CONTRATAR

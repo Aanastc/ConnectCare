@@ -1,358 +1,116 @@
-import { useForm } from 'react-hook-form'
-import { useParams } from 'react-router-dom'
-import arrow from '../../../assets/icons/caret-right-thin.svg'
-import { useUser } from '../../../contexts/UserCtx'
-import { supabase } from '../../../services/supabase'
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { ContratoInfos } from './ContratoInfos'
+import { Pagamento } from './Pagamento'
 
 export function ContratoDados() {
-  const [showModal, setShowModal] = useState(false)
-  const { register, handleSubmit, control, reset } = useForm()
-  const { user, loading } = useUser()
-  const { id } = useParams()
-
-  const [status, setStatus] = useState({
-    type: '',
-    mensagem: ''
-  })
-
-  if (setShowModal == true) {
-    setStatus({
-      type: 'success',
-      mensagem: 'Solicitação enviada!'
-    })
-    return
-  }
-
-  async function handleContrato(data) {
-    await supabase.from('contrato').insert({
-      horario: 'Integral',
-      pernoite: 'Sim',
-      periodo_inicial: data.periodo_inicial,
-      periodo_final: data.periodo_final,
-      dias_semana: ['Segunda', 'Quarta', 'Sexta'],
-      diagnostico: data.diagnostico,
-      descricao: data.descricao,
-      profissinal_id: id,
-      paciente_id: user?.id
-    })
-  }
+  const [isContratoDado, setIsContratoDado] = useState(true)
+  const [isPagamento, setIsPagamento] = useState(false)
 
   return (
-    <form onSubmit={handleSubmit(handleContrato)}>
-      <div className="flex flex-col p-6 border border-purple-500 rounded-lg shadow-lg m-4">
-        <div className="flex gap-8 pb-2 border-b-2 border-b-black mb-4">
-          <h1 className="text-2xl text-purple-400">Detalhes do Contrato</h1>
-        </div>
-        <div className="flex flex-row items-center mb-4 gap-36">
-          <div className="flex flex-col">
-            <p className="text-sm font-bold">Período</p>
-            <div className="border-gray-300 border-2 rounded-lg w-96 h-14 flex justify-between items-center px-2">
-              <div className="flex flex-col">
-                <label for="dia" className="text-sm text-gray-500 font-medium">
-                  De
-                </label>
-                <input
-                  type="date"
-                  id="dia"
-                  className="font-bold outline-none"
-                  value={new Date().toISOString().slice(0, 10)}
-                  {...register('periodo_inicial')}
-                />
-              </div>
-              <img src={arrow} className="absolute top-30 left-44 w-20" />
-              <div className="pl-2 flex flex-col">
-                <label for="dia" className="text-sm text-gray-500 font-medium">
-                  Até
-                </label>
-                <input
-                  type="date"
-                  id="dia"
-                  className="font-bold outline-none"
-                  {...register('periodo_final')}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="ml-2">
-            <p className="text-sm font-bold">Horário</p>
-            <div className="flex flex-row gap-2">
-              <div>
-                <input
-                  class="input-role hidden"
-                  id="manha"
-                  type="radio"
-                  value="manha"
-                />
-                <label
-                  htmlFor="manha"
-                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-14 flex justify-center items-center cursor-pointer"
-                >
-                  <span>Manhã</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  class="input-role hidden"
-                  id="tarde"
-                  type="radio"
-                  value="tarde"
-                />
-                <label
-                  htmlFor="tarde"
-                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-14 flex justify-center items-center cursor-pointer"
-                >
-                  <span>Tarde</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  class="input-role hidden"
-                  id="noite"
-                  type="radio"
-                  value="noite"
-                />
-                <label
-                  htmlFor="noite"
-                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-14 flex justify-center items-center cursor-pointer"
-                >
-                  <span>Noite</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  class="input-role hidden"
-                  id="integral"
-                  type="radio"
-                  value="integral"
-                />
-                <label
-                  htmlFor="integral"
-                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-14 flex justify-center items-center cursor-pointer"
-                >
-                  <span>Integral</span>
-                </label>
-              </div>
-            </div>
+    <div className="max-w-xl mx-auto my-4 border-b-2 pb-4">
+      <div className="flex pb-3">
+        <div className="flex-1"></div>
+
+        <div className="flex-1">
+          <div className="w-10 h-10 bg-green mx-auto rounded-full text-lg text-white flex items-center">
+            <span className="text-white text-center w-full">
+              <i className="fa fa-check w-full fill-current white"></i>
+            </span>
           </div>
         </div>
-        <div className="flex flex-row gap-24 mb-4">
-          <div>
-            <p className="text-sm font-bold">Dias da semana</p>
-            <div className="flex flex-row gap-2">
-              <div>
-                <input
-                  class="input-role hidden"
-                  id="domingo"
-                  type="radio"
-                  value="domingo"
-                />
-                <label
-                  htmlFor="domingo"
-                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
-                >
-                  <span>D</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  class="input-role hidden"
-                  id="segunda"
-                  type="radio"
-                  value="segunda"
-                />
-                <label
-                  htmlFor="segunda"
-                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
-                >
-                  <span>S</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  class="input-role hidden"
-                  id="terca"
-                  type="radio"
-                  value="terca"
-                />
-                <label
-                  htmlFor="terca"
-                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
-                >
-                  <span>T</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  class="input-role hidden"
-                  id="quarta"
-                  type="radio"
-                  value="quarta"
-                />
-                <label
-                  htmlFor="quarta"
-                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
-                >
-                  <span>Q</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  class="input-role hidden"
-                  id="quinta"
-                  type="radio"
-                  value="quinta"
-                />
-                <label
-                  htmlFor="quinta"
-                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
-                >
-                  <span>Q</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  class="input-role hidden"
-                  id="sexta"
-                  type="radio"
-                  value="sexta"
-                />
-                <label
-                  htmlFor="sexta"
-                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
-                >
-                  <span>S</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  class="input-role hidden"
-                  id="sabado"
-                  type="radio"
-                  value="sabado"
-                />
-                <label
-                  htmlFor="sabado"
-                  class="label-role border-gray-300 border-2 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer"
-                >
-                  <span>S</span>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p className="text-sm font-bold">Pernoite</p>
-            <div className="flex flex-row gap-2">
-              <div>
-                <input
-                  class="input-role hidden"
-                  id="sim"
-                  type="radio"
-                  value="sim"
-                />
-                <label
-                  htmlFor="sim"
-                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-12 flex justify-center items-center cursor-pointer"
-                >
-                  <span>Sim</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  class="input-role hidden"
-                  id="nao"
-                  type="radio"
-                  value="nao"
-                />
-                <label
-                  htmlFor="nao"
-                  class="label-role border-gray-300 border-2 rounded-lg w-20 h-12 flex justify-center items-center cursor-pointer"
-                >
-                  <span>Não</span>
-                </label>
-              </div>
-            </div>
+
+        <div className="w-1/6 align-center items-center align-middle content-center flex">
+          <div className="w-full bg-grey-light rounded items-center align-middle align-center flex-1">
+            <div className="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded "></div>
           </div>
         </div>
-        <div className="flex gap-8 pb-2 border-b-2 border-b-black mb-4">
-          <h1 className="text-2xl text-purple-400">Detalhes do Caso Clínico</h1>
-        </div>
-        <div className="flex flex-col mb-4">
-          <div className="flex flex-col mb-4">
-            <div className="flex flex-col">
-              <label htmlFor="diagnostico" className="block text-sm font-bold">
-                Diagnóstico
-              </label>
-              <textarea
-                id="diagnostico"
-                placeholder="Descreva o diagnóstico"
-                className="border-gray-300 border-2 rounded-lg p-3 h-20 w-56 text-base placeholder:text-gray-400 mt-2 resize-none"
-                style={{ verticalAlign: 'top' }}
-                {...register('diagnostico')}
-              />
-            </div>
-          </div>
-          <div className="flex flex-col mb-4">
-            <div className="flex flex-col">
-              <label htmlFor="descricao" className="block text-sm font-bold">
-                Descrição
-              </label>
-              <textarea
-                id="descricao"
-                className="border-gray-300 border-2 rounded-lg p-3 h-36 text-base placeholder:text-gray-400 mt-2 resize-none"
-                style={{ verticalAlign: 'top' }}
-                {...register('descricao')}
-              />
-            </div>
+
+        <div className="flex-1">
+          <div className="w-10 h-10 bg-green mx-auto rounded-full text-lg text-white flex items-center">
+            <span className="text-white text-center w-full">
+              <i className="fa fa-check w-full fill-current white"></i>
+            </span>
           </div>
         </div>
-        <div className="flex justify-end">
-          {status.type === 'success' ? (
-            <p style={{ color: 'green' }}>{status.mensagem}</p>
-          ) : (
-            ''
-          )}
-          <button
-            className="bg-purple-500 text-white rounded-full h-10 w-64"
-            onClick={() => setShowModal(true)}
-          >
-            Enviar
-          </button>
-          {showModal ? (
-            <>
-              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                  <div className="rounded-lg shadow-lg relative flex flex-col w-full bg-purple-100 outline-none focus:outline-none">
-                    <div className="relative p-6 flex-auto">
-                      <p className="text-slate-500 font-medium text-lg">
-                        PARABÉNS!!!
-                      </p>
-                      <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                        Nós da Connect Care agradecemos a confiança. <br />
-                        Sua solicitação foi enviada com sucesso, você pode
-                        encontrar informações sobre o status dela na barra
-                        lateral.
-                      </p>
-                    </div>
-                    <div className="flex justify-end p-2">
-                      <NavLink to="/Paciente/visaoGeral">
-                        <button
-                          className="bg-purple-500 text-white rounded-full h-10 w-64"
-                          onClick={() => setShowModal(false)}
-                        >
-                          Voltar para home
-                        </button>
-                      </NavLink>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-            </>
-          ) : null}
+
+        <div className="w-1/6 align-center items-center align-middle content-center flex">
+          <div className="w-full bg-grey-light rounded items-center align-middle align-center flex-1">
+            <div className="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded "></div>
+          </div>
         </div>
+
+        <div className="flex-1">
+          <div className="w-10 h-10 bg-white border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+            <span className="text-grey-darker text-center w-full">3</span>
+          </div>
+        </div>
+
+        <div className="w-1/6 align-center items-center align-middle content-center flex">
+          <div className="w-full bg-grey-light rounded items-center align-middle align-center flex-1">
+            <div className="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded "></div>
+          </div>
+        </div>
+
+        <div className="flex-1">
+          <div className="w-10 h-10 bg-white border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+            <span className="text-grey-darker text-center w-full">4</span>
+          </div>
+        </div>
+
+        <div className="flex-1"></div>
       </div>
-    </form>
+
+      <div className="flex text-xs content-center text-center">
+        <div className="w-1/4">Invitation received</div>
+
+        <div className="w-1/4">Personal details</div>
+
+        <div className="w-1/4">Application details</div>
+
+        <div className="w-1/4">Confirmation</div>
+      </div>
+    </div>
+    // <main>
+    //   <div classNameName="flex flex-row gap-6 mb-4 justify-center">
+    //     <div classNameName="flex flex-col p-6 border border-purple-500 rounded-lg shadow-lg">
+    //       <div classNameName="flex gap-8 pb-2 border-b-2 border-b-black mb-4">
+    //         <button
+    //           onClick={() => {
+    //             setIsContratoDado(true)
+    //             setIsPagamento(false)
+    //           }}
+    //           classNameName={`font-bold ${
+    //             isContratoDado && !isPagamento ? 'text-purple-600' : ''
+    //           }`}
+    //         >
+    //           ContratoDado
+    //         </button>
+    //         <button
+    //           onClick={() => {
+    //             setIsContratoDado(false)
+    //             setIsPagamento(true)
+    //           }}
+    //           classNameName={`font-bold ${
+    //             !isContratoDado && isPagamento ? 'text-purple-600' : ''
+    //           }`}
+    //         >
+    //           Informações
+    //         </button>
+    //         <button
+    //           onClick={() => {
+    //             setIsContratoDado(false)
+    //             setIsPagamento(false)
+    //           }}
+    //           classNameName={`font-bold ${
+    //             !isContratoDado && !isPagamento ? 'text-purple-600' : ''
+    //           }`}
+    //         >
+    //           ContratoDado
+    //         </button>
+    //       </div>
+    //       {isContratoDado ? <ContratoInfos /> : <Pagamento />}
+    //     </div>
+    //   </div>
+    // </main>
   )
 }
