@@ -150,7 +150,7 @@ export function DadosClinicos() {
       <div className="flex flex-col mb-4">
         <div className="flex flex-col">
           <label htmlFor="motivo" className="block text-sm font-bold">
-            Motivo
+            Mais Informações
           </label>
           <textarea
             name="motivo"

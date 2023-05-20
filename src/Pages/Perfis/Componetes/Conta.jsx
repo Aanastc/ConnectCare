@@ -8,7 +8,22 @@ export function Conta() {
   const [loadingUpdate, setLoadingUpdate] = useState(false)
   const { user, refetchUser, loading } = useUser()
 
-  const { reset, register, handleSubmit } = useForm()
+  const { reset, register, handleSubmit } = useForm({
+    defaultValues: {
+      name: user.name,
+      birthdate: format(new Date(user.birthdate), 'dd/LL/yyyy').toString(),
+      gender: user?.gender,
+      cpf: user.CPF,
+      rg: user.RG,
+      rua: user.logadouro,
+      numero: user.numero,
+      bairro: user.bairro,
+      complemento: user.complemento,
+      uf: user.estado,
+      cidade: user.cidade,
+      cep: user.cep
+    }
+  })
 
   async function handleConta(data) {
     const [day, month, year] = data.birthdate.split('/')
@@ -37,25 +52,6 @@ export function Conta() {
     setLoadingUpdate(false)
   }
 
-  useEffect(() => {
-    if (loading) return
-
-    reset({
-      name: user.name,
-      birthdate: format(new Date(user.birthdate), 'dd/LL/yyyy').toString(),
-      gender: user?.gender,
-      cpf: user.CPF,
-      rg: user.RG,
-      rua: user.logadouro,
-      numero: user.numero,
-      bairro: user.bairro,
-      complemento: user.complemento,
-      uf: user.estado,
-      cidade: user.cidade,
-      cep: user.cep
-    })
-  }, [user, loading])
-
   return (
     <form onSubmit={handleSubmit(handleConta)}>
       <div className="flex flex-row gap-8 mb-4">
@@ -66,7 +62,7 @@ export function Conta() {
           <input
             id="name"
             type="text"
-            className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 value:text-black"
+            className="border-gray-300 border-2 rounded-lg p-3 text-base w-96"
             {...register('name')}
           />
         </div>
@@ -78,8 +74,8 @@ export function Conta() {
             id="email"
             type="email"
             value={user?.email}
-            // {...register('email')}
-            className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 value:text-black"
+            className="border-gray-300 border-2 rounded-lg p-3 text-base w-96"
+            disabled
           />
         </div>
       </div>
@@ -92,19 +88,22 @@ export function Conta() {
             id="birthdate"
             type="text"
             {...register('birthdate')}
-            className="border-gray-300 border-2 rounded-lg p-3 text-base w-96 value:text-black"
+            className="border-gray-300 border-2 rounded-lg p-3 text-base w-96"
           />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="gender" className="text-sm font-bold">
             Sexo
           </label>
-          <input
+          <select
             id="gender"
-            type="text"
+            className="border-gray-300 border-2 rounded-lg p-3 text-base w-44"
             {...register('gender')}
-            className="border-gray-300 border-2 rounded-lg p-3 text-base w-44 value:text-black"
-          />
+          >
+            <option value="feminino">Feminino</option>
+            <option value="masculino">Masculino</option>
+            <option value="outros">Outros</option>
+          </select>
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="perfil" className="text-sm font-bold">
@@ -114,7 +113,8 @@ export function Conta() {
             id="perfil"
             type="text"
             value={user?.role}
-            className="border-gray-300 border-2 rounded-lg p-3 text-base w-44 value:text-black"
+            className="border-gray-300 border-2 rounded-lg p-3 text-base w-44 uppercase"
+            disabled
           />
         </div>
       </div>
@@ -198,8 +198,8 @@ export function Conta() {
         <div className="flex flex-col gap-2">
           <p className="text-sm font-bold">Estado</p>
           <select
-            id="UF"
-            name="UF"
+            id="uf"
+            name="uf"
             {...register('uf')}
             className="basis-[50%] border-gray-300 border-2 rounded-lg p-3 text-base w-24"
           >
@@ -236,11 +236,11 @@ export function Conta() {
           </select>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="Cidade" className="text-sm font-bold">
+          <label htmlFor="cidade" className="text-sm font-bold">
             Cidade
           </label>
           <input
-            id="Cidade"
+            id="cidade"
             type="text"
             placeholder="Fortaleza"
             className="border-gray-300 border-2 rounded-lg p-3 text-base w-64 placeholder:text-gray-400"
@@ -263,18 +263,25 @@ export function Conta() {
           <a
             href="https://buscacepinter.correios.com.br/app/endereco/index.php"
             target="_blank"
+            rel="noopener noreferrer"
             className="text-xs text-gray-500 font-medium italic text-start"
           >
             *Não sei meu CEP
           </a>
         </div>
-        <button className="bg-purple-500 text-white rounded-full h-10 w-64">
+        <button
+          type="submit"
+          className="bg-purple-500 text-white rounded-full h-10 w-64"
+          disabled={loadingUpdate}
+        >
           {loadingUpdate ? (
             <div
-              class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+              className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
               role="status"
             >
-              <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
+              <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                Loading...
+              </span>
             </div>
           ) : (
             'Salvar'

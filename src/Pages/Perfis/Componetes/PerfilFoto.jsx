@@ -19,11 +19,11 @@ export function FotoPerfil() {
     const { data: upload, error: uploadError } = await supabase.storage
       .from('FotoPerfil')
       .upload(uploadName, preview, {
-        contentType: preview.contentType
+        contentType: preview.type
       })
 
     if (uploadError) {
-      // do something
+      // handle upload error
     }
 
     const { data: avatar } = supabase.storage
@@ -41,19 +41,47 @@ export function FotoPerfil() {
     setPreview(null)
   }
 
+  const handleDelete = async () => {
+    await supabase.storage
+      .from('FotoPerfil')
+      .remove([user.avatarPath])
+      .then(response => {
+        if (response.error) {
+          // handle delete error
+        } else {
+          setPreview(null)
+          refetchUser()
+        }
+      })
+  }
+
   return (
     <div className="flex justify-center flex-col p-3 border border-purple-500 rounded-lg items-center shadow-lg h-56 w-44">
       {preview ? (
         <div className="flex flex-col items-center">
           <AvatarEditor width={153} height={134} image={preview} />
-          <button onClick={handleSave}>Salvar</button>
+          <button
+            onClick={handleSave}
+            className="mt-4 bg-purple-500 text-white py-2 px-4 rounded-lg"
+          >
+            Salvar
+          </button>
         </div>
       ) : (
         <>
-          <img src={user.avatarPath} className="h-40 w-36 rounded-3xl mb-4" />
+          <img
+            src={user.avatarPath}
+            className="h-40 w-36 rounded-3xl mb-4"
+            alt="Foto de perfil"
+          />
           <div className="flex flex-row gap-8">
-            <Trash size={28} weight="thin" />
-            <label for="file-upload" class="custom-file-upload">
+            <Trash
+              size={28}
+              weight="thin"
+              onClick={handleDelete}
+              style={{ cursor: 'pointer' }}
+            />
+            <label htmlFor="file-upload" className="custom-file-upload">
               <Eyedropper size={28} weight="thin" />
             </label>
             <input

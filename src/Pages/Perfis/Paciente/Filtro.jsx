@@ -38,8 +38,8 @@ export function Filtro() {
     setIsOpenOrdernar(!isOpenOrdernar)
   }
 
-  const handleOrdernarClick = especialidade => {
-    setSelectedOrdernar(especialidade)
+  const handleOrdernarClick = ordernar => {
+    setSelectedOrdernar(ordernar)
     setIsOpenOrdernar(false)
   }
 
@@ -63,12 +63,12 @@ export function Filtro() {
             )}
           </button>
           {isOpenEspecialidade && (
-            <ul className="absolute top-full left-0 z-10 mt-2 w-full border-purple-400 border-2 rounded-lg shadow-md bg-white h-32 overflow-auto">
+            <ul className="absolute top-full left-0 z-10 mt-2 w-full border-purple-400 border-2 rounded-lg shadow-md bg-white max-h-32 overflow-auto">
               {especialidades.map(especialidade => (
                 <li key={especialidade}>
                   <button
                     type="button"
-                    className="w-full text-left px-4 py-2 hover:bg-purple-400 hover:text-white focus:bg-purple-400 focus:text-white "
+                    className="w-full text-left px-4 py-2 hover:bg-purple-400 hover:text-white focus:bg-purple-400 focus:text-white"
                     onClick={() => handleEspecialidadeClick(especialidade)}
                   >
                     {especialidade}
@@ -92,7 +92,7 @@ export function Filtro() {
       </div>
       <div className="h-16 border-r-2 border-neutral-400"></div>
       <div className="pl-2 flex flex-col">
-        <label for="dia" className="text-sm text-gray-500 font-medium">
+        <label htmlFor="dia" className="text-sm text-gray-500 font-medium">
           Disponibilidade
         </label>
         <input type="date" id="dia" name="dia" className="font-bold" />
@@ -104,7 +104,7 @@ export function Filtro() {
           className="border-purple-400 border rounded-lg p-2 flex flex-row gap-24 items-center"
         >
           <p className="text-sm text-purple-400">
-            {selectedOrdernar || 'Ordernar por:'}
+            {selectedOrdernar || 'Ordenar por:'}
           </p>
           {isOpenOrdernar ? (
             <CaretUp size={22} color="#9063CD" />
@@ -113,7 +113,7 @@ export function Filtro() {
           )}
         </button>
         {isOpenOrdernar && (
-          <ul className="border-purple-400 border-2 rounded-lg shadow-md bg-white absolute z-10 right-0 top-full w-full h-32 overflow-auto">
+          <ul className="border-purple-400 border-2 rounded-lg shadow-md bg-white absolute z-10 right-0 top-full w-full max-h-32 overflow-auto">
             {ordernarPor.map(ordernar => (
               <li key={ordernar}>
                 <button
