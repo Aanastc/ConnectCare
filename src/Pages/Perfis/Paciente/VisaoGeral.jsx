@@ -29,12 +29,18 @@ export function VisaoGeral() {
           avatarPath,
           profissional (
             especialidade
-          )`
+          )
+        `
         )
         .eq('role', 'caregiver')
-      if (error) console.log('Erro ao buscar profissionais:', error)
-      else setProfissionais(data)
+
+      if (error) {
+        console.log('Erro ao buscar profissionais:', error)
+      } else {
+        setProfissionais(data)
+      }
     }
+
     getProfissionais()
   }, [])
 
@@ -50,7 +56,7 @@ export function VisaoGeral() {
   //   setShowProfileNotification(false);
   // }
 
-  const especialidade =
+  const especialidadeButton =
     'border-purple-400 border-2 rounded flex flex-col justify-center items-center h-24 w-24 m-2 p-2 hover:bg-purple-400 hover:shadow-md'
 
   return (
@@ -70,36 +76,36 @@ export function VisaoGeral() {
         </div>
       )} */}
       <Saudacao />
-      <div className="flex flex-row mb-4 w-full gap-5 justify-center items-center">
-        <button className={especialidade}>
+      <div className="flex flex-row flex-wrap mb-4 w-full gap-5 justify-center items-center">
+        <button className={especialidadeButton}>
           <Baby size={32} color="#0a0a0b" />
           <span className="mt-2">Neonatal</span>
         </button>
-        <button className={especialidade}>
+        <button className={especialidadeButton}>
           <Bed size={32} color="#0a0a0b" />
-          <span className="mt-2">internação</span>
+          <span className="mt-2">Internação</span>
         </button>
-        <button className={especialidade}>
+        <button className={especialidadeButton}>
           <Syringe size={32} color="#0a0a0b" />
           <span className="mt-2">Vacinas</span>
         </button>
-        <button className={especialidade}>
+        <button className={especialidadeButton}>
           <Heartbeat size={32} color="#0a0a0b" />
           <span className="mt-2">Idoso</span>
         </button>
-        <button className={especialidade}>
+        <button className={especialidadeButton}>
           <FaceMask size={32} color="#0a0a0b" />
           <span className="mt-2">Paliativo</span>
         </button>
-        <button className={especialidade}>
+        <button className={especialidadeButton}>
           <FirstAidKit size={32} color="#0a0a0b" />
           <span className="mt-2">Curativo</span>
         </button>
-        <button className={especialidade}>
+        <button className={especialidadeButton}>
           <Wheelchair size={32} color="#0a0a0b" />
           <span className="mt-2">Cadeirante</span>
         </button>
-        <button className={especialidade}>
+        <button className={especialidadeButton}>
           <Pill size={32} color="#0a0a0b" />
           <span className="mt-2">Medicação</span>
         </button>
@@ -108,6 +114,7 @@ export function VisaoGeral() {
       <div className="flex flex-wrap gap-12 justify-center">
         {profissionais.map(perfilDoProfissional => (
           <Card
+            key={perfilDoProfissional.id}
             profissionalId={perfilDoProfissional.id}
             name={perfilDoProfissional.name}
             especialidade={perfilDoProfissional?.profissional?.especialidade}
