@@ -3,27 +3,11 @@ import { useParams } from 'react-router-dom'
 import arrow from '../../../assets/icons/caret-right-thin.svg'
 import { useUser } from '../../../contexts/UserCtx'
 import { supabase } from '../../../services/supabase'
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
 
-export function ContratoInfos() {
-  const [showModal, setShowModal] = useState(false)
+export function ContratoInfos({ onNextStep }) {
   const { register, handleSubmit, control, reset } = useForm()
   const { user, loading } = useUser()
   const { id } = useParams()
-
-  const [status, setStatus] = useState({
-    type: '',
-    mensagem: ''
-  })
-
-  if (setShowModal == true) {
-    setStatus({
-      type: 'success',
-      mensagem: 'Solicitação enviada!'
-    })
-    return
-  }
 
   async function handleContrato(data) {
     await supabase.from('contrato').insert({
@@ -48,9 +32,12 @@ export function ContratoInfos() {
         <div className="flex flex-row items-center mb-4 gap-36">
           <div className="flex flex-col">
             <p className="text-sm font-bold">Período</p>
-            <div className="border-gray-300 border-2 rounded-lg w-96 h-14 flex justify-between items-center px-2">
+            <div className="border-gray-300 border-2 rounded-lg w-96 h-14 flex justify-between items-center px-2 relative">
               <div className="flex flex-col">
-                <label for="dia" className="text-sm text-gray-500 font-medium">
+                <label
+                  htmlFor="dia"
+                  className="text-sm text-gray-500 font-medium"
+                >
                   De
                 </label>
                 <input
@@ -61,9 +48,15 @@ export function ContratoInfos() {
                   {...register('periodo_inicial')}
                 />
               </div>
-              <img src={arrow} className="absolute top-30 left-44 w-20" />
+              <img
+                src={arrow}
+                className="absolute top-1/2 -translate-y-1/2 transform -translate-x-1/2 w-20 left-1/2"
+              />
               <div className="pl-2 flex flex-col">
-                <label for="dia" className="text-sm text-gray-500 font-medium">
+                <label
+                  htmlFor="dia"
+                  className="text-sm text-gray-500 font-medium"
+                >
                   Até
                 </label>
                 <input
@@ -308,49 +301,12 @@ export function ContratoInfos() {
           </div>
         </div>
         <div className="flex justify-end">
-          {status.type === 'success' ? (
-            <p style={{ color: 'green' }}>{status.mensagem}</p>
-          ) : (
-            ''
-          )}
           <button
             className="bg-purple-500 text-white rounded-full h-10 w-64"
-            onClick={() => setShowModal(true)}
+            onClick={onNextStep}
           >
-            Enviar
+            Próximo
           </button>
-          {showModal ? (
-            <>
-              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                  <div className="rounded-lg shadow-lg relative flex flex-col w-full bg-purple-100 outline-none focus:outline-none">
-                    <div className="relative p-6 flex-auto">
-                      <p className="text-slate-500 font-medium text-lg">
-                        PARABÉNS!!!
-                      </p>
-                      <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                        Nós da Connect Care agradecemos a confiança. <br />
-                        Sua solicitação foi enviada com sucesso, você pode
-                        encontrar informações sobre o status dela na barra
-                        lateral.
-                      </p>
-                    </div>
-                    <div className="flex justify-end p-2">
-                      <NavLink to="/Paciente/visaoGeral">
-                        <button
-                          className="bg-purple-500 text-white rounded-full h-10 w-64"
-                          onClick={() => setShowModal(false)}
-                        >
-                          Voltar para home
-                        </button>
-                      </NavLink>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-            </>
-          ) : null}
         </div>
       </div>
     </form>
