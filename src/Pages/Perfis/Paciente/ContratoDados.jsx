@@ -51,32 +51,29 @@ export function ContratoDados() {
 
   return (
     <div>
-      <div className="flex flex-row justify-center items-center gap-10">
+      <div className="flex flex-row justify-center items-center gap-10 mb-4">
         <div className="flex flex-row">
           {steps.map((step, index) => (
             <React.Fragment key={index}>
               {index > 0 && (
-                <div className="w-48 bg-purple-600 h-0.5 my-4"></div>
+                <div className="w-48 bg-purple-600 h-0.5 my-7"></div>
               )}
-              <div className="flex flex-col items-center">
-                <div
-                  className={`relative ${
-                    currentStep > index + 1
-                      ? 'text-green-500'
-                      : 'text-purple-600'
-                  }`}
-                >
+              <div
+                className={`relative ${
+                  currentStep > index + 1
+                    ? 'text-purple-600'
+                    : 'text-purple-600'
+                }`}
+              >
+                <div className="flex flex-col items-center">
                   {currentStep > index + 1 && (
-                    <Check
-                      size={24}
-                      color="#fff"
-                      weight="fill"
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    />
+                    <div className="flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-purple-600 rounded-full w-14 h-14">
+                      <Check size={30} color="#fff" weight="fill" />
+                    </div>
                   )}
                   <div
-                    className={`bg-purple-600 rounded-full text-white flex items-center justify-center w-8 h-8 ${
-                      currentStep === index + 1 ? 'bg-green-500' : ''
+                    className={`bg-purple-400 rounded-full text-white flex items-center justify-center w-14 h-14 ${
+                      currentStep === index + 1 ? 'bg-purple-600' : ''
                     }`}
                   >
                     {currentStep === index + 1 ? step.number : ''}

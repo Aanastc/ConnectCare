@@ -25,7 +25,7 @@ export function ContratoInfos({ onNextStep }) {
 
   return (
     <form onSubmit={handleSubmit(handleContrato)}>
-      <div className="flex flex-col p-6 border border-purple-500 rounded-lg shadow-lg m-4">
+      <div className="flex flex-col">
         <div className="flex gap-8 pb-2 border-b-2 border-b-black mb-4">
           <h1 className="text-2xl text-purple-400">Detalhes do Contrato</h1>
         </div>
