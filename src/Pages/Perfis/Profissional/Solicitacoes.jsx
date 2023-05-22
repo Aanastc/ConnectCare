@@ -10,33 +10,6 @@ const CONTRATO_STATUS = {
 }
 
 export function Solicitacoes() {
-  // const solicitacaoPacientes = [
-  //   {
-  //     nome: 'Clarissa Cabral ',
-  //     Diagnostico: 'Fratura em MID',
-  //     horario: 'Integral',
-  //     dias: 'Segunda - Quarta - Sexta',
-  //     Contratacao: 'Por período',
-  //     PeriodoDoContrato: '180 dias',
-  //     Beneficios: 'Motorista',
-  //     Pernoite: 'Sim',
-  //     Endereco: 'Rua Flores, 1123 - Aldeota',
-  //     Observacoes:
-  //       'Preciso que dê os remédios, trocar curativo, ajudar na compressa de gelo, auxiliar na locomoção.'
-  //   },
-  //   {
-  //     nome: 'Pedro Cardoso',
-  //     Diagnostico: 'Perna Quebrada',
-  //     horario: 'Tarde',
-  //     dias: 'Segunda - Quinta',
-  //     Contratacao: 'Por hora',
-  //     PeriodoDoContrato: '7 dias',
-  //     Beneficios: 'Almoço',
-  //     Pernoite: 'Não',
-  //     Endereco: 'Avenida João Pereira, 123 - Água Fria',
-  //     Observacoes: 'Auxiliar na locomoção e banho'
-  //   }
-  // ]
   const [solicitacaoPacientes, setSolicitacaoPacientes] = useState([])
   const [
     refreshSolicitacaoPacientesIndex,

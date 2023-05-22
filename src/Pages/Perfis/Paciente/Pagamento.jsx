@@ -25,21 +25,17 @@ export function Pagamento({ onPreviousStep }) {
     e.preventDefault()
 
     if (paymentMethod === 'card') {
-      // Lógica para processar o pagamento com cartão
       console.log('Método de pagamento: Cartão')
       console.log('Número do Cartão:', cardNumber)
       console.log('Nome do Titular:', cardName)
       console.log('Data de Expiração:', expiryDate)
       console.log('CVV:', cvv)
     } else if (paymentMethod === 'boleto') {
-      // Lógica para processar o pagamento com boleto
       console.log('Método de pagamento: Boleto')
     } else if (paymentMethod === 'pix') {
-      // Lógica para processar o pagamento com PIX
       console.log('Método de pagamento: PIX')
     }
 
-    // Resetar os campos após o envio do formulário
     setCardNumber('')
     setCardName('')
     setExpiryDate('')

@@ -1,5 +1,5 @@
 import { PaperPlaneRight, Smiley } from 'phosphor-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useUser } from '../contexts/UserCtx'
 import { supabase } from '../services/supabase'
 
@@ -7,6 +7,7 @@ export function Chat() {
   const { user } = useUser()
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState('')
+  const messagesEndRef = useRef(null)
 
   const handleInputChange = e => {
     setInputValue(e.target.value)
@@ -34,6 +35,13 @@ export function Chat() {
     }
   }
 
+  const handleKeyDown = e => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      handleSendMessage()
+    }
+  }
+
   useEffect(() => {
     const fetchMessages = async () => {
       const { data, error } = await supabase
@@ -47,7 +55,6 @@ export function Chat() {
         setMessages(data)
       }
     }
-
     fetchMessages()
   }, [])
 
@@ -77,6 +84,10 @@ export function Chat() {
 
     return () => subscription.unsubscribe()
   }, [])
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
 
   return (
     <main className="flex justify-center items-center h-screen">
@@ -108,6 +119,7 @@ export function Chat() {
               </div>
             </div>
           ))}
+          <div ref={messagesEndRef} />
         </div>
         <div className="flex border-t-2 border-t-purple-500 p-2">
           <div className="flex-1 pr-2">
@@ -121,6 +133,7 @@ export function Chat() {
                 placeholder="Digite uma mensagem..."
                 value={inputValue}
                 onChange={handleInputChange}
+                onKeyDown={handleKeyDown}
               />
             </div>
           </div>

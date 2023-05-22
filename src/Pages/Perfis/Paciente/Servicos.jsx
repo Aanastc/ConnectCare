@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../../../services/supabase'
 import { ServicosStatus } from './ServicosStatus'
+import { useUser } from '../../../contexts/UserCtx'
 
 const Solicitacao = [
   {
@@ -18,10 +19,14 @@ const Solicitacao = [
 ]
 
 export function Servicos() {
+  const { user } = useUser()
+  const [isCacel, setCancel] = useState(true)
+
   return (
-    <main className="flex flex-col w-full max-w-[1090px] border-b-2 border-purple-500 pt-6">
+    <main>
       {Solicitacao.map(solicitacao => (
         <ServicosStatus
+          avatar={user.avatarPath}
           protocolo={solicitacao.protocolo}
           status={solicitacao.status}
         />

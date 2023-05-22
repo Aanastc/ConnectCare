@@ -34,7 +34,7 @@ export function Card({
               Ver Perfil
             </button>
           </NavLink>
-          <NavLink to={`/Paciente/chat/${profissionalId}`}>
+          <NavLink to="/Paciente/chat">
             <ChatCircleDots size={28} color="#9063CD" />
           </NavLink>
         </div>
