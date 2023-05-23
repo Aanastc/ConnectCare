@@ -8,6 +8,7 @@ export function Chat() {
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState('')
   const messagesEndRef = useRef(null)
+  const [conversationId, setConversationId] = useState(null)
 
   const handleInputChange = e => {
     setInputValue(e.target.value)
@@ -17,7 +18,8 @@ export function Chat() {
     if (inputValue.trim() !== '') {
       const newMessage = {
         content: inputValue,
-        sender: user.name
+        sender: user.name,
+        participantes_chat_id: conversationId
       }
 
       const { data, error } = await supabase
@@ -44,23 +46,37 @@ export function Chat() {
 
   useEffect(() => {
     const fetchMessages = async () => {
-      const { data, error } = await supabase
-        .from('chat')
-        .select('*')
-        .order('id')
+      const { data: conversationData, error: conversationError } =
+        await supabase
+          .from('participante_chat')
+          .select('id')
+          .or(`profissional_id.eq.${user.id},paciente_id.eq.${user.id}`)
+          .single()
 
-      if (error) {
-        console.error('Erro ao buscar as mensagens:', error)
-      } else {
-        setMessages(data)
+      if (conversationError) {
+        console.error('Erro ao buscar a conversa:', conversationError)
+      } else if (conversationData) {
+        setConversationId(conversationData.id)
+
+        const { data, error } = await supabase
+          .from('chat')
+          .select('*')
+          .eq('participantes_chat_id', conversationData.id)
+          .order('created_at')
+
+        if (error) {
+          console.error('Erro ao buscar as mensagens:', error)
+        } else {
+          setMessages(data)
+        }
       }
     }
     fetchMessages()
-  }, [])
+  }, [user.id])
 
   useEffect(() => {
     const subscription = supabase
-      .channel('chat-realtime')
+      .channel(`chat-realtime:${conversationId}`)
       .on(
         'postgres_changes',
         {
@@ -83,7 +99,7 @@ export function Chat() {
       .subscribe()
 
     return () => subscription.unsubscribe()
-  }, [])
+  }, [conversationId])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
