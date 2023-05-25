@@ -1,5 +1,5 @@
 import { ChatCircleDots, Star } from 'phosphor-react'
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 export function Card({
   profissionalId,
@@ -8,10 +8,10 @@ export function Card({
   atendimentos,
   avatar
 }) {
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const handleChatClick = () => {
-    history.push(`/Paciente/chat/${profissionalId}`)
+    navigate(`/Paciente/chat/${profissionalId}`)
   }
 
   return (
