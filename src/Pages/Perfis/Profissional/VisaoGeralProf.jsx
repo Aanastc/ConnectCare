@@ -49,10 +49,11 @@ export function VisaoGeralProf() {
 
       {paciente.length ? (
         <div className="flex flex-wrap gap-16 items-center mb-4">
-          {/* <Navlink to={`profissional/visaoGeral/perfilPaciente/${pacienteId}`}> */}
           {paciente.map(pacienteEmAtendimento => (
             <CardAtendimento
-              key={pacienteEmAtendimento.paciente.profiles.id}
+              profissionalId={
+                pacienteEmAtendimento.paciente.profiles.avatarPath
+              }
               avatar={pacienteEmAtendimento.paciente.profiles.avatarPath}
               nome={pacienteEmAtendimento.paciente.profiles.name}
               casoClinico={pacienteEmAtendimento?.paciente?.casoClinico}
@@ -60,7 +61,6 @@ export function VisaoGeralProf() {
               dias={pacienteEmAtendimento.dias?.join(' - ')}
             />
           ))}
-          {/* </Navlink> */}
         </div>
       ) : (
         <span className="text-gray-400 text-sm">Ainda não há atendimentos</span>
