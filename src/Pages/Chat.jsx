@@ -8,13 +8,51 @@ export function Chat() {
   const [conversaSelecionada, setConversaSelecionada] = useState(undefined)
   const [pessoas, setPessoas] = useState([])
   const { user, loading } = useUser()
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [loadingPessoas, setloadingPessoas] = useState(true)
   const to = searchParams.get('to')
+
+  const createNewConversation = async () => {
+    const { data: newConversationData } = await supabase
+      .from('Participantes_chat')
+      .insert({
+        profissionais_id: user.role === 'caregiver' ? user.id : to,
+        paciente_id: user.role === 'patient' ? user.id : to
+      })
+      .select(
+        `
+          id,
+          profissionais_id,
+          paciente_id,
+          profissional (
+            profiles (
+              name,
+              avatarPath
+            )
+          ),
+          paciente (
+            profiles (
+              name,
+              avatarPath
+            )
+          )
+        `
+      )
+    const [newConversation] = newConversationData
+
+    searchParams.delete('to')
+
+    setSearchParams(searchParams)
+    setPessoas(prev => [...prev, newConversation])
+    setConversaSelecionada(newConversation)
+  }
 
   useEffect(() => {
     if (loading) return
 
     const fetchPessoas = async () => {
+      setloadingPessoas(true)
+
       const { data: pessoasData, error } = await supabase
         .from('Participantes_chat')
         .select(
@@ -42,6 +80,7 @@ export function Chat() {
         console.error('Erro ao buscar pessoas:', error)
       } else {
         setPessoas(pessoasData)
+        setloadingPessoas(false)
       }
     }
 
@@ -49,7 +88,7 @@ export function Chat() {
   }, [loading])
 
   useEffect(() => {
-    if (!to || !pessoas.length || loading) return
+    if (!to || loadingPessoas || loading) return
 
     const [converaExistente] = pessoas.filter(p => {
       if (p.profissionais_id === to || p.paciente_id === to) {
@@ -61,40 +100,6 @@ export function Chat() {
       setConversaSelecionada(converaExistente)
       return
     }
-
-    const createNewConversation = async () => {
-      const { data: newConversationData } = await supabase
-        .from('Participantes_chat')
-        .insert({
-          profissionais_id: user.role === 'caregiver' ? user.id : to,
-          paciente_id: user.role === 'patient' ? user.id : to
-        })
-        .select(
-          `
-            id,
-            profissionais_id,
-            paciente_id,
-            profissional (
-              profiles (
-                name,
-                avatarPath
-              )
-            ),
-            paciente (
-              profiles (
-                name,
-                avatarPath
-              )
-            )
-          `
-        )
-      const [newConversation] = newConversationData
-
-      setPessoas(prev => [...prev, newConversation])
-      setConversaSelecionada(newConversation)
-    }
-
-    console.log(to, pessoas, conversaSelecionada)
 
     if (conversaSelecionada) return
 
