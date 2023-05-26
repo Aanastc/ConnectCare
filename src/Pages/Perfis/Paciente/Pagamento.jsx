@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useFormContext } from 'react-hook-form'
 import Pix from '../../../assets/icons/Pix.svg'
 
-export function Pagamento({ onPreviousStep }) {
-  const [showModal, setShowModal] = useState(false)
+export function Pagamento({ onPreviousStep, onSubmit }) {
   const [cardNumber, setCardNumber] = useState('')
   const [cardName, setCardName] = useState('')
   const [expiryDate, setExpiryDate] = useState('')
@@ -12,6 +11,7 @@ export function Pagamento({ onPreviousStep }) {
   const [boletoField, setBoletoField] = useState('')
   const [pagadorName, setPagadorName] = useState('')
   const [cpfCnpj, setCpfCnpj] = useState('')
+  const { handleSubmit } = useFormContext()
 
   const handleInputChange = (e, stateSetter) => {
     stateSetter(e.target.value)
@@ -21,31 +21,31 @@ export function Pagamento({ onPreviousStep }) {
     setPaymentMethod(method)
   }
 
-  const handleSubmit = e => {
-    e.preventDefault()
+  // const handleSubmit = e => {
+  //   e.preventDefault()
 
-    if (paymentMethod === 'card') {
-      console.log('Método de pagamento: Cartão')
-      console.log('Número do Cartão:', cardNumber)
-      console.log('Nome do Titular:', cardName)
-      console.log('Data de Expiração:', expiryDate)
-      console.log('CVV:', cvv)
-    } else if (paymentMethod === 'boleto') {
-      console.log('Método de pagamento: Boleto')
-    } else if (paymentMethod === 'pix') {
-      console.log('Método de pagamento: PIX')
-    }
+  //   if (paymentMethod === 'card') {
+  //     console.log('Método de pagamento: Cartão')
+  //     console.log('Número do Cartão:', cardNumber)
+  //     console.log('Nome do Titular:', cardName)
+  //     console.log('Data de Expiração:', expiryDate)
+  //     console.log('CVV:', cvv)
+  //   } else if (paymentMethod === 'boleto') {
+  //     console.log('Método de pagamento: Boleto')
+  //   } else if (paymentMethod === 'pix') {
+  //     console.log('Método de pagamento: PIX')
+  //   }
 
-    setCardNumber('')
-    setCardName('')
-    setExpiryDate('')
-    setCvv('')
-    setPagadorName('')
-    setCpfCnpj('')
-  }
+  //   setCardNumber('')
+  //   setCardName('')
+  //   setExpiryDate('')
+  //   setCvv('')
+  //   setPagadorName('')
+  //   setCpfCnpj('')
+  // }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex gap-8 pb-2 border-b-2 border-b-black mb-4">
         <h1 className="text-2xl text-purple-400">Pagamento</h1>
       </div>
@@ -215,43 +215,12 @@ export function Pagamento({ onPreviousStep }) {
           Anterior
         </button>
         <button
+          type="submit"
           className="bg-purple-500 text-white rounded-full h-10 w-64"
-          onClick={() => setShowModal(true)}
         >
           Enviar
         </button>
       </div>
-      {showModal ? (
-        <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              <div className="rounded-lg shadow-lg relative flex flex-col w-full bg-purple-100 outline-none focus:outline-none">
-                <div className="relative p-6 flex-auto">
-                  <p className="text-slate-500 font-medium text-lg">
-                    PARABÉNS!!!
-                  </p>
-                  <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                    Nós da Connect Care agradecemos a confiança. <br />
-                    Sua solicitação foi enviada com sucesso, você pode encontrar
-                    informações sobre o status dela na barra lateral.
-                  </p>
-                </div>
-                <div className="flex justify-end p-2">
-                  <NavLink to="/Paciente/visaoGeral">
-                    <button
-                      className="bg-purple-500 text-white rounded-full h-10 w-64"
-                      onClick={() => setShowModal(false)}
-                    >
-                      Voltar para home
-                    </button>
-                  </NavLink>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </>
-      ) : null}
     </form>
   )
 }

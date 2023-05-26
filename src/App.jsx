@@ -21,6 +21,7 @@ import { Profissional } from './Layouts/Profissional'
 import { VisaoGeralProf } from './Pages/Perfis/Profissional/VisaoGeralProf'
 import { EditarPerfilProf } from './Pages/Perfis/Profissional/EditarPerfilProf'
 import { Solicitacoes } from './Pages/Perfis/Profissional/Solicitacoes'
+import { PerfilPaciente } from './Pages/Perfis/Profissional/PerfilPaciente'
 
 import { Chat } from './Pages/Chat'
 
@@ -52,7 +53,7 @@ export function App() {
           path="perfilDoProfissional/:id/InfoContract"
           element={<ContratoDados />}
         />
-        <Route path="chat/:id" element={<Chat />} />
+        <Route path="chat" element={<Chat />} />
       </Route>
       <Route
         path="/Profissional"
@@ -63,7 +64,12 @@ export function App() {
         <Route path="visaoGeral" element={<VisaoGeralProf />} />
         <Route path="editarPerfil" element={<EditarPerfilProf />} />
         <Route path="solicitacoes" element={<Solicitacoes />} />
+<<<<<<< HEAD
+        <Route path="perfilPaciente/:id" element={<PerfilPaciente />} />
         <Route path="chat/:id" element={<Chat />} />
+=======
+        <Route path="chat" element={<Chat />} />
+>>>>>>> a5b42a73b13dc03e1ca9c3fdc605d61162ce88b3
       </Route>
       <Route path="*" element={<div>Página não encontrada</div>} />
     </Routes>
