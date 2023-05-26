@@ -9,7 +9,7 @@ export function CardAtendimento({
   avatar
 }) {
   return (
-    <NavLink to={`/Paciente/perfilDoProfissional/${pacienteId}`}>
+    <NavLink to={`/Profissional/perfilPaciente/${pacienteId}`}>
       <div className="flex flex-row gap-4 items-center mb-4">
         <div>
           <img

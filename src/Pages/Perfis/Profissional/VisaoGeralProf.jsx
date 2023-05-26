@@ -27,6 +27,7 @@ export function VisaoGeralProf() {
           paciente (
             casoClinico,
             profiles (
+              id,
               name,
               avatarPath
             )
@@ -51,9 +52,7 @@ export function VisaoGeralProf() {
         <div className="flex flex-wrap gap-16 items-center mb-4">
           {paciente.map(pacienteEmAtendimento => (
             <CardAtendimento
-              profissionalId={
-                pacienteEmAtendimento.paciente.profiles.avatarPath
-              }
+              pacienteId={pacienteEmAtendimento.paciente.profiles.id}
               avatar={pacienteEmAtendimento.paciente.profiles.avatarPath}
               nome={pacienteEmAtendimento.paciente.profiles.name}
               casoClinico={pacienteEmAtendimento?.paciente?.casoClinico}
