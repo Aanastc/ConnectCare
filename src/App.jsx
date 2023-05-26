@@ -21,6 +21,7 @@ import { Profissional } from './Layouts/Profissional'
 import { VisaoGeralProf } from './Pages/Perfis/Profissional/VisaoGeralProf'
 import { EditarPerfilProf } from './Pages/Perfis/Profissional/EditarPerfilProf'
 import { Solicitacoes } from './Pages/Perfis/Profissional/Solicitacoes'
+import { PerfilPaciente } from './Pages/Perfis/Profissional/PerfilPaciente'
 
 import { Chat } from './Pages/Chat'
 
@@ -63,6 +64,7 @@ export function App() {
         <Route path="visaoGeral" element={<VisaoGeralProf />} />
         <Route path="editarPerfil" element={<EditarPerfilProf />} />
         <Route path="solicitacoes" element={<Solicitacoes />} />
+        <Route path="perfilPaciente/:id" element={<PerfilPaciente />} />
         <Route path="chat/:id" element={<Chat />} />
       </Route>
       <Route path="*" element={<div>Página não encontrada</div>} />

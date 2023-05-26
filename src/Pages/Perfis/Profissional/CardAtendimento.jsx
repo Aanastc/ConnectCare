@@ -1,4 +1,4 @@
-export function CardAtendimento({ nome, casoClinico, horario, dias, avatar }) {
+export function CardAtendimento({ profissionalId, nome, casoClinico, horario, dias, avatar }) {
   return (
     <div className="flex flex-row gap-4 items-center mb-4">
       <div>
