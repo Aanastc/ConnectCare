@@ -62,9 +62,9 @@ export function Pagamento({ onPreviousStep }) {
           />
           <label
             htmlFor="cardMethod"
-            className={`label-role flex flex-col items-center p-4 bg-purple-100 rounded-lg cursor-pointer w-80 h-80 border-2 ${
+            className={`label-role flex flex-col items-center p-4 bg-purple-100 rounded-lg cursor-pointer w-80 h-96 border-2 ${
               paymentMethod === 'card'
-                ? 'border-purple-200'
+                ? 'border-purple-500'
                 : 'border-purple-100'
             } hover:bg-purple-200 hover:border-purple-200`}
           >
@@ -139,9 +139,9 @@ export function Pagamento({ onPreviousStep }) {
           />
           <label
             htmlFor="boletoMethod"
-            className={`label-role flex flex-col items-center p-4 bg-purple-100 rounded-lg cursor-pointer w-80 h-80 border-2 ${
+            className={`label-role flex flex-col items-center p-4 bg-purple-100 rounded-lg cursor-pointer w-80 h-96 border-2 ${
               paymentMethod === 'boleto'
-                ? 'border-purple-200'
+                ? 'border-purple-500'
                 : 'border-purple-100'
             } hover:bg-purple-200 hover:border-purple-200`}
           >
@@ -190,9 +190,9 @@ export function Pagamento({ onPreviousStep }) {
           />
           <label
             htmlFor="pixMethod"
-            className={`label-role flex flex-col items-center p-4 bg-purple-100 rounded-lg cursor-pointer w-80 h-80 border-2 ${
+            className={`label-role flex flex-col items-center p-4 bg-purple-100 rounded-lg cursor-pointer w-80 h-96 border-2 ${
               paymentMethod === 'pix'
-                ? 'border-purple-200'
+                ? 'border-purple-500'
                 : 'border-purple-100'
             } hover:bg-purple-200 hover:border-purple-200`}
           >
