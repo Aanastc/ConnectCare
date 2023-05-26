@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../services/supabase'
 import { Conversas } from './Conversas'
 import { useUser } from '../contexts/UserCtx'
+import { useSearchParams } from 'react-router-dom'
 
 export function Chat() {
   const [conversaSelecionada, setConversaSelecionada] = useState(undefined)
   const [pessoas, setPessoas] = useState([])
   const { user, loading } = useUser()
+  const [searchParams] = useSearchParams()
+  const to = searchParams.get('to')
 
   useEffect(() => {
     if (loading) return
@@ -44,6 +47,59 @@ export function Chat() {
 
     fetchPessoas()
   }, [loading])
+
+  useEffect(() => {
+    if (!to || !pessoas.length || loading) return
+
+    const [converaExistente] = pessoas.filter(p => {
+      if (p.profissionais_id === to || p.paciente_id === to) {
+        return p
+      }
+    })
+
+    if (converaExistente) {
+      setConversaSelecionada(converaExistente)
+      return
+    }
+
+    const createNewConversation = async () => {
+      const { data: newConversationData } = await supabase
+        .from('Participantes_chat')
+        .insert({
+          profissionais_id: user.role === 'caregiver' ? user.id : to,
+          paciente_id: user.role === 'patient' ? user.id : to
+        })
+        .select(
+          `
+            id,
+            profissionais_id,
+            paciente_id,
+            profissional (
+              profiles (
+                name,
+                avatarPath
+              )
+            ),
+            paciente (
+              profiles (
+                name,
+                avatarPath
+              )
+            )
+          `
+        )
+      const [newConversation] = newConversationData
+
+      setPessoas(prev => [...prev, newConversation])
+      setConversaSelecionada(newConversation)
+    }
+
+    console.log(to, pessoas, conversaSelecionada)
+
+    if (conversaSelecionada) return
+
+    createNewConversation()
+  }, [to, pessoas, loading])
 
   const handleConversaClick = conversa => {
     setConversaSelecionada(conversa)

@@ -40,7 +40,7 @@ export function Card({
           </button>
         </NavLink>
         <NavLink
-          to={`/Paciente/chat/${profissionalId}`}
+          to={`/Paciente/chat?to=${profissionalId}`}
           onClick={handleChatClick}
         >
           <ChatCircleDots size={28} color="#9063CD" />
