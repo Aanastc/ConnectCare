@@ -3,11 +3,15 @@ import { useEffect, useRef, useState } from 'react'
 import { useUser } from '../contexts/UserCtx'
 import { supabase } from '../services/supabase'
 
-export function Conversas({ conversaId }) {
+export function Conversas({ conversa }) {
   const { user } = useUser()
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState('')
   const messagesEndRef = useRef(null)
+  const conversante =
+    conversa.profissionais_id === user.id
+      ? conversa.paciente
+      : conversa.profissional
 
   const handleInputChange = e => {
     setInputValue(e.target.value)
@@ -18,18 +22,18 @@ export function Conversas({ conversaId }) {
       const newMessage = {
         content: inputValue,
         sender: user.name,
-        participantes_chat_id: conversaId
+        participantes_chat_id: conversa.id
       }
 
       const { data, error } = await supabase
         .from('chat')
         .insert(newMessage)
         .select('*')
+      const [messageData] = data
 
       if (error) {
         console.error('Erro ao enviar a mensagem:', error)
       } else {
-        const [messageData] = data
         setMessages(prev => [...prev, messageData])
         setInputValue('')
       }
@@ -44,11 +48,13 @@ export function Conversas({ conversaId }) {
   }
 
   useEffect(() => {
+    if (!conversa) return
+
     const fetchMessages = async () => {
       const { data, error } = await supabase
         .from('chat')
         .select('*')
-        .eq('participantes_chat_id', conversaId)
+        .eq('participantes_chat_id', conversa.id)
         .order('created_at')
 
       if (error) {
@@ -59,7 +65,34 @@ export function Conversas({ conversaId }) {
     }
 
     fetchMessages()
-  }, [conversaId])
+  }, [conversa])
+
+  useEffect(() => {
+    const subscription = supabase
+      .channel('chat-realtime')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'chat'
+        },
+        payload => {
+          setMessages(prev => {
+            const messageAlreadyInChat = prev.some(
+              msg => msg.id === payload.new.id
+            )
+
+            if (messageAlreadyInChat) return prev
+
+            return [...prev, payload.new]
+          })
+        }
+      )
+      .subscribe()
+
+    return () => subscription.unsubscribe()
+  }, [])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -70,10 +103,12 @@ export function Conversas({ conversaId }) {
       <div className="flex flex-row items-center gap-4 border-b-2 border-b-purple-500 p-2">
         <img
           className="w-10 h-10 rounded-full ring-2 ring-gray-300"
-          src={user.avatarPath}
-          alt={user.name}
+          src={conversante.profiles.avatarPath}
+          alt={conversante.profiles.name}
         />
-        <p className="text-lg font-medium text-purple-500">{user.name}</p>
+        <p className="text-lg font-medium text-purple-500">
+          {conversante.profiles.name}
+        </p>
       </div>
       <div className="flex-1 overflow-y-auto bg-gray-100">
         <div className="p-2">

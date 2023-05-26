@@ -52,7 +52,7 @@ export function App() {
           path="perfilDoProfissional/:id/InfoContract"
           element={<ContratoDados />}
         />
-        <Route path="chat/:id" element={<Chat />} />
+        <Route path="chat" element={<Chat />} />
       </Route>
       <Route
         path="/Profissional"
@@ -63,7 +63,7 @@ export function App() {
         <Route path="visaoGeral" element={<VisaoGeralProf />} />
         <Route path="editarPerfil" element={<EditarPerfilProf />} />
         <Route path="solicitacoes" element={<Solicitacoes />} />
-        <Route path="chat/:id" element={<Chat />} />
+        <Route path="chat" element={<Chat />} />
       </Route>
       <Route path="*" element={<div>Página não encontrada</div>} />
     </Routes>
