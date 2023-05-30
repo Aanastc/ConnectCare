@@ -1,10 +1,10 @@
+import { differenceInYears } from 'date-fns'
+import { ChatCircleDots, ClipboardText } from 'phosphor-react'
 import React, { useEffect, useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
 import { supabase } from '../../../services/supabase'
-import { differenceInYears } from 'date-fns'
 import { Avaliacao } from './Avaliacao'
-import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
-import { ChatCircleDots, ClipboardText } from 'phosphor-react'
+import MariaMadalena from '../../../assets/imgs/MariaMadalena.png'
 
 export function PerfilProf() {
   const [profissional, setProfissional] = useState(null)
@@ -120,52 +120,10 @@ export function PerfilProf() {
             </div>
             <div className="flex flex-wrap gap-8 justify-center items-center">
               <Avaliacao
-                name="João Silva"
+                name="Maria"
                 rating="2"
                 comment="Ótimo produto! Fiquei muito satisfeito com a qualidade."
-                avatar={fotoPerfil}
-              />
-              <Avaliacao
-                name="Maria Santos"
-                rating="5"
-                comment="Excelente atendimento ao cliente. Recomendo!"
-                avatar={fotoPerfil}
-              />
-              <Avaliacao
-                name="Maria Santos"
-                rating="5"
-                comment="Excelente atendimento ao cliente. Recomendo!"
-                avatar={fotoPerfil}
-              />
-              <Avaliacao
-                name="Maria Santos"
-                rating="5"
-                comment="Excelente atendimento ao cliente. Recomendo!"
-                avatar={fotoPerfil}
-              />
-              <Avaliacao
-                name="Maria Santos"
-                rating="5"
-                comment="Excelente atendimento ao cliente. Recomendo!"
-                avatar={fotoPerfil}
-              />
-              <Avaliacao
-                name="Maria Santos"
-                rating="5"
-                comment="Excelente atendimento ao cliente. Recomendo!"
-                avatar={fotoPerfil}
-              />
-              <Avaliacao
-                name="Maria Santos"
-                rating="5"
-                comment="Excelente atendimento ao cliente. Recomendo!"
-                avatar={fotoPerfil}
-              />
-              <Avaliacao
-                name="Maria Santos"
-                rating="5"
-                comment="Excelente atendimento ao cliente. Recomendo!"
-                avatar={fotoPerfil}
+                avatar={MariaMadalena}
               />
             </div>
           </div>

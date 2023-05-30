@@ -2,7 +2,6 @@ import { Menu, Transition } from '@headlessui/react'
 import { Bell, CaretDown } from 'phosphor-react'
 import { Fragment } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import fotoPerfil from '../../../assets/imgs/fotoPerfil.png'
 import { useAuth } from '../../../contexts/AuthCtx'
 import { useUser } from '../../../contexts/UserCtx'
 

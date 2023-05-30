@@ -2,7 +2,6 @@ import {
   FacebookLogo,
   InstagramLogo,
   List,
-  MagnifyingGlass,
   Star,
   TwitterLogo,
   WhatsappLogo
@@ -11,18 +10,25 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import ScrollSpy from 'react-ui-scrollspy'
 
-import Logo from '../assets/icons/LogoRoxa.svg'
 import foto1 from '../assets/icons/1.svg'
 import foto2 from '../assets/icons/2.svg'
 import foto3 from '../assets/icons/3.svg'
 import foto4 from '../assets/icons/4.svg'
-import fotoPerfil from '../assets/imgs/fotoPerfil.png'
-import fotoPerfil2 from '../assets/imgs/fotoPerfil2.png'
+import Logo from '../assets/icons/LogoRoxa.svg'
+import MariaMadalena from '../assets/imgs/MariaMadalena.png'
+import AnaVitoria from '../assets/imgs/AnaVitoria.png'
 import ImgFaleConosco from '../assets/imgs/img-faleConosco.png'
 import ImgHome from '../assets/imgs/img-home.png'
 import ImgSobre from '../assets/imgs/img-sobre.png'
 
 export function Home() {
+  const renderStars = () => {
+    const stars = []
+    for (let i = 1; i <= 5; i++) {
+      stars.push(<Star key={i} weight="fill" color="#FFD700" size={20} />)
+    }
+    return stars
+  }
   const [isPaciente, setIsPaciente] = useState(true)
   const [navbarOpen, setNavbarOpen] = React.useState(false)
 
@@ -281,7 +287,7 @@ export function Home() {
                 <div class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
                   <div class="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-8 text-gray-700 shadow-none">
                     <img
-                      src={fotoPerfil2}
+                      src={MariaMadalena}
                       alt="Foto de uma mulher de cabelo preto sorrindo com polegares para cima"
                       class="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center"
                     />
@@ -291,11 +297,7 @@ export function Home() {
                           Maria Madalena
                         </h5>
                         <div class="5 flex items-center gap-0">
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
+                          <p className="flex">{renderStars(5)}</p>
                         </div>
                       </div>
                     </div>
@@ -327,11 +329,7 @@ export function Home() {
                           Candice Wu
                         </h5>
                         <div class="5 flex items-center gap-0">
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
+                          <p className="flex">{renderStars(5)}</p>
                         </div>
                       </div>
                     </div>
@@ -345,7 +343,7 @@ export function Home() {
                 <div class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
                   <div class="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-8 text-gray-700 shadow-none">
                     <img
-                      src={fotoPerfil}
+                      src={AnaVitoria}
                       alt="Foto de uma mulher de cabelo preto sorrindo"
                       class="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center"
                     />
@@ -355,10 +353,7 @@ export function Home() {
                           Ana Vitoria
                         </h5>
                         <div class="5 flex items-center gap-0">
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
+                          <p className="flex">{renderStars(4)}</p>
                         </div>
                       </div>
                     </div>
@@ -389,15 +384,10 @@ export function Home() {
                   <label for="simple-search" class="sr-only">
                     Search
                   </label>
-                  {/* O icone não está aparecendo */}
-                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <MagnifyingGlass size={22} color="#98A6A5" />
-                  </div>
                   <input
                     type="search"
-                    class="bg-gray-100 text-gray-500 rounded-lg drop-shadow-lg w-full px-8 py-1 focus:outline-none"
+                    class="bg-gray-100 text-gray-500 rounded-lg drop-shadow-lg w-full p-2 px-3 focus:outline-none"
                     placeholder="Buscar"
-                    required
                   ></input>
                 </div>
               </form>

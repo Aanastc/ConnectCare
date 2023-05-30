@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { format } from 'date-fns'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { useUser } from '../../../contexts/UserCtx'
 import { supabase } from '../../../services/supabase'
-import { useForm } from 'react-hook-form'
-import { format } from 'date-fns'
 
 export function Conta() {
   const [loadingUpdate, setLoadingUpdate] = useState(false)

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
-import { supabase } from '../../../services/supabase'
-import { ServicosStatus } from './ServicosStatus'
 import { useUser } from '../../../contexts/UserCtx'
+import { ServicosStatus } from './ServicosStatus'
+
+// PENDENTE TERMINAR
 
 const Solicitacao = [
   {
@@ -20,7 +20,6 @@ const Solicitacao = [
 
 export function Servicos() {
   const { user } = useUser()
-  const [isCacel, setCancel] = useState(true)
 
   return (
     <main>

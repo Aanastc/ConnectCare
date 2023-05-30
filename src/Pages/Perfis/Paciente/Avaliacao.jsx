@@ -1,5 +1,5 @@
-import React from 'react'
 import { Star } from 'phosphor-react'
+import React from 'react'
 
 export function Avaliacao({ name, rating, comment, avatar }) {
   const renderStars = () => {

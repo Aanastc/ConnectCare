@@ -11,17 +11,17 @@ import { Verifique } from './Pages/SignUp/components/Verifique'
 import { RequireAuth } from './contexts/RequireAuth'
 
 import { Paciente } from './Layouts/Paciente'
-import { EditarPerfil } from './Pages/Perfis/Paciente/EditarPerfil'
-import { VisaoGeral } from './Pages/Perfis/Paciente/VisaoGeral'
-import { PerfilProf } from './Pages/Perfis/Paciente/PerfilProf'
 import { ContratoDados } from './Pages/Perfis/Paciente/ContratoDados'
+import { EditarPerfil } from './Pages/Perfis/Paciente/EditarPerfil'
+import { PerfilProf } from './Pages/Perfis/Paciente/PerfilProf'
 import { Servicos } from './Pages/Perfis/Paciente/Servicos'
+import { VisaoGeral } from './Pages/Perfis/Paciente/VisaoGeral'
 
 import { Profissional } from './Layouts/Profissional'
-import { VisaoGeralProf } from './Pages/Perfis/Profissional/VisaoGeralProf'
 import { EditarPerfilProf } from './Pages/Perfis/Profissional/EditarPerfilProf'
-import { Solicitacoes } from './Pages/Perfis/Profissional/Solicitacoes'
 import { PerfilPaciente } from './Pages/Perfis/Profissional/PerfilPaciente'
+import { Solicitacoes } from './Pages/Perfis/Profissional/Solicitacoes'
+import { VisaoGeralProf } from './Pages/Perfis/Profissional/VisaoGeralProf'
 
 import { Chat } from './Pages/Chat'
 
