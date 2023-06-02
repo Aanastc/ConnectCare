@@ -1,5 +1,5 @@
 import { Eyedropper, Trash } from 'phosphor-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import AvatarEditor from 'react-avatar-editor'
 import { useUser } from '../../../contexts/UserCtx'
 import { supabase } from '../../../services/supabase'

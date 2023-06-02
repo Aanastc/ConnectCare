@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react'
 import {
   Baby,
   Bed,
@@ -9,11 +8,11 @@ import {
   Syringe,
   Wheelchair
 } from 'phosphor-react'
-import { Filtro } from './Filtro'
+import React, { useEffect, useState } from 'react'
+import { supabase } from '../../../services/supabase'
 import { Saudacao } from '../Componetes/Saudacao'
 import { Card } from './Card'
-import { NavLink } from 'react-router-dom'
-import { supabase } from '../../../services/supabase'
+import { Filtro } from './Filtro'
 
 export function VisaoGeral() {
   const [profissionais, setProfissionais] = useState([])

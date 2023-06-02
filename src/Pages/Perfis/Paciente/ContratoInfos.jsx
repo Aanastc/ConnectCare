@@ -1,5 +1,5 @@
 import { useFormContext } from 'react-hook-form'
-import arrow from '../../../assets/icons/caret-right-thin.svg'
+import arrow from '../../../assets/icons/arrow_data.svg'
 
 export function ContratoInfos({ onNextStep }) {
   const { register } = useFormContext()

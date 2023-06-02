@@ -1,25 +1,25 @@
-import { useState, useEffect } from 'react';
-import { useUser } from '../../../contexts/UserCtx';
-import homePerfil from '../../../../src/assets/icons/homePerfil.svg';
+import { useEffect, useState } from 'react'
+import homePerfil from '../../../../src/assets/icons/homePerfil.svg'
+import { useUser } from '../../../contexts/UserCtx'
 
 export function Saudacao() {
-  const [horario, setHorario] = useState(new Date().getHours());
-  const { user } = useUser();
+  const [horario, setHorario] = useState(new Date().getHours())
+  const { user } = useUser()
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setHorario(new Date().getHours());
-    }, 1000 * 60);
-    return () => clearInterval(interval);
-  }, []);
+      setHorario(new Date().getHours())
+    }, 1000 * 60)
+    return () => clearInterval(interval)
+  }, [])
 
-  let saudacao;
+  let saudacao
   if (horario >= 6 && horario < 12) {
-    saudacao = 'Bom dia';
+    saudacao = 'Bom dia'
   } else if (horario >= 12 && horario < 18) {
-    saudacao = 'Boa tarde';
+    saudacao = 'Boa tarde'
   } else {
-    saudacao = 'Boa noite';
+    saudacao = 'Boa noite'
   }
 
   return (
@@ -33,5 +33,5 @@ export function Saudacao() {
         {`${saudacao}, ${user.name || ''}!`}
       </h1>
     </div>
-  );
+  )
 }

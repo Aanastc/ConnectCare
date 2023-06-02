@@ -2,7 +2,6 @@ import {
   FacebookLogo,
   InstagramLogo,
   List,
-  MagnifyingGlass,
   Star,
   TwitterLogo,
   WhatsappLogo
@@ -11,18 +10,25 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import ScrollSpy from 'react-ui-scrollspy'
 
-import Logo from '../assets/icons/LogoRoxa.svg'
 import foto1 from '../assets/icons/1.svg'
 import foto2 from '../assets/icons/2.svg'
 import foto3 from '../assets/icons/3.svg'
 import foto4 from '../assets/icons/4.svg'
-import fotoPerfil from '../assets/imgs/fotoPerfil.png'
-import fotoPerfil2 from '../assets/imgs/fotoPerfil2.png'
+import Logo from '../assets/icons/LogoRoxa.svg'
+import MariaMadalena from '../assets/imgs/MariaMadalena.png'
+import AnaVitoria from '../assets/imgs/AnaVitoria.png'
 import ImgFaleConosco from '../assets/imgs/img-faleConosco.png'
 import ImgHome from '../assets/imgs/img-home.png'
 import ImgSobre from '../assets/imgs/img-sobre.png'
 
 export function Home() {
+  const renderStars = () => {
+    const stars = []
+    for (let i = 1; i <= 5; i++) {
+      stars.push(<Star key={i} weight="fill" color="#FFD700" size={20} />)
+    }
+    return stars
+  }
   const [isPaciente, setIsPaciente] = useState(true)
   const [navbarOpen, setNavbarOpen] = React.useState(false)
 
@@ -281,7 +287,7 @@ export function Home() {
                 <div class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
                   <div class="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-8 text-gray-700 shadow-none">
                     <img
-                      src={fotoPerfil2}
+                      src={MariaMadalena}
                       alt="Foto de uma mulher de cabelo preto sorrindo com polegares para cima"
                       class="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center"
                     />
@@ -291,11 +297,7 @@ export function Home() {
                           Maria Madalena
                         </h5>
                         <div class="5 flex items-center gap-0">
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
+                          <p className="flex">{renderStars(5)}</p>
                         </div>
                       </div>
                     </div>
@@ -327,11 +329,7 @@ export function Home() {
                           Candice Wu
                         </h5>
                         <div class="5 flex items-center gap-0">
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
+                          <p className="flex">{renderStars(5)}</p>
                         </div>
                       </div>
                     </div>
@@ -345,7 +343,7 @@ export function Home() {
                 <div class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
                   <div class="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-8 text-gray-700 shadow-none">
                     <img
-                      src={fotoPerfil}
+                      src={AnaVitoria}
                       alt="Foto de uma mulher de cabelo preto sorrindo"
                       class="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center"
                     />
@@ -355,10 +353,7 @@ export function Home() {
                           Ana Vitoria
                         </h5>
                         <div class="5 flex items-center gap-0">
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
-                          <Star size={22} color="#e2d118" weight="fill" />
+                          <p className="flex">{renderStars(4)}</p>
                         </div>
                       </div>
                     </div>
@@ -383,24 +378,22 @@ export function Home() {
               <h1 className="font-bold text-4xl mb-6 mt-2">
                 Oi! Como podemos ajudar?
               </h1>
+
               <form className="w-2/3 flex justify-center items-center mb-4">
                 <div class="relative">
-                  <span class="absolute p-2 insert-y-0">
-                    <MagnifyingGlass
-                      size={22}
-                      color="#98A6A5"
-                      alt="Search Icon"
-                    />
-                  </span>
+                  <label for="simple-search" class="sr-only">
+                    Search
+                  </label>
                   <input
                     type="search"
-                    class="bg-gray-100 text-gray-500 rounded-lg drop-shadow-lg w-full px-8 py-1 focus:outline-none"
+                    class="bg-gray-100 text-gray-500 rounded-lg drop-shadow-lg w-full p-2 px-3 focus:outline-none"
                     placeholder="Buscar"
-                  />
+                  ></input>
                 </div>
               </form>
+
               <div className=" w-full lg:w-[960px]">
-                <div className="flex border-b-2 border-b-purple-600 gap-4 m-2 justify-center lg:justify-start">
+                <div className="flex border-b-2 border-b-purple-600 gap-4 justify-center lg:justify-start mb-2">
                   <button
                     onClick={() => setIsPaciente(true)}
                     className={`font-bold ${isPaciente && 'text-purple-600'}`}
@@ -503,7 +496,7 @@ export function Home() {
               </div>
               <div className="flex flex-col gap-4">
                 <div className="justify-center items-center">
-                  <p className="mb-2 text-base font-semibold">
+                  <p className="mb-2 text-base font-medium">
                     Não encontrou sua dúvida?
                   </p>
                   <h2 className="font-bold text-2xl mb-2">Fale Conosco</h2>
@@ -517,7 +510,7 @@ export function Home() {
                       <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="Escreva seu nome aqui"
+                        placeholder="Insisa seu nome"
                       />
                     </div>
                     <div className="mb-4">
@@ -527,7 +520,7 @@ export function Home() {
                       <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="email"
-                        placeholder="lala123@gmail.com"
+                        placeholder="connectcare@gmail.com"
                       />
                     </div>
                     <div className="mb-4">
@@ -553,7 +546,7 @@ export function Home() {
           </section>
         </ScrollSpy>
       </div>
-      <footer className="relative w-full bg-violet-700">
+      <footer className="relative w-full bg-violet-600">
         <div className="p-5 max-w-[1120px] mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
           <div className="text-white mb-4 md:mb-0 lg:mb-0">
             <ul className="text-sm md:text-base">
@@ -569,17 +562,12 @@ export function Home() {
               </li>
               <li>
                 <a href="#" className="">
-                  Fale Conosco
-                </a>
-              </li>
-              <li>
-                <a href="#" className="">
                   Carreiras
                 </a>
               </li>
               <li>
                 <a href="#" className="">
-                  Connect Care Canadá
+                  Trabalhe Conosco
                 </a>
               </li>
             </ul>
@@ -598,11 +586,6 @@ export function Home() {
               </li>
               <li>
                 <a href="#" className="">
-                  Trabalhe Conosco
-                </a>
-              </li>
-              <li>
-                <a href="#" className="">
                   Ajuda
                 </a>
               </li>
@@ -615,8 +598,8 @@ export function Home() {
           </div>
           <div className="text-white pt-4 md:pt-0 md:pl-4 lg:pl-0">
             <div className="text-right font-thin text-xs md:text-sm">
-              <p className="mb-2">Central de Atendimento: (70) 7070-7070</p>
-              <p className="mb-0">Av. Jorgin Do Grau, 1111 - Edson Queiroz</p>
+              <p className="mb-2">Central de Atendimento: (70) 8756-1542</p>
+              <p className="mb-0">Av. Gilson Bras, 1111 - Edson Queiroz</p>
               <p className="mb-4"> CEP 33678-950 - Fortaleza-CE Brasil</p>
             </div>
             <div className="flex justify-end gap-4">

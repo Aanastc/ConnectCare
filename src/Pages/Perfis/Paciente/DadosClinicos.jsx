@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import Switch from 'react-switch'
 import { Controller, useForm } from 'react-hook-form'
+import Switch from 'react-switch'
 import { useUser } from '../../../contexts/UserCtx'
 import { supabase } from '../../../services/supabase'
 

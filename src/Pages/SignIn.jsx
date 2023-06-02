@@ -1,5 +1,5 @@
 import { FacebookLogo, GoogleLogo } from 'phosphor-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthCtx'
 
@@ -69,33 +69,33 @@ export function SignIn() {
       </div>
       <div className="flex flex-col gap-4">
         <button
-          // onClick={async () => {
-          //   await supabase.auth.signInWithOAuth({
-          //     provider: 'google',
-          //     options: {
-          //       redirectTo: 'http://localhost:5173/InicioPaciente'
-          //     }
-          //   })
-          // }}
+          onClick={async () => {
+            await supabase.auth.signInWithOAuth({
+              provider: 'google',
+              options: {
+                redirectTo:
+                  'http://localhost:5173/{roleRoute[user.user_metadata.role]}'
+              }
+            })
+          }}
           className="flex justify-center gap-4 bg-white text-black font-bold text-base py-3 rounded-lg ease-linear transition-all duration-150 border-purple-600 border-2 hover:bg-purple-100"
           type="button"
-          href="#"
         >
           <GoogleLogo size={22} weight="bold" />
           Continuar com Google
         </button>
         <button
-          // onClick={async () => {
-          //   await supabase.auth.signInWithOAuth({
-          //     provider: 'facebook',
-          //     options: {
-          //       redirectTo: 'http://localhost:5173/InicioPaciente'
-          //     }
-          //   })
-          // }}
+          onClick={async () => {
+            await supabase.auth.signInWithOAuth({
+              provider: 'facebook',
+              options: {
+                redirectTo:
+                  'http://localhost:5173/{roleRoute[user.user_metadata.role]}'
+              }
+            })
+          }}
           className="flex justify-center gap-4 bg-white text-black font-bold text-base py-3 rounded-lg ease-linear transition-all duration-150 border-purple-600 border-2 hover:bg-purple-100"
           type="button"
-          href="#"
         >
           <FacebookLogo size={22} weight="bold" />
           Continuar com Facebook

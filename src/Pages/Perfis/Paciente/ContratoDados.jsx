@@ -1,7 +1,7 @@
+import { Check } from 'phosphor-react'
 import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { NavLink, useParams } from 'react-router-dom'
-import { Check } from 'phosphor-react'
 import { useUser } from '../../../contexts/UserCtx'
 import { supabase } from '../../../services/supabase'
 import { ContratoInfos } from './ContratoInfos'

@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
 import {
   ArrowLeft,
   ArrowRight,
@@ -7,6 +5,8 @@ import {
   ChatCircleDots,
   Stack
 } from 'phosphor-react'
+import { useState } from 'react'
+import { NavLink, Outlet } from 'react-router-dom'
 
 import { HeaderApp } from '../Pages/Perfis/Componetes/HeaderApp'
 import { useUser } from '../contexts/UserCtx'

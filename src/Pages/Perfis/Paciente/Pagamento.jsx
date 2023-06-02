@@ -8,7 +8,6 @@ export function Pagamento({ onPreviousStep, onSubmit }) {
   const [expiryDate, setExpiryDate] = useState('')
   const [cvv, setCvv] = useState('')
   const [paymentMethod, setPaymentMethod] = useState('')
-  const [boletoField, setBoletoField] = useState('')
   const [pagadorName, setPagadorName] = useState('')
   const [cpfCnpj, setCpfCnpj] = useState('')
   const { handleSubmit } = useFormContext()
@@ -20,29 +19,6 @@ export function Pagamento({ onPreviousStep, onSubmit }) {
   const handlePaymentMethodChange = method => {
     setPaymentMethod(method)
   }
-
-  // const handleSubmit = e => {
-  //   e.preventDefault()
-
-  //   if (paymentMethod === 'card') {
-  //     console.log('Método de pagamento: Cartão')
-  //     console.log('Número do Cartão:', cardNumber)
-  //     console.log('Nome do Titular:', cardName)
-  //     console.log('Data de Expiração:', expiryDate)
-  //     console.log('CVV:', cvv)
-  //   } else if (paymentMethod === 'boleto') {
-  //     console.log('Método de pagamento: Boleto')
-  //   } else if (paymentMethod === 'pix') {
-  //     console.log('Método de pagamento: PIX')
-  //   }
-
-  //   setCardNumber('')
-  //   setCardName('')
-  //   setExpiryDate('')
-  //   setCvv('')
-  //   setPagadorName('')
-  //   setCpfCnpj('')
-  // }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

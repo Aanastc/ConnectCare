@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { useUser } from '../../../contexts/UserCtx'
+import { supabase } from '../../../services/supabase'
 import { Saudacao } from '../Componetes/Saudacao'
 import { CardAtendimento } from './CardAtendimento'
-import { CardFinalizados } from './CardFinalizados'
-import { supabase } from '../../../services/supabase'
-import { useUser } from '../../../contexts/UserCtx'
 
 const CONTRATO_STATUS = {
   PENDENTE: 'pendente',

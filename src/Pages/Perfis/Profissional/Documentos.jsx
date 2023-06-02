@@ -1,6 +1,6 @@
+import { CloudArrowUp } from 'phosphor-react'
 import { useForm } from 'react-hook-form'
 import { supabase } from '../../../services/supabase'
-import { CloudArrowUp } from 'phosphor-react'
 
 async function handleFileUpload(file) {
   const { data, error } = await supabase.storage
