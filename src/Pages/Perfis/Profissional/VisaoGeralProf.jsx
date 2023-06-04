@@ -21,6 +21,7 @@ export function VisaoGeralProf() {
         .from('contrato')
         .select(
           `
+          diagnostico,
           horario,
           dias:dias_semana,
           paciente (
@@ -54,7 +55,7 @@ export function VisaoGeralProf() {
               pacienteId={pacienteEmAtendimento.paciente.profiles.id}
               avatar={pacienteEmAtendimento.paciente.profiles.avatarPath}
               nome={pacienteEmAtendimento.paciente.profiles.name}
-              casoClinico={pacienteEmAtendimento?.paciente?.casoClinico}
+              casoClinico={pacienteEmAtendimento.diagnostico}
               horario={pacienteEmAtendimento.horario}
               dias={pacienteEmAtendimento.dias?.join(' - ')}
             />
