@@ -54,7 +54,7 @@ export function PerfilProf() {
               <div className="border-2 border-purple-600 rounded-full w-72 h-72 shadow-md shadow-purple-500">
                 <img
                   src={profissional?.avatarPath}
-                  className="rounded-full w-full"
+                  className="rounded-full w-full h-full"
                   alt="Avatar"
                 />
               </div>
