@@ -63,7 +63,7 @@ export function Solicitacoes() {
         `
         )
         .eq('status', CONTRATO_STATUS.PENDENTE)
-        .eq('profissinal_id', user.id)
+        .eq('profissional_id', user.id)
 
       if (error) console.log('Erro ao buscar paciente:', error)
       else setSolicitacaoPacientes(data)
