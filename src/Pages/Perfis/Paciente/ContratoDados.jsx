@@ -24,7 +24,7 @@ export function ContratoDados() {
       dias_semana: ['Segunda', 'Quarta', 'Sexta'],
       diagnostico: data.diagnostico,
       descricao: data.descricao,
-      profissinal_id: id,
+      profissional_id: id,
       paciente_id: user?.id
     })
 
