@@ -44,6 +44,7 @@ export function ContratoInfos({ onNextStep }) {
                 id="dia"
                 className="font-bold outline-none"
                 {...register('periodo_final')}
+                min={new Date().toISOString().split('T')[0]}
               />
             </div>
           </div>
@@ -222,6 +223,7 @@ export function ContratoInfos({ onNextStep }) {
                 class="input-role hidden"
                 id="sim"
                 type="radio"
+                name="opcao"
                 value="sim"
               />
               <label
@@ -236,6 +238,7 @@ export function ContratoInfos({ onNextStep }) {
                 class="input-role hidden"
                 id="nao"
                 type="radio"
+                name="opcao"
                 value="nao"
               />
               <label
