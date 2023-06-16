@@ -304,7 +304,7 @@ export function Home() {
                   </div>
                   <div class="mb-6 p-0">
                     <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                      "O sistema trouxa uma facilidade enorme para minha vida, a
+                      "O sistema trouxe uma facilidade enorme para minha vida, a
                       dois meses sofri um acidente de moto e tenho no total 5
                       curativos que precisam ser trocados diaramente. eu não
                       encontrava nenhuma enfermeira para fazer em casa, até que
