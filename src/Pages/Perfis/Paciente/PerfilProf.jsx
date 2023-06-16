@@ -1,7 +1,7 @@
 import { differenceInYears } from 'date-fns'
 import { ChatCircleDots, ClipboardText } from 'phosphor-react'
 import React, { useEffect, useState } from 'react'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { supabase } from '../../../services/supabase'
 import { Avaliacao } from './Avaliacao'
 import MariaMadalena from '../../../assets/imgs/MariaMadalena.png'
@@ -17,6 +17,7 @@ export function PerfilProf() {
         .from('profiles')
         .select(
           `
+          id,
           name,
           avatarPath,
           birthdate,
@@ -44,6 +45,12 @@ export function PerfilProf() {
 
     getProfissional()
   }, [id])
+
+  const navigate = useNavigate()
+
+  const handleChatClick = () => {
+    navigate(`/Paciente/chat/${profissional?.id}`)
+  }
 
   return (
     <>
@@ -95,7 +102,10 @@ export function PerfilProf() {
                   <p> {profissional?.profissional?.restricoes}</p>
                 </div>
                 <div className="flex justify-start gap-2 mb-8">
-                  <NavLink to="/Paciente/chat">
+                  <NavLink
+                    to={`/Paciente/chat?to=${profissional?.id}`}
+                    onClick={handleChatClick}
+                  >
                     <ChatCircleDots
                       size={50}
                       color="#9063CD"

@@ -43,37 +43,12 @@ export function VisaoGeral() {
     getProfissionais()
   }, [])
 
-  // const [showProfileNotification, setShowProfileNotification] = useState(false);
-
-  // useEffect(() => {
-  //   const profileNotificationDismissed = localStorage.getItem('profileNotificationDismissed');
-  //   setShowProfileNotification(!profileNotificationDismissed);
-  // }, []);
-
-  // function handleProfileNotificationClick() {
-  //   localStorage.setItem('profileNotificationDismissed', 'true');
-  //   setShowProfileNotification(false);
-  // }
 
   const especialidadeButton =
     'border-purple-400 border-2 rounded flex flex-col justify-center items-center h-24 w-24 m-2 p-2 hover:bg-purple-400 hover:shadow-md'
 
   return (
     <main className="p-5 pt-32">
-      {/* {showProfileNotification && (
-        <div className="bg-yellow-100 p-4 mb-4 rounded-md">
-          <p className="text-yellow-800">
-            Por favor, complete seu perfil para ter acesso completo à plataforma.
-          </p>
-          <NavLink
-            className="bg-yellow-500 text-white px-4 py-2 rounded-md mt-2 hover:bg-yellow-600"
-            to="/Paciente/editarPerfil"
-            onClick={handleProfileNotificationClick}
-          >
-            Completar perfil
-          </NavLink>
-        </div>
-      )} */}
       <Saudacao />
       <div className="flex flex-row flex-wrap mb-4 w-full gap-5 justify-center items-center">
         <button className={especialidadeButton}>
