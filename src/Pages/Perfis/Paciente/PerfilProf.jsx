@@ -131,8 +131,8 @@ export function PerfilProf() {
             <div className="flex flex-wrap gap-8 justify-center items-center">
               <Avaliacao
                 name="Maria"
-                rating="2"
-                comment="Ótimo produto! Fiquei muito satisfeito com a qualidade."
+                rating="4"
+                comment="Ótimo serviço! Fiquei muito satisfeita com a qualidade."
                 avatar={MariaMadalena}
               />
             </div>
